@@ -37,7 +37,7 @@ console.log("ik lees het");
 			ctx.globalAlpha = 0.75;
 			ctx.beginPath();
 			ctx.fillStyle = handColor;
-			ctx.arc(jointPoint.depthX * 768, jointPoint.depthY * 636, HANDSIZE, 0, Math.PI * 2, true);
+			ctx.arc(jointPoint.depthX * 512, jointPoint.depthY * 424, HANDSIZE, 0, Math.PI * 2, true);
 			ctx.fill();
 			ctx.closePath();
 			ctx.globalAlpha = 1;
@@ -51,7 +51,7 @@ console.log("ik lees het");
 					for(var jointType in body.joints) {
 						var joint = body.joints[jointType];
 						ctx.fillStyle = colors[index];
-						ctx.fillRect(joint.depthX * 768, joint.depthY * 636, 10, 10);
+						ctx.fillRect(joint.depthX * 512, joint.depthY * 424, 10, 10);
 					}
 					//draw hand states
 					updateHandState(body.leftHandState, body.joints[7]);

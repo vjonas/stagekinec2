@@ -6,14 +6,15 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { HttpModule } from '@angular/http';
 import { HomeComponent } from './home.component/home.component';
 import { AppComponent } from './app.component';
+import { LoginComponent} from './login.component/login.component';
 
 // routes variabelen
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   /*{ path: 'register', component: RegisterComponent },
-  { path: 'room/:id', component: RoomComponent },
+  { path: 'room/:id', component: RoomComponent },*/
   { path: 'login', component: LoginComponent },
-  { path: 'public-rooms', component: PublicRoomsComponent },
+ /* { path: 'public-rooms', component: PublicRoomsComponent },
   { path: 'login', component: LoginComponent },*/
   { path: '', redirectTo: '/home', pathMatch: 'full' }
   // PageNotFound { path: '**', component: PageNotFoundComponent }
@@ -22,7 +23,7 @@ const appRoutes: Routes = [
 
 @NgModule({
   declarations: [
-    AppComponent, HomeComponent
+    AppComponent, HomeComponent, LoginComponent
   ],
   imports: [
     BrowserModule,
