@@ -1,6 +1,6 @@
 var Kinect2 = require('kinect2'),
     express = require('express'),
-fs= require('fs'),
+    fs= require('fs'),
     app = express(),
     server = require('http').createServer(app),
     io = require('socket.io').listen(server);
@@ -8,7 +8,7 @@ fs= require('fs'),
 var kinect = new Kinect2();
 
 if(kinect.open()) {
-    server.listen(8000);
+  server.listen(8000);
     console.log('Server listening on port 8000');
     console.log('Point your browser to http://localhost:8000');
 
