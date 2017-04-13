@@ -7,12 +7,14 @@ import { HttpModule } from '@angular/http';
 import { HomeComponent } from './home.component/home.component';
 import { AppComponent } from './app.component';
 import { LoginComponent} from './login.component/login.component';
+import { UserOverviewComponent} from './useroverview.component/useroverview.component';
 
 // routes variabelen
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   /*{ path: 'register', component: RegisterComponent },
   { path: 'room/:id', component: RoomComponent },*/
+  { path: 'useroverview', component: UserOverviewComponent},
   { path: 'login', component: LoginComponent },
  /* { path: 'public-rooms', component: PublicRoomsComponent },
   { path: 'login', component: LoginComponent },*/
@@ -23,7 +25,7 @@ const appRoutes: Routes = [
 
 @NgModule({
   declarations: [
-    AppComponent, HomeComponent, LoginComponent
+    AppComponent, HomeComponent, LoginComponent, UserOverviewComponent
   ],
   imports: [
     BrowserModule,
