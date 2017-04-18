@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
     selector: 'userOverview',
@@ -6,7 +8,9 @@ import { Component } from '@angular/core';
     styleUrls: ['./useroverview.component.css']
 })
 export class UserOverviewComponent  {
-  
+    state: string = 'inactive';
+
+    constructor(private router: Router){}
 
     ngOnInit() { 
     }
@@ -14,7 +18,10 @@ export class UserOverviewComponent  {
     ngOnChanges(changes){
     }
 
-  
+    goToUser(){
+        console.log("ierse");
+        this.router.navigate(['./individualuser']);
+    }
 
 
 }

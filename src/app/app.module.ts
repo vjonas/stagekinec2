@@ -8,16 +8,17 @@ import { HomeComponent } from './home.component/home.component';
 import { AppComponent } from './app.component';
 import { LoginComponent} from './login.component/login.component';
 import { UserOverviewComponent} from './useroverview.component/useroverview.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { IndividualUserComponent } from './individualuser.component/individualuser.component';
+import { RegisterComponent } from './register.component/register.component';
 
 // routes variabelen
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
-  /*{ path: 'register', component: RegisterComponent },
-  { path: 'room/:id', component: RoomComponent },*/
+  { path: 'register', component: RegisterComponent },
   { path: 'useroverview', component: UserOverviewComponent},
+  { path: 'individualuser', component: IndividualUserComponent},
   { path: 'login', component: LoginComponent },
- /* { path: 'public-rooms', component: PublicRoomsComponent },
-  { path: 'login', component: LoginComponent },*/
   { path: '', redirectTo: '/home', pathMatch: 'full' }
   // PageNotFound { path: '**', component: PageNotFoundComponent }
 ];
@@ -25,14 +26,15 @@ const appRoutes: Routes = [
 
 @NgModule({
   declarations: [
-    AppComponent, HomeComponent, LoginComponent, UserOverviewComponent
+    AppComponent, HomeComponent, LoginComponent, UserOverviewComponent, IndividualUserComponent, RegisterComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes, { useHash: true }) //
-
+    RouterModule.forRoot(appRoutes, { useHash: true }
+    )
   ],
   //services
   providers: [ HashLocationStrategy ],

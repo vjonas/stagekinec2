@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterContentInit } from '@angular/core';
+import { Component } from '@angular/core';
 declare var $;
 
 @Component({
@@ -6,17 +6,14 @@ declare var $;
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements AfterContentInit {
+export class AppComponent {
   
   title = 'app works!'; 
 
   constructor(){
 };
 
-ngAfterContentInit(){
-  // $.getScript('../index.js', function(){});
 
-}
 
 
 

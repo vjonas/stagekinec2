@@ -1,9 +1,33 @@
 .card{
-   background-color: beige;
-   border: black solid 1px;
-   border-radius: 10px 10px 10px;
+   background-color: #DAEDFF;
+   border: lightgray solid 1px;
+   border-radius: 15px 0px 15px 0px;
    display: border-box;
    width:350px;
    height: 200px;
    margin:10px;
+   -webkit-transition: all 0.1s ease; /* Safari and Chrome */
+    -moz-transition: all 0.1s ease; /* Firefox */
+    -o-transition: all 0.1s ease; /* Opera */
+    transition: all 0.1s ease;
+    box-shadow: 5px 5px 10px darkgrey;
 }
+
+.cardImage{
+    width:100px;
+}
+
+.cardDiv{
+    margin-top:20px;
+    margin-bottom:20px;
+     float:right;
+
+}
+
+.card:hover {
+    background-color:lightblue;
+    -webkit-transform:scale(1.1); /* Safari and Chrome */
+    -moz-transform:scale(1.1); /* Firefox */
+    -ms-transform:scale(1.1); /* IE 9 */
+    -o-transform:scale(1.1); /* Opera */
+    transform:scale(1.1);}
