@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-declare var $;
 
 @Component({
   selector: 'app-root',
@@ -7,16 +6,7 @@ declare var $;
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  
-  title = 'app works!'; 
-
-  constructor(){
-};
-
-
-
-
-
+    private user:String;
 
 }
 

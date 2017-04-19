@@ -1,22 +1,22 @@
-<form class="form" (ngSubmit)="registerForm.form.valid && registerUser()" #registerForm="ngForm">
+<h1>Register</h1>
+<form name="form" (ngSubmit)="register()" novalidate>
+
   <div class="form-group">
-    <input type="text" class="name" placeholder="username" [(ngModel)]="register.username" name="username" required minlength="5"
-      #username="ngModel">
+    <input type="text" placeholder="Email" class="form-control" name="username" required />
+  </div>
+  
+
+  <div class="form-group">
+    <input type="password" placeholder="Password" class="form-control" name="password" required />
   </div>
 
   <div class="form-group">
-    <input type="email" class="email" placeholder="email" [(ngModel)]="register.email" name="email" required>
+    <input type="password" placeholder="Repeat your password" class="form-control" name="repeatPassword" required />
   </div>
 
-  <div class="form-group">
-    <input type="password" class="name" placeholder="password" [(ngModel)]="register.password" name="password" #password="ngModel"
-      required validateEqual="confirmPassword" reverse="true">
+  <div class="form-group" id="buttons">
+    <button id=loginbutton [disabled]="loading" class="btn btn-primary">Register</button>
+    <a [routerLink]="['/login']" id="loginButton" class="btn btn-link">Login</a>
+
   </div>
-  <div class="form-group">
-    <input type="password" class="name" placeholder="repeat password" [(ngModel)]="register.confirmPassword" name="confirmPassword"
-      #confirmPassword="ngModel" required validateEqual="password">
-  </div>
-  <div class="form-group" id="registerButton">
-    <button type="submit" class="btn-default">Register</button>
-  </div>
-</form>
+<form>

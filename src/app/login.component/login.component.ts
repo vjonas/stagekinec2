@@ -15,7 +15,7 @@ export class LoginComponent{
   }
 
   public login() {
-    
+      console.log("logged in");
   }
 
   

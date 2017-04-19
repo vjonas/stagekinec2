@@ -1,21 +1,37 @@
-form {
-  width: 30%;
-  margin: 5% auto;
+@font-face {
+font-family: 'Ostrich';
+src: url('../../assets/fonts/OstrichSans-Black.otf');
+font-weight: bold;
+}
 
+h1{
+  text-align:center;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  font-family: "Ostrich";
+  font-size:5em;
+}
+
+
+form {
+  width: 400px;
+  margin: auto;
+}
   .form-group {
     width: 90%;
     margin: auto;
+
+  }
 
       input {
           width: 90%;
           margin: auto;
           margin-top: 2%;
-          height: 25px;
+          height: 40px;
           color:black;
           font-size: 20px;
           background: white;
           border-radius: 5px;
-      }
     }
 
     #buttons {
@@ -23,7 +39,7 @@ form {
         margin-top: 5%;
         width: 50%;
         text-align: center;
-
+    }
         button {
           width: 100%;
         }
@@ -34,14 +50,17 @@ form {
           font-size: 15px;
           margin-top: 3%;
         }
-    }
 
   .help-block p {
     font-size: 12px;
   }
-}
+
 
 input{
   font-family: Helvetica, sans-serif;
+}
+
+#registerButton{
+ 
 }
 

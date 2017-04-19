@@ -1,0 +1,15 @@
+body{
+    background-image: url('../images/background.jpg');
+    color: white !important;
+    
+}
+
+.navigation{
+    background-color: #007AFF;
+    box-shadow: 0px -20px 100px black;
+    border:none;
+}
+
+.navbutton{
+    margin-top: 10%;
+}

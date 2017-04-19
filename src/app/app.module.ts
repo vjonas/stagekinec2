@@ -14,12 +14,12 @@ import { RegisterComponent } from './register.component/register.component';
 
 // routes variabelen
 const appRoutes: Routes = [
+  { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'useroverview', component: UserOverviewComponent},
   { path: 'individualuser', component: IndividualUserComponent},
-  { path: 'login', component: LoginComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'full' }
+  { path: '', redirectTo: '/login', pathMatch: 'full' }
   // PageNotFound { path: '**', component: PageNotFoundComponent }
 ];
 
