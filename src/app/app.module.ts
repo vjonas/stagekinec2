@@ -11,33 +11,46 @@ import { UserOverviewComponent} from './useroverview.component/useroverview.comp
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IndividualUserComponent } from './individualuser.component/individualuser.component';
 import { RegisterComponent } from './register.component/register.component';
+import { AngularFireModule } from 'angularfire2';
+import { AuthGuard } from './services/auth.service';
+import { ResetPasswordComponent } from './resetpassword.component/resetpassword.component';
 
 // routes variabelen
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'home', component: HomeComponent },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'register', component: RegisterComponent },
-  { path: 'useroverview', component: UserOverviewComponent},
-  { path: 'individualuser', component: IndividualUserComponent},
+  { path: 'useroverview', component: UserOverviewComponent, canActivate: [AuthGuard]},
+  { path: 'individualuser', component: IndividualUserComponent, canActivate: [AuthGuard]},
+  { path: 'resetpassword', component: ResetPasswordComponent},
   { path: '', redirectTo: '/login', pathMatch: 'full' }
   // PageNotFound { path: '**', component: PageNotFoundComponent }
 ];
 
+export const firebaseConfig = {
+  apiKey: "AIzaSyDt80FBi9Tver1DAEljAAhJKE7P8KR3EIA",
+  authDomain: "stagekinect2.firebaseapp.com",
+  databaseURL: "https://stagekinect2.firebaseio.com",
+  projectId: "stagekinect2",
+  storageBucket: "stagekinect2.appspot.com",
+  messagingSenderId: "595627469769"
+}
 
 @NgModule({
   declarations: [
-    AppComponent, HomeComponent, LoginComponent, UserOverviewComponent, IndividualUserComponent, RegisterComponent
+    AppComponent, HomeComponent, LoginComponent, UserOverviewComponent, IndividualUserComponent, RegisterComponent, ResetPasswordComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
+    AngularFireModule.initializeApp(firebaseConfig),
     RouterModule.forRoot(appRoutes, { useHash: true }
     )
   ],
   //services
-  providers: [ HashLocationStrategy ],
+  providers: [ HashLocationStrategy, AuthGuard ],
   bootstrap: [ AppComponent ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ] // to clear the router-outlet test, else it fails
 })
