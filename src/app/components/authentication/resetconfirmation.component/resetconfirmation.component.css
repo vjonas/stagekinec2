@@ -1,0 +1,29 @@
+@font-face {
+font-family: 'Ostrich';
+src: url('../../../../assets/fonts/OstrichSans-Black.otf');
+font-weight: bold;
+}
+
+h1{
+  text-align:center;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  font-family: "Ostrich";
+  font-size:5em;
+}
+
+div{
+  margin:auto;
+  width:400px;
+  background-color: rgba(230,230,230,0.4);
+  text-align: center;
+  padding-bottom:2%;
+  border-radius: 10px;
+   text-shadow: 0px 1px #777777;
+   }
+
+button{
+  margin-top:5%;
+  width:150px;
+}
+

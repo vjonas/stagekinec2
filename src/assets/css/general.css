@@ -1,7 +1,13 @@
+@font-face {
+font-family: 'Oswald';
+src: url('../../assets/fonts/Oswald-Regular.ttf');
+}
+
 body{
-    background-image: url('../images/background3.jpg');    
+    background-image: url('../images/background3test.jpg');    
     background-repeat:no-repeat;
-    color: #F2F2F2 !important;
+    color: #F4F4F4 !important;
+    font-family: 'Oswald';
     
 }
 
@@ -13,4 +19,10 @@ body{
 
 .navbutton{
     margin-top: 10%;
+}
+
+footer{
+    position: fixed;
+    bottom:2px;
+    left:5px;
 }

@@ -22,7 +22,7 @@ export class ResetPasswordComponent{
         this.auth.sendPasswordResetEmail(formData.value.email)
             .then((success) => {
                 console.log(success);
-                this.router.navigate(['/login']);
+                this.router.navigate(['/resetconfirmation']);
                 this.errCond = false;
             }).catch((err)=>{
                 console.log(err);

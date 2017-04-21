@@ -1,6 +1,6 @@
 @font-face {
 font-family: 'Ostrich';
-src: url('../../assets/fonts/OstrichSans-Black.otf');
+src: url('../../../../assets/fonts/OstrichSans-Black.otf');
 font-weight: bold;
 }
 
@@ -9,14 +9,12 @@ h1{
   margin-top: 5%;
   margin-bottom: 5%;
   font-family: "Ostrich";
-  font-size: 5em;
+  font-size:5em;
 }
 
-form {
-  width: 400px;
-  margin: auto;
+p{
+  text-align:center;
 }
-
 .form-control{
   -webkit-transition: all 0.1s ease; /* Safari and Chrome */
     -moz-transition: all 0.1s ease; /* Firefox */
@@ -32,6 +30,11 @@ form {
     transform:scale(1.15);
 }
 
+
+form {
+  width: 400px;
+  margin: auto;
+}
   .form-group {
     width: 90%;
     margin: auto;
@@ -51,8 +54,8 @@ form {
 
     #buttons {
         margin: auto;
-        margin-top: 5%;
-        width: 50%;
+        margin-top: 1%;
+        width: 80%;
         text-align: center;
     }
         button {
@@ -70,11 +73,22 @@ form {
     font-size: 12px;
   }
 
-#registerbutton{
-  background:#3ED600;
-}
 
 input{
   font-family: Helvetica, sans-serif;
 }
+
+#loginbutton{
+  background:#3ED600;
+  font-size:1.3em; 
+}
+
+#resetpasswordbutton{
+  font-size: .8em;
+  text-align: right;
+  width:98%;
+  margin:auto;
+  
+}
+
 

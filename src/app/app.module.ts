@@ -4,16 +4,17 @@ import { FormsModule } from '@angular/forms'
 import { RouterModule, Routes } from '@angular/router';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { HttpModule } from '@angular/http';
-import { HomeComponent } from './home.component/home.component';
+import { HomeComponent } from './components/home.component/home.component';
 import { AppComponent } from './app.component';
-import { LoginComponent} from './login.component/login.component';
-import { UserOverviewComponent} from './useroverview.component/useroverview.component';
+import { LoginComponent} from './components/authentication/login.component/login.component';
+import { UserOverviewComponent} from './components/useroverview.component/useroverview.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { IndividualUserComponent } from './individualuser.component/individualuser.component';
-import { RegisterComponent } from './register.component/register.component';
+import { IndividualUserComponent } from './components/individualuser.component/individualuser.component';
+import { RegisterComponent } from './components/authentication/register.component/register.component';
 import { AngularFireModule } from 'angularfire2';
 import { AuthGuard } from './services/auth.service';
-import { ResetPasswordComponent } from './resetpassword.component/resetpassword.component';
+import { ResetPasswordComponent } from './components/authentication/resetpassword.component/resetpassword.component';
+import { ResetConfirmationComponent} from './components/authentication/resetconfirmation.component/resetconfirmation.component';
 
 // routes variabelen
 const appRoutes: Routes = [
@@ -23,6 +24,7 @@ const appRoutes: Routes = [
   { path: 'useroverview', component: UserOverviewComponent, canActivate: [AuthGuard]},
   { path: 'individualuser', component: IndividualUserComponent, canActivate: [AuthGuard]},
   { path: 'resetpassword', component: ResetPasswordComponent},
+  { path: 'resetconfirmation', component: ResetConfirmationComponent},
   { path: '', redirectTo: '/login', pathMatch: 'full' }
   // PageNotFound { path: '**', component: PageNotFoundComponent }
 ];
@@ -38,7 +40,7 @@ export const firebaseConfig = {
 
 @NgModule({
   declarations: [
-    AppComponent, HomeComponent, LoginComponent, UserOverviewComponent, IndividualUserComponent, RegisterComponent, ResetPasswordComponent
+    AppComponent, HomeComponent, LoginComponent, UserOverviewComponent, IndividualUserComponent, RegisterComponent, ResetPasswordComponent, ResetConfirmationComponent
   ],
   imports: [
     BrowserModule,
