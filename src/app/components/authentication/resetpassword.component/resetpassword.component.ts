@@ -1,16 +1,21 @@
 import { Component, Inject } from '@angular/core';
 import { AngularFire, FirebaseApp } from 'angularfire2';
 import { Router } from '@angular/router';
+import { routerTransition } from '../../../animations/router.animations'
+
 
 @Component({
     selector: 'resetpassword',
     templateUrl: './resetpassword.component.html',
-    styleUrls: ["./resetpassword.component.css"]
+    styleUrls: ["./resetpassword.component.css"],
+    animations: [routerTransition()],
+    host: {'[@routerTransition]':''}
 })
 
 export class ResetPasswordComponent{
     private auth: any;
     errCond = false;
+    error:Error = new Error("");
 
     constructor(private af: AngularFire, @Inject(FirebaseApp) fa: any,
                 private router: Router){
@@ -26,7 +31,8 @@ export class ResetPasswordComponent{
                 this.errCond = false;
             }).catch((err)=>{
                 console.log(err);
-                this.errCond = true;       
+                this.errCond = true; 
+                this.error = err;      
                      })
     }
 

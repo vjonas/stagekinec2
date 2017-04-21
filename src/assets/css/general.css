@@ -1,13 +1,13 @@
 @font-face {
-font-family: 'Oswald';
-src: url('../../assets/fonts/Oswald-Regular.ttf');
+font-family: 'Droid';
+src: url('../../assets/fonts/DroidSans.ttf');
 }
 
 body{
     background-image: url('../images/background3test.jpg');    
     background-repeat:no-repeat;
     color: #F4F4F4 !important;
-    font-family: 'Oswald';
+    font-family: 'Droid';
     
 }
 

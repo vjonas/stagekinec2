@@ -1,19 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
 import { Router } from '@angular/router';
+import { routerTransition } from '../../../animations/router.animations';
 
 @Component(
   {
     selector: 'login',
     templateUrl: './login.component.html',
-    styleUrls: ['./login.scss']
+    styleUrls: ['./login.scss'],
+    animations: [routerTransition()],
+    host: {'[@routerTransition]':''}
   }
 )
 
 export class LoginComponent implements OnInit{
   invalidLogin: boolean;
   errCond:boolean = false;
-  error: Error;
+  error: Error = new Error("");
 
   constructor(public af: AngularFire, private router: Router) {
     this.af.auth.subscribe(auth => {
@@ -43,6 +46,7 @@ export class LoginComponent implements OnInit{
       }).catch((err) =>{
         console.log(err);
         this.errCond = true;
+        this.error = err;
       })
     }
   }

@@ -1,6 +1,6 @@
 <h1>Login</h1>
 <form name="form" (ngSubmit)="onSubmit(formData)" #formData='ngForm'>
-  <p *ngIf="errCond" style="color: red">Email and/or Password do not match our records</p>
+    <p *ngIf="error.message != ''" id="errMsg">{{error.message}}</p>
   <div class="form-group">
     <input type="email" placeholder="Email" class="form-control" name="email" (ngModel)="email" required/>
   </div>
