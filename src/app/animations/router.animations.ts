@@ -6,8 +6,8 @@ export function routerTransition(){
 
 function fade(){
     return trigger('routerTransition', [
-        state('void', style({position: 'fixed', width: '100%'})),
-        state('*', style ({position: 'fixed', width:'100%'})),
+        state('void', style({position: 'absolute', width: '100%'})),
+        state('*', style ({position: 'absolute', width:'100%'})),
         transition(':enter', [
             style({opacity:'0'}),
             animate('0.2s ease-in-out', style({opacity:'1'}))
@@ -25,8 +25,8 @@ export function slideRightTransition(){
 
 function slideToRight(){
     return trigger('routerTransition', [
-        state('void', style({position: 'fixed', width: '100%'})),
-        state('*', style ({position: 'fixed', width:'100%'})),
+        state('void', style({position: 'absolute', width: '100%'})),
+        state('*', style ({position: 'absolute', width:'100%'})),
         transition(':enter', [
             style({transform:'translateX(-100%)'}),
             animate('0.3s ease-in-out', style({transform: 'translateX(0%)'}))
@@ -44,8 +44,8 @@ export function slideLeftTransition(){
 
 function slideToLeft(){
     return trigger('routerTransition', [
-        state('void', style({position: 'fixed', width: '100%'})),
-        state('*', style ({position: 'fixed', width:'100%'})),
+        state('void', style({position: 'absolute', width: '100%'})),
+        state('*', style ({position: 'absolute', width:'100%'})),
         transition(':enter', [
             style({transform:'translateX(100%)'}),
             animate('0.3s ease-in-out', style({transform: 'translateX(0%)'}))

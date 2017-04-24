@@ -1,0 +1,38 @@
+.card{
+    background-color: rgba(255,255,255,.7);
+   border: lightgray solid 1px;
+   color:black;
+   border-radius: 15px 0px 15px 0px;
+   width:100%;
+   padding-top: 2%;
+}
+
+.table{
+    width:50%;
+    font-size: 2em;
+}
+
+.table tbody tr td{
+    border:none;
+}
+
+.table tbody tr{
+    width:50%;
+}
+
+.userInfo{
+    font-weight:bold;
+}
+
+.specifier{
+    padding-right:10%;
+}
+
+.cardImage{
+    width:100%;   
+    padding-bottom: 5%;
+}
+
+.cardDiv{
+     float:right;
+}

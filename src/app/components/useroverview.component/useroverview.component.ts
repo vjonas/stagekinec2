@@ -21,7 +21,6 @@ export class UserOverviewComponent  {
     }
 
     goToUser(){
-        console.log("ierse");
         this.router.navigate(['./individualuser']);
     }
 

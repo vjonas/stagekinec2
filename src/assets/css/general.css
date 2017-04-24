@@ -5,10 +5,12 @@ src: url('../../assets/fonts/DroidSans.ttf');
 
 body{
     background-image: url('../images/background3test.jpg');    
-    background-repeat:no-repeat;
+  /*  background-repeat:no-repeat;*/
     color: #F4F4F4 !important;
     font-family: 'Droid';
-    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size:auto;
 }
 
 .navigation{
@@ -22,7 +24,7 @@ body{
 }
 
 footer{
-    position: fixed;
-    bottom:2px;
+   position: fixed;
+     bottom:2px;
     left:5px;
 }
