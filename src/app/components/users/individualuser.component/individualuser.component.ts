@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Router} from '@angular/router';
-import { slideLeftTransition } from '../../animations/router.animations';
+import { slideLeftTransition } from '../../../animations/router.animations';
 
 
 @Component({

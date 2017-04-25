@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { slideRightTransition } from '../../animations/router.animations';
+import { slideRightTransition } from '../../../animations/router.animations';
 
 @Component({
     selector: 'userOverview',

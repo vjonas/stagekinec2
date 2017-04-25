@@ -7,14 +7,15 @@ import { HttpModule } from '@angular/http';
 import { HomeComponent } from './components/home.component/home.component';
 import { AppComponent } from './app.component';
 import { LoginComponent} from './components/authentication/login.component/login.component';
-import { UserOverviewComponent} from './components/useroverview.component/useroverview.component';
+import { UserOverviewComponent} from './components/users/useroverview.component/useroverview.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { IndividualUserComponent } from './components/individualuser.component/individualuser.component';
+import { IndividualUserComponent } from './components/users/individualuser.component/individualuser.component';
 import { RegisterComponent } from './components/authentication/register.component/register.component';
 import { AngularFireModule } from 'angularfire2';
 import { AuthGuard } from './services/auth.service';
 import { ResetPasswordComponent } from './components/authentication/resetpassword.component/resetpassword.component';
 import { ResetConfirmationComponent} from './components/authentication/resetconfirmation.component/resetconfirmation.component';
+import { ExerciseComponent } from './components/exercises/exercise.component/exercise.component';
 
 // routes variabelen
 const appRoutes: Routes = [
@@ -24,6 +25,7 @@ const appRoutes: Routes = [
   { path: 'useroverview', component: UserOverviewComponent, canActivate: [AuthGuard]},
   { path: 'individualuser', component: IndividualUserComponent, canActivate: [AuthGuard]},
   { path: 'resetpassword', component: ResetPasswordComponent},
+  { path: 'exercise', component: ExerciseComponent, canActivate:[AuthGuard]},
   { path: 'resetconfirmation', component: ResetConfirmationComponent},
   { path: '', redirectTo: '/login', pathMatch: 'full' }
   // PageNotFound { path: '**', component: PageNotFoundComponent }
@@ -40,7 +42,7 @@ export const firebaseConfig = {
 
 @NgModule({
   declarations: [
-    AppComponent, HomeComponent, LoginComponent, UserOverviewComponent, IndividualUserComponent, RegisterComponent, ResetPasswordComponent, ResetConfirmationComponent
+    AppComponent, HomeComponent, LoginComponent, UserOverviewComponent, IndividualUserComponent, RegisterComponent, ResetPasswordComponent, ResetConfirmationComponent, ExerciseComponent
   ],
   imports: [
     BrowserModule,

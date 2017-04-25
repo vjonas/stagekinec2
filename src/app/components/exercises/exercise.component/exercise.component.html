@@ -1,0 +1,19 @@
+    <div class="wrapper">
+    <div class="col-xs-8">
+        <canvas width="960" height="540"></canvas>
+    </div>
+    <div class="controls col-xs-3">
+    <select class="exerciseCombo">
+            <option value="Oefening1">Exercise 1</option>
+            <option value="Oefening2">Exercise 2</option>
+        </select>
+
+        <h4 class="col-xs-12 col-sm-12">Steps</h4>
+                <ul class="col-xs-12 col-sm-12 stepList">
+                    <li *ngFor="let counter of teller" (click)="changeCheckbox($event)" class="stepLi" [ngClass]="{'checkboxChecked': counter.checked }">
+                        <input type="checkbox" #counter/>
+                        <label for="Oefening1">Step 1</label>
+                    </li>
+                </ul>
+    </div>
+    </div>
