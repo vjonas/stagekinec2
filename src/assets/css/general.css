@@ -10,7 +10,7 @@ body{
     font-family: 'Droid';
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size:auto;
+    background-size:cover;
 }
 
 .navigation{
@@ -21,10 +21,4 @@ body{
 
 .navbutton{
     margin-top: 10%;
-}
-
-footer{
-   position: fixed;
-     bottom:2px;
-    left:5px;
 }

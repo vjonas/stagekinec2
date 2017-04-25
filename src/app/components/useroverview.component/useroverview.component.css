@@ -1,17 +1,16 @@
 .card{
    background-color: rgba(255,255,255,.7);
-   border: lightgray solid 1px;
+   border: rgba(0,0,0,0.3) solid 1px;
    color:black;
    border-radius: 15px 0px 15px 0px;
-   height: 200px;
-   width:95%;
+   height: 210px;
+   width:100%;
    margin-bottom:10px;
    padding: 5%;
    -webkit-transition: all 0.1s ease; /* Safari and Chrome */
     -moz-transition: all 0.1s ease; /* Firefox */
     -o-transition: all 0.1s ease; /* Opera */
     transition: all 0.1s ease;
-    position:inherit;
 }
 
 .table{
@@ -32,6 +31,17 @@
     
 }
 
+@media screen and (max-width: 768px) {
+    .cardImage{
+        width:100%;
+    }
+
+    .card{
+        height:300px;
+        font-size: 1.5em;
+    }
+}
+
 .userInfo{
     font-weight:bold;
 }
@@ -40,11 +50,26 @@
      float:right;
 }
 
+#addCard{
+    font-weight: bold;
+    text-align:center;
+    background-color: rgba(0,210,255,0.7);
+}
+
 .card:hover {
     color: white;
-    background-color:rgba(70,255,0,.5);
+    background-color:rgba(70,255,0,.5) !important;
     -webkit-transform:scale(1.1); /* Safari and Chrome */
     -moz-transform:scale(1.1); /* Firefox */
     -ms-transform:scale(1.1); /* IE 9 */
     -o-transform:scale(1.1); /* Opera */
     transform:scale(1.1);}
+
+.addImage{
+    width:50%;
+    height:90%;
+}
+
+#addUserModal{
+    color:black;
+}

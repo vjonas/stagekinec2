@@ -8,10 +8,10 @@
     border-radius: 5px;
     width:30%;
     margin-right:5%;
-     -webkit-transition: all .5s ease-out; /* Safari and Chrome */
-    -moz-transition: all .5s ease-out; /* Firefox */
-    -o-transition: all .5s ease-out; /* Opera */
-    transition: all .5s ease-out;
+     -webkit-transition: all .1s ease-out; /* Safari and Chrome */
+    -moz-transition: all .1s ease-out; /* Firefox */
+    -o-transition: all .1s ease-out; /* Opera */
+    transition: all .1s ease-out;
 }
 
 .homeDiv:hover {
