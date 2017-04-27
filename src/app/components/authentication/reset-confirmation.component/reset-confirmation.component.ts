@@ -6,8 +6,8 @@ import { routerTransition } from '../../../animations/router.animations';
 
 @Component({
     selector: 'resetconfirmation',
-    templateUrl: './resetconfirmation.component.html',
-    styleUrls: ["./resetconfirmation.component.css"],
+    templateUrl: './reset-confirmation.component.html',
+    styleUrls: ["./reset-confirmation.component.css"],
     animations: [routerTransition()],
     host: {'[@routerTransition]':''}
 })

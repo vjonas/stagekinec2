@@ -4,8 +4,8 @@ import { slideRightTransition } from '../../../animations/router.animations';
 
 @Component({
     selector: 'userOverview',
-    templateUrl: 'useroverview.component.html',
-    styleUrls: ['./useroverview.component.css'],
+    templateUrl: 'user-overview.component.html',
+    styleUrls: ['./user-overview.component.css'],
     animations: [slideRightTransition()],
     host: { '[@routerTransition]': '' }
 })

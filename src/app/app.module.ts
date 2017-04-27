@@ -7,14 +7,14 @@ import { HttpModule } from '@angular/http';
 import { HomeComponent } from './components/home.component/home.component';
 import { AppComponent } from './app.component';
 import { LoginComponent} from './components/authentication/login.component/login.component';
-import { UserOverviewComponent} from './components/users/useroverview.component/useroverview.component';
+import { UserOverviewComponent} from './components/users/user-overview.component/user-overview.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { IndividualUserComponent } from './components/users/individualuser.component/individualuser.component';
+import { IndividualUserComponent } from './components/users/individual-user.component/individual-user.component';
 import { RegisterComponent } from './components/authentication/register.component/register.component';
 import { AngularFireModule } from 'angularfire2';
 import { AuthGuard } from './services/auth.service';
-import { ResetPasswordComponent } from './components/authentication/resetpassword.component/resetpassword.component';
-import { ResetConfirmationComponent} from './components/authentication/resetconfirmation.component/resetconfirmation.component';
+import { ResetPasswordComponent } from './components/authentication/reset-password.component/reset-password.component';
+import { ResetConfirmationComponent} from './components/authentication/reset-confirmation.component/reset-confirmation.component';
 import { ExerciseComponent } from './components/exercises/exercise.component/exercise.component';
 
 // routes variabelen

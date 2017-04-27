@@ -5,8 +5,8 @@ import { slideLeftTransition } from '../../../animations/router.animations';
 
 @Component({
     selector: 'individualUser',
-    templateUrl: 'individualuser.component.html',
-    styleUrls: ['./individualuser.component.css'],
+    templateUrl: 'individual-user.component.html',
+    styleUrls: ['./individual-user.component.css'],
     animations: [slideLeftTransition()],
     host: { '[@routerTransition]': '' }
 })
