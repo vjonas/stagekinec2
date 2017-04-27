@@ -1,30 +1,24 @@
-import { Component, OnInit, Input, OnChanges} from '@angular/core';
+import { Component } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Router } from '@angular/router';
 import { routerTransition } from '../../animations/router.animations';
- 
+
 @Component({
     selector: 'home',
     templateUrl: 'home.component.html',
     styleUrls: ['home.component.css'],
     animations: [routerTransition()],
-    host: {'[@routerTransition]':''}
+    host: { '[@routerTransition]': '' }
 })
-export class HomeComponent implements OnInit, OnChanges {
+export class HomeComponent {
 
-    constructor(private router: Router){
+    constructor(private router: Router) {
     }
 
-    ngOnInit() { 
-    }
-
-    ngOnChanges(changes){
-    }
-
-    goToOverview(){
+    goToOverview() {
         this.router.navigate(["useroverview"]);
     }
-  
+
 
 
 }

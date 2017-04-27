@@ -9,7 +9,6 @@ declare var $: any;
 })
 
 export class ExerciseComponent {
-
     teller: number[][] = [[0, 2, 3], [1, 3, 4, 5], [2, 6]];
     newExerciseSteps: number[] = [0];
     isCheckboxChecked: number = 0;
@@ -33,21 +32,18 @@ export class ExerciseComponent {
     }
 
     changeMode() {
-        //change the mode of the exercise component
         if (this.viewState) {
             this.viewState = false;
             this.teller[this.teller.length] = [9, 8, 7];
         }
         else {
             this.viewState = true;
-            //herinitialiseren new exercise
             this.newExerciseSteps = [0];
-            this.teller.splice(this.teller.length-1, 1);
+            this.teller.splice(this.teller.length - 1, 1);
         }
     }
 
     addStep() {
-        //add new step to the exercise
         this.newExerciseSteps[this.newExerciseSteps.length] = 1;
         console.log(this.newExerciseSteps);
     }
@@ -55,7 +51,6 @@ export class ExerciseComponent {
     newTouchPoint() {
         clearInterval(this.clearer);
         this.lineBool = false;
-        /*this.clearer= $.getScript("./src/app/components/exercises/exercise.component/js/touchPointScript.js");*/
         var canvas;
         var ctx;
         var x = 75;
@@ -86,8 +81,6 @@ export class ExerciseComponent {
 
         function draw() {
             clear();
-            /*ctx.fillStyle = "#FAF7F8";
-            rect(0,0,WIDTH,HEIGHT);*/
             ctx.fillStyle = "#FF0F00";
             rect(x - 15, y - 15, 30, 30);
 
@@ -126,9 +119,9 @@ export class ExerciseComponent {
     }
 
     newLine() {
+        //stops current running script
         clearInterval(this.clearer);
         this.lineBool = true;
-        /*this.clearer = $.getScript("./src/app/components/exercises/exercise.component/js/lineScript.js");*/
         var canvas;
         var ctx;
         var x = 75;
@@ -171,8 +164,6 @@ export class ExerciseComponent {
 
         function draw() {
             clear();
-            /*ctx.fillStyle = "#FAF7F8";
-            rect(0,0,WIDTH,HEIGHT);*/
             ctx.fillStyle = "#FF0F00";
             line(x, y, x2, y2);
             rect(x - 15, y - 15, 30, 30);

@@ -1,53 +1,53 @@
 .homejumbo{
-    background-color: rgba(20,20,20,0.5);
-    margin-top:5%;
+  background-color: rgba(20,20,20,0.5);
+  margin-top:5%;
 }
 
 .homeDiv{
-    background-color: rgba(20,20,20,0.5);
-    border-radius: 5px;
-    width:30%;
-    margin-right:5%;
-     -webkit-transition: all .1s ease-out; /* Safari and Chrome */
-    -moz-transition: all .1s ease-out; /* Firefox */
-    -o-transition: all .1s ease-out; /* Opera */
-    transition: all .1s ease-out;
+  background-color: rgba(20,20,20,0.5);
+  border-radius: 5px;
+  width:30%;
+  margin-right:5%;
+  -webkit-transition: all .1s ease-out; 
+  -moz-transition: all .1s ease-out; 
+  -o-transition: all .1s ease-out; 
+  transition: all .1s ease-out;
 }
 
 .homeDiv:hover {
-    background-color:rgba(70,70,70,0.5);
-    -webkit-transform:scale(1.1); /* Safari and Chrome */
-    -moz-transform:scale(1.1); /* Firefox */
-    -ms-transform:scale(1.1); /* IE 9 */
-    -o-transform:scale(1.1); /* Opera */
-    transform:scale(1.1);
-    box-shadow: 0 0 50px #D2D2D2;
-    }
+  background-color:rgba(70,70,70,0.5);
+  -webkit-transform:scale(1.1); 
+  -moz-transform:scale(1.1);
+  -ms-transform:scale(1.1);
+  -o-transform:scale(1.1);
+  transform:scale(1.1);
+  box-shadow: 0 0 50px #D2D2D2;
+}
 
 .homeDiv img{
-    width:70%;
-    height:70%;
-    margin:auto;
-    margin-left:15%;
+  width:70%;
+  height:70%;
+  margin:auto;
+  margin-left:15%;
 }
 
 .homeDiv h1{
-    text-align: center;
+  text-align: center;
 }
 
 .thirdDiv{
-    margin-right:0;
+  margin-right:0;
 }
 
 @media screen and (max-width: 768px) {
-    .homeDiv h1{
-        font-size:24px;
-    }
+  .homeDiv h1{
+      font-size:24px;
+  }
 }
 
 
 @media screen and (max-width: 500px) {
-    .homeDiv h1{
-        font-size:16px;
-    }
+  .homeDiv h1{
+      font-size:16px;
+  }
 }

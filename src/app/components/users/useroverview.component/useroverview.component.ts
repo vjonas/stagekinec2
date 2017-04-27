@@ -7,20 +7,20 @@ import { slideRightTransition } from '../../../animations/router.animations';
     templateUrl: 'useroverview.component.html',
     styleUrls: ['./useroverview.component.css'],
     animations: [slideRightTransition()],
-    host: {'[@routerTransition]':''}
+    host: { '[@routerTransition]': '' }
 })
-export class UserOverviewComponent  {
+export class UserOverviewComponent {
     state: string = 'inactive';
 
-    constructor(private router: Router){}
+    constructor(private router: Router) { }
 
-    ngOnInit() { 
+    ngOnInit() {
     }
 
-    ngOnChanges(changes){
+    ngOnChanges(changes) {
     }
 
-    goToUser(){
+    goToUser() {
         this.router.navigate(['./individualuser']);
     }
 

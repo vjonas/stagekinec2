@@ -28,7 +28,6 @@ const appRoutes: Routes = [
   { path: 'exercise', component: ExerciseComponent, canActivate:[AuthGuard]},
   { path: 'resetconfirmation', component: ResetConfirmationComponent},
   { path: '', redirectTo: '/login', pathMatch: 'full' }
-  // PageNotFound { path: '**', component: PageNotFoundComponent }
 ];
 
 export const firebaseConfig = {
@@ -56,6 +55,6 @@ export const firebaseConfig = {
   //services
   providers: [ HashLocationStrategy, AuthGuard ],
   bootstrap: [ AppComponent ],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ] // to clear the router-outlet test, else it fails
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }

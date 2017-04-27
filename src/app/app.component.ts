@@ -1,29 +1,29 @@
 import { Component } from '@angular/core';
-import { AngularFire} from 'angularfire2';
+import { AngularFire } from 'angularfire2';
 import { Router } from '@angular/router';
- 
+
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-    private user:String;
+    private user: String;
     name: any;
 
-    constructor(public af: AngularFire, private router: Router){
-      this.af.auth.subscribe(
+    constructor(public af: AngularFire, private router: Router) {
+        this.af.auth.subscribe(
             auth => {
-                if(auth) {this.name = auth;}
+                if (auth) { this.name = auth; }
             }
         )
     }
 
-    logout(){
-      this.af.auth.logout();
-      this.name = null;
-      console.log("logged out");
-      this.router.navigateByUrl('/login');
+    logout() {
+        this.af.auth.logout();
+        this.name = null;
+        console.log("logged out");
+        this.router.navigateByUrl('/login');
     }
 
 }

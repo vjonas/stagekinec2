@@ -9,66 +9,66 @@ import { routerTransition } from '../../../animations/router.animations';
     templateUrl: './login.component.html',
     styleUrls: ['./login.scss'],
     animations: [routerTransition()],
-    host: {'[@routerTransition]':''}
+    host: { '[@routerTransition]': '' }
   }
 )
 
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit {
   invalidLogin: boolean;
-  errCond:boolean = false;
+  errCond: boolean = false;
   error: Error = new Error("");
 
   constructor(public af: AngularFire, private router: Router) {
     this.af.auth.subscribe(auth => {
-      if(auth) {
+      if (auth) {
         this.router.navigateByUrl('/home');
       }
     });
   }
 
-  ngOnInit(){
+  ngOnInit() {
 
   }
 
-  onSubmit(formData){
-    if(formData.valid){
+  onSubmit(formData) {
+    if (formData.valid) {
       console.log(formData.value);
       this.af.auth.login({
         email: formData.value.email,
         password: formData.value.password
-      },{
-        provider: AuthProviders.Password,
-        method: AuthMethods.Password,
-      }).then((success) => {
-        console.log(success);
-        this.router.navigate(['/home']);
-        this.errCond = false;
-      }).catch((err) =>{
-        console.log(err);
-        this.errCond = true;
-        this.error = err;
-      })
+      }, {
+          provider: AuthProviders.Password,
+          method: AuthMethods.Password,
+        }).then((success) => {
+          console.log(success);
+          this.router.navigate(['/home']);
+          this.errCond = false;
+        }).catch((err) => {
+          console.log(err);
+          this.errCond = true;
+          this.error = err;
+        })
     }
   }
 
-  providerLogin(from: string){
+  providerLogin(from: string) {
     this.af.auth.login({
       provider: this._getProvider(from),
       method: AuthMethods.Popup,
-    }).then((success) =>{
+    }).then((success) => {
       this.router.navigate(['/home']);
-    }).catch((err) =>{
+    }).catch((err) => {
       console.log(err);
       this.error = err;
     })
   }
 
-  private _getProvider(from: string){
-    switch(from){
+  private _getProvider(from: string) {
+    switch (from) {
       case 'google': return AuthProviders.Google;
       case 'facebook': return AuthProviders.Facebook;
       case 'twitter': return AuthProviders.Twitter;
     }
   }
-  
+
 }

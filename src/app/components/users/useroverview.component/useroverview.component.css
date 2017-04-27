@@ -1,75 +1,74 @@
 .card{
-   background-color: rgba(255,255,255,.7);
-   border: rgba(0,0,0,0.3) solid 1px;
-   color:black;
-   border-radius: 15px 0px 15px 0px;
-   height: 210px;
-   width:100%;
-   margin-bottom:10px;
-   padding: 5%;
-   -webkit-transition: all 0.1s ease; /* Safari and Chrome */
-    -moz-transition: all 0.1s ease; /* Firefox */
-    -o-transition: all 0.1s ease; /* Opera */
-    transition: all 0.1s ease;
+  background-color: rgba(255,255,255,.7);
+  border: rgba(0,0,0,0.3) solid 1px;
+  color:black;
+  border-radius: 15px 0px 15px 0px;
+  height: 210px;
+  width:100%;
+  margin-bottom:10px;
+  padding: 5%;
+  -webkit-transition: all 0.1s ease;
+  -moz-transition: all 0.1s ease;
+  -o-transition: all 0.1s ease;
+  transition: all 0.1s ease;
 }
 
 .table{
-    width:50%;
+  width:50%;
 }
 
 .table tbody tr td{
-    border:none;
-    padding:3px;
+  border:none;
+  padding:3px;
 }
 
 .table tbody tr{
-    width:50%;
+  width:50%;
 }
 
 .cardImage{
-    width:100%;
-    
+  width:100%;  
 }
 
 @media screen and (max-width: 768px) {
-    .cardImage{
-        width:100%;
-    }
+  .cardImage{
+      width:100%;
+  }
 
-    .card{
-        height:300px;
-        font-size: 1.5em;
-    }
+  .card{
+      height:300px;
+      font-size: 1.5em;
+  }
 }
 
 .userInfo{
-    font-weight:bold;
+  font-weight:bold;
 }
 
 .cardDiv{
-     float:right;
+  float:right;
 }
 
 #addCard{
-    font-weight: bold;
-    text-align:center;
-    background-color: rgba(0,210,255,0.7);
+  font-weight: bold;
+  text-align:center;
+  background-color: rgba(0,210,255,0.7);
 }
 
 .card:hover {
-    color: white;
-    background-color:rgba(70,255,0,.5) !important;
-    -webkit-transform:scale(1.1); /* Safari and Chrome */
-    -moz-transform:scale(1.1); /* Firefox */
-    -ms-transform:scale(1.1); /* IE 9 */
-    -o-transform:scale(1.1); /* Opera */
-    transform:scale(1.1);}
+  color: white;
+  background-color:rgba(70,255,0,.5) !important;
+  -webkit-transform:scale(1.1);
+  -moz-transform:scale(1.1);
+  -ms-transform:scale(1.1);
+  -o-transform:scale(1.1);
+  transform:scale(1.1);}
 
 .addImage{
-    width:50%;
-    height:90%;
+  width:50%;
+  height:90%;
 }
 
 #addUserModal{
-    color:black;
+  color:black;
 }

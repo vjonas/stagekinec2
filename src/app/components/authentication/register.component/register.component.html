@@ -5,19 +5,21 @@
   <div class="form-group">
     <input type="email" placeholder="Email" class="form-control" name="email" (ngModel)="email" required />
   </div>
-  
+
 
   <div class="form-group">
-    <input type="password" placeholder="Password" class="form-control" name="password" (ngModel)="password" required validateEqual="repeatPassword"/>
+    <input type="password" placeholder="Password" class="form-control" name="password" (ngModel)="password" required validateEqual="repeatPassword"
+    />
   </div>
 
   <div class="form-group">
-    <input type="password" placeholder="Repeat your password" class="form-control" name="repeatPassword" required validateEqual="password"/>
+    <input type="password" placeholder="Repeat your password" class="form-control" name="repeatPassword" required validateEqual="password"
+    />
   </div>
 
   <div class="form-group" id="buttons">
-        <button type="submit" id=registerbutton [disabled]="!formData.valid" class="btn btn-success">Register</button>
+    <button type="submit" id=registerbutton [disabled]="!formData.valid" class="btn btn-success">Register</button>
     <a [routerLink]="['/login']" id="loginButton" class="btn btn-link">Go Back</a>
   </div>
 
-<form>
+  <form>
