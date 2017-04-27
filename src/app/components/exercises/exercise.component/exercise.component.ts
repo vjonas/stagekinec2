@@ -14,7 +14,6 @@ export class ExerciseComponent {
     isCheckboxChecked: number = 0;
     viewState: boolean = true;
     lineBool: boolean = false;
-    clearer: any;
 
     constructor(private router: Router) {
     }
@@ -49,7 +48,6 @@ export class ExerciseComponent {
     }
 
     newTouchPoint() {
-        clearInterval(this.clearer);
         this.lineBool = false;
         var canvas;
         var ctx;
@@ -76,7 +74,7 @@ export class ExerciseComponent {
             WIDTH = canvas.getAttribute("width");
             console.log(WIDTH);
             HEIGHT = canvas.getAttribute("height");
-            return setInterval(draw, 10);
+            draw();
         }
 
         function draw() {
@@ -92,6 +90,7 @@ export class ExerciseComponent {
                 $("#xcor").val(x - 15);
                 y = e.pageY - 70 - canvas.offsetTop;
                 $("#ycor").val(y - 15);
+                draw();
 
             }
 
@@ -113,14 +112,12 @@ export class ExerciseComponent {
             canvas.onmousemove = null;
         }
 
-        this.clearer = init();
+        init();
         canvas.onmousedown = myDown;
         canvas.onmouseup = myUp;
     }
 
     newLine() {
-        //stops current running script
-        clearInterval(this.clearer);
         this.lineBool = true;
         var canvas;
         var ctx;
@@ -159,7 +156,7 @@ export class ExerciseComponent {
         function init() {
             canvas = document.getElementById("canvas");
             ctx = canvas.getContext("2d");
-            return setInterval(draw, 10);
+            draw();
         }
 
         function draw() {
@@ -173,7 +170,7 @@ export class ExerciseComponent {
 
         }
 
-        function myMove(e) {
+        function mouseMovedWhenClicked(e) {
             if (dragok) {
                 x = e.pageX - 30 - canvas.offsetLeft;
                 xline1 = x;
@@ -181,7 +178,7 @@ export class ExerciseComponent {
                 y = e.pageY - 70 - canvas.offsetTop;
                 yline1 = y;
                 $("#ycor").val(y - 15);
-
+                draw();
             }
             if (dragok2) {
 
@@ -191,7 +188,7 @@ export class ExerciseComponent {
                 y2 = e.pageY - 70 - canvas.offsetTop;
                 yline2 = y2;
                 $("#y2cor").val(y2 - 15);
-
+                draw();
             }
         }
 
@@ -202,7 +199,7 @@ export class ExerciseComponent {
                 x = e.pageX - 30 - canvas.offsetLeft;
                 y = e.pageY - 70 - canvas.offsetTop;
                 dragok = true;
-                canvas.onmousemove = myMove;
+                canvas.onmousemove = mouseMovedWhenClicked;
             }
             if (e.pageX - 30 < x2 + 15 + canvas.offsetLeft && e.pageX - 30 > x2 - 15 +
                 canvas.offsetLeft && e.pageY - 70 < y2 + 15 + canvas.offsetTop &&
@@ -210,7 +207,7 @@ export class ExerciseComponent {
                 x2 = e.pageX - 30 - canvas.offsetLeft;
                 y2 = e.pageY - 70 - canvas.offsetTop;
                 dragok2 = true;
-                canvas.onmousemove = myMove;
+                canvas.onmousemove = mouseMovedWhenClicked;
             }
         }
 
@@ -221,7 +218,7 @@ export class ExerciseComponent {
             clearInterval(this.clearer);
         }
 
-        this.clearer = init();
+        init();
         canvas.onmousedown = myDown;
         canvas.onmouseup = myUp;
     }
