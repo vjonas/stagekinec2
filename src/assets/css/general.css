@@ -4,12 +4,8 @@
 }
 
 body{
-  background-image: url('../images/background3test.jpg');    
-  color: #F4F4F4 !important;
+  color: black !important;
   font-family: 'Droid';
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size:cover;
 }
 
 .navigation{

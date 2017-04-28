@@ -1,16 +1,21 @@
 .card{
-  background-color: rgba(255,255,255,.7);
+  background-color: rgba(255,255,255,.9);
   border: rgba(0,0,0,0.3) solid 1px;
   color:black;
-  border-radius: 15px 0px 15px 0px;
   height: 210px;
   width:100%;
-  margin-bottom:10px;
   padding: 5%;
   -webkit-transition: all 0.1s ease;
   -moz-transition: all 0.1s ease;
   -o-transition: all 0.1s ease;
   transition: all 0.1s ease;
+}
+
+.cardWrapper{
+  padding-left:16px;
+  padding-right:16px;
+  padding-bottom:16px;
+  padding-top:16px;
 }
 
 .table{
@@ -58,11 +63,11 @@
 .card:hover {
   color: white;
   background-color:rgba(70,255,0,.5) !important;
-  -webkit-transform:scale(1.1);
-  -moz-transform:scale(1.1);
-  -ms-transform:scale(1.1);
-  -o-transform:scale(1.1);
-  transform:scale(1.1);}
+  -webkit-transform:scale(1.02);
+  -moz-transform:scale(1.02);
+  -ms-transform:scale(1.02);
+  -o-transform:scale(1.02);
+  transform:scale(1.02);}
 
 .addImage{
   width:50%;
