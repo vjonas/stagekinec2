@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { slideLeftTransition } from '../../../animations/router.animations';
+import { routerTransition } from '../../../animations/router.animations';
 
 
 @Component({
     selector: 'individualUser',
     templateUrl: 'individual-user.component.html',
     styleUrls: ['./individual-user.component.css'],
-    animations: [slideLeftTransition()],
+    animations: [routerTransition()],
     host: { '[@routerTransition]': '' }
 })
 

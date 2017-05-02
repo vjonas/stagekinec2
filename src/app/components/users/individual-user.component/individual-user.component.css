@@ -1,8 +1,6 @@
 .card{
-  background-color: rgba(255,255,255,.7);
-  border: lightgray solid 1px;
-  color:black;
-  border-radius: 15px 0px 15px 0px;
+  background-color: rgba(255,255,255,1);
+  color:#222222;
   width:100%;
   padding-top: 2%;
   margin-bottom:25px;
@@ -65,9 +63,13 @@ select{
   margin-bottom:10px;
 }
 
-.backButton{
+/*.backButton{
   margin-top:20px;
   margin-bottom:15px;
+}*/
+
+h2{
+  margin-top:0;
 }
 
 #programDiv{

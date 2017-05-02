@@ -1,44 +1,41 @@
 <div class="wrapper">
-    <div class="col-xs-8">
+    <div>
         <canvas id="canvas" width=960 height=540></canvas>
     </div>
     <div class="controls col-xs-3">
-
-        <select class="exerciseCombo col-xs-8">
+        <select class="exerciseCombo col-xs-10">
             <option *ngFor="let oefening of teller" value="{{oefening[0]}}">{{oefening}}</option>
         </select>
-        <div *ngIf="viewState" class="col-xs-4 switchModeDiv">
-            <button (click)="changeMode()" class="btn btn-primary glyphicon glyphicon-plus switchModeButton"></button>
-        </div>
-        <div *ngIf="!viewState" class="col-xs-4 switchModeDiv">
-            <button (click)="changeMode()" class="btn btn-danger switchModeButton">Cancel</button>
-        </div>
+            <button *ngIf="viewState" (click)="changeMode()" class="btn btn-primary col-xs-2 switchModeButton"><img src="../../../../assets/images/add.svg"></button>
+            <button *ngIf="!viewState" (click)="changeMode()" class="btn btn-danger switchModeButton col-xs-2">Back</button>
         <div *ngIf="viewState">
             <h4 class="col-xs-12 col-sm-12">View steps</h4>
             <ul class="col-xs-12 col-sm-12 stepList">
                 <li *ngFor="let counter of teller" (click)="changeCheckbox($event)" class="stepLi" [ngClass]="{'checkboxChecked': counter.checked }">
                     <input type="checkbox" #counter/>
-                    <input type="text" placeholder="stepname" />
+                    Step 1
                 </li>
             </ul>
         </div>
         <div *ngIf="!viewState">
             <h4 class="col-xs-4 col-sm-6">New steps</h4>
-            <button (click)="addStep()" class="btn btn-primary glyphicon glyphicon-plus"></button>
             <ul class="col-xs-12 col-sm-12 stepList">
                 <li *ngFor="let counter of newExerciseSteps" (click)="changeCheckbox($event)" class="stepLi" [ngClass]="{'checkboxChecked': counter.checked }">
-                    <input type="checkbox" #counter/>
+                    <input type="radio" name="step" value="counter" #counter/>
                     <label for="Oefening1">Step 1</label>
+                    <button (click)="removeStep()" class="btn btn-danger removeStepButton"><img src="../../../../assets/images/delete.svg"></button>
                 </li>
+                <li (click)="addStep()" class="btn btn-primary newStepButton"><img src="../../../../assets/images/add.svg"></li>
             </ul>
         </div>
         <div *ngIf="!viewState">
             <h4 class="col-xs-12">Controls</h4>
-            <div class="col-xs-12" (ngClass)="newStepChosen">
-                <button (click)="newTouchPoint()" id="newTPButton" class="btn btn-primary col-xs-12"><p>Touchpoint</p> <img src="../../assets/images/touchpoint.png"></button>
-                <button (click)="newLine()" id="newLButton" class="btn btn-warning col-xs-12"><p>Line</p> <img src="../../assets/images/line.png"></button>
-                <button class="btn btn-danger col-xs-12"><p>ActionPoint</p><img src="../../assets/images/actionpoint.png"></button>
+            <div class="col-xs-12" style="padding:0;" (ngClass)="newStepChosen">
+                <button (click)="newTouchPoint()" id="newTPButton" class="btn btn-primary col-xs-4 newPointButton"><p>Touchpoint</p> <img class="newPointButtonImg" src="../../assets/images/touchpoint.png"></button>
+                <button (click)="newLine()" id="newLButton" class="btn btn-warning col-xs-4 newPointButton"><p>Line</p> <img class="newPointButtonImg" src="../../assets/images/line.png"></button>
+                <button class="btn btn-danger col-xs-4 newPointButton"><p>ActionPoint</p><img class="newPointButtonImg" src="../../assets/images/actionpoint.png"></button>
             </div>
+            <div class="col-xs-6 col-xs-offset-3 btn btn-success addExerciseButton">Add exercise</div>
         </div>
 
     </div>

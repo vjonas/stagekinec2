@@ -11,7 +11,6 @@ declare var $: any;
 export class ExerciseComponent {
     teller: number[][] = [[0, 2, 3], [1, 3, 4, 5], [2, 6]];
     newExerciseSteps: number[] = [0];
-    isCheckboxChecked: number = 0;
     viewState: boolean = true;
     lineBool: boolean = false;
 
@@ -22,11 +21,9 @@ export class ExerciseComponent {
     changeCheckbox(checkbox: any) {
         if (checkbox.currentTarget.childNodes[1].checked == false) {
             checkbox.currentTarget.childNodes[1].checked = true;
-            this.isCheckboxChecked++;
         }
         else {
             checkbox.currentTarget.childNodes[1].checked = false
-            this.isCheckboxChecked--;
         }
     }
 
@@ -45,6 +42,10 @@ export class ExerciseComponent {
     addStep() {
         this.newExerciseSteps[this.newExerciseSteps.length] = 1;
         console.log(this.newExerciseSteps);
+    }
+
+    removeStep(){
+        this.newExerciseSteps.splice(this.newExerciseSteps.length-1,1);
     }
 
     newTouchPoint() {
@@ -86,10 +87,10 @@ export class ExerciseComponent {
 
         function myMove(e) {
             if (dragok) {
-                x = e.pageX - 30 - canvas.offsetLeft;
-                $("#xcor").val(x - 15);
-                y = e.pageY - 70 - canvas.offsetTop;
-                $("#ycor").val(y - 15);
+                x = e.pageX - canvas.offsetLeft;
+                $("#xcor").val(x);
+                y = e.pageY - canvas.offsetTop;
+                $("#ycor").val(y);
                 draw();
 
             }
@@ -97,11 +98,11 @@ export class ExerciseComponent {
         }
 
         function myDown(e) {
-            if (e.pageX - 30 < x + 15 + canvas.offsetLeft && e.pageX - 30 > x - 15 +
-                canvas.offsetLeft && e.pageY - 70 < y + 15 + canvas.offsetTop &&
-                e.pageY - 70 > y - 15 + canvas.offsetTop) {
-                x = e.pageX - 30 - canvas.offsetLeft;
-                y = e.pageY - 70 - canvas.offsetTop;
+            if (e.pageX < x + 15 + canvas.offsetLeft && e.pageX > x - 15 +
+                canvas.offsetLeft && e.pageY < y + 15 + canvas.offsetTop &&
+                e.pageY > y - 15 + canvas.offsetTop) {
+                x = e.pageX - canvas.offsetLeft;
+                y = e.pageY - canvas.offsetTop;
                 dragok = true;
                 canvas.onmousemove = myMove;
             }
@@ -172,20 +173,20 @@ export class ExerciseComponent {
 
         function mouseMovedWhenClicked(e) {
             if (dragok) {
-                x = e.pageX - 30 - canvas.offsetLeft;
+                x = e.pageX - canvas.offsetLeft;
                 xline1 = x;
                 $("#xcor").val(x - 15);
-                y = e.pageY - 70 - canvas.offsetTop;
+                y = e.pageY - canvas.offsetTop;
                 yline1 = y;
                 $("#ycor").val(y - 15);
                 draw();
             }
             if (dragok2) {
 
-                x2 = e.pageX - 30 - canvas.offsetLeft;
+                x2 = e.pageX - canvas.offsetLeft;
                 xline2 = x2
                 $("#x2cor").val(x2 - 15);
-                y2 = e.pageY - 70 - canvas.offsetTop;
+                y2 = e.pageY - canvas.offsetTop;
                 yline2 = y2;
                 $("#y2cor").val(y2 - 15);
                 draw();
@@ -193,19 +194,19 @@ export class ExerciseComponent {
         }
 
         function myDown(e) {
-            if (e.pageX - 30 < x + 15 + canvas.offsetLeft && e.pageX - 30 > x - 15 +
-                canvas.offsetLeft && e.pageY - 70 < y + 15 + canvas.offsetTop &&
-                e.pageY - 70 > y - 15 + canvas.offsetTop) {
-                x = e.pageX - 30 - canvas.offsetLeft;
-                y = e.pageY - 70 - canvas.offsetTop;
+            if (e.pageX < x + 15 + canvas.offsetLeft && e.pageX > x - 15 +
+                canvas.offsetLeft && e.pageY < y + 15 + canvas.offsetTop &&
+                e.pageY > y - 15 + canvas.offsetTop) {
+                x = e.pageX - canvas.offsetLeft;
+                y = e.pageY - canvas.offsetTop;
                 dragok = true;
                 canvas.onmousemove = mouseMovedWhenClicked;
             }
-            if (e.pageX - 30 < x2 + 15 + canvas.offsetLeft && e.pageX - 30 > x2 - 15 +
-                canvas.offsetLeft && e.pageY - 70 < y2 + 15 + canvas.offsetTop &&
-                e.pageY - 70 > y2 - 15 + canvas.offsetTop) {
-                x2 = e.pageX - 30 - canvas.offsetLeft;
-                y2 = e.pageY - 70 - canvas.offsetTop;
+            if (e.pageX < x2 + 15 + canvas.offsetLeft && e.pageX > x2 - 15 +
+                canvas.offsetLeft && e.pageY < y2 + 15 + canvas.offsetTop &&
+                e.pageY > y2 - 15 + canvas.offsetTop) {
+                x2 = e.pageX - canvas.offsetLeft;
+                y2 = e.pageY - canvas.offsetTop;
                 dragok2 = true;
                 canvas.onmousemove = mouseMovedWhenClicked;
             }
