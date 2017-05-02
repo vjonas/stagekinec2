@@ -1,5 +1,5 @@
 <nav class="navbar navigation navbar-default">
-  <div class="container-fluid">
+  <div class="container-fluid navigatieheader">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
@@ -12,7 +12,7 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <button *ngIf="name != null" class="btn navbutton btn-danger" (click)="logout()">Logout</button>
+        <button id="logoutButton" *ngIf="name != null" class="btn navbutton btn-danger" (click)="logout()"><img id="logoutImg" src="../assets/images/logout.svg"></button>
       </ul>
     </div>
   </div>
