@@ -1,27 +1,44 @@
 <div id="addModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
-
-        <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Add exercise</h4>
             </div>
             <div class="modal-body">
-                <button class="btn btn-warning modalButton">Add exercise from list<br><img src="../../../assets/images/list.svg"></button>
-                <button class="btn btn-primary modalButton">Add new exercise<br><img src="../../../assets/images/exercise1white.svg"></button>
+                <button class="btn btn-warning modalButton" data-toggle="modal" data-target="#addFromListModal" data-dismiss="modal">Add exercise from list<br><img src="../../../assets/images/list.svg"></button>
+                <button routerLink="/exercise" class="btn btn-primary modalButton" data-dismiss="modal">Add new exercise<br><img src="../../../assets/images/exercise1white.svg"></button>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Go back</button>
             </div>
         </div>
+    </div>
+</div>
 
+<div id="addFromListModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add exercise</h4>
+            </div>
+            <div class="modal-body">
+                <ul style="padding:0;">
+                    <li *ngFor="let counter of teller" class="exerciseLi" (click)="changeCheckbox($event)" [ngClass]="{'radioChecked': counter.checked }">
+                        <input type="radio" name="oefening" value="counter" #counter/>
+                        <label for="Oefening1">Oefening 1</label>
+                    </li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" data-toggle="modal" data-target="#addModal">Go back</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal">Add</button>
+            </div>
+        </div>
     </div>
 </div>
 
 <div id="removeUserModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
-
-        <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Remove user</h4>
@@ -34,7 +51,6 @@
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
-
     </div>
 </div>
 

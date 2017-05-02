@@ -1,3 +1,7 @@
+.modal-content{
+  border-radius:0;
+}
+
 .card{
   background-color: rgba(255,255,255,1);
   color:#222222;
@@ -114,6 +118,10 @@ input[type=checkbox]:checked + label{
   background-color:red;
 }
 
+.radioChecked{
+  background-color:green;
+}
+
 .exerciseLi:hover{
   -webkit-transform:scale(1.03);
   -moz-transform:scale(1.03);
@@ -167,4 +175,17 @@ input[type=checkbox]:checked + label{
   width:60%;
   height:60%;
   margin:auto;
+}
+
+input[type=radio]{
+  appearance:none;
+}
+
+.exerciseLi{
+  border: 1px solid black;
+  list-style: none;
+}
+
+#addFromListModal{
+  margin-top:5%;
 }
