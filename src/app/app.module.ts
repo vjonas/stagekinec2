@@ -4,18 +4,21 @@ import { FormsModule } from '@angular/forms'
 import { RouterModule, Routes } from '@angular/router';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { HttpModule } from '@angular/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularFireModule } from 'angularfire2';
+
 import { HomeComponent } from './components/home.component/home.component';
 import { AppComponent } from './app.component';
 import { LoginComponent} from './components/authentication/login.component/login.component';
 import { UserOverviewComponent} from './components/users/user-overview.component/user-overview.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IndividualUserComponent } from './components/users/individual-user.component/individual-user.component';
 import { RegisterComponent } from './components/authentication/register.component/register.component';
-import { AngularFireModule } from 'angularfire2';
-import { AuthGuard } from './services/auth.service';
 import { ResetPasswordComponent } from './components/authentication/reset-password.component/reset-password.component';
 import { ResetConfirmationComponent} from './components/authentication/reset-confirmation.component/reset-confirmation.component';
 import { ExerciseComponent } from './components/exercises/exercise.component/exercise.component';
+
+import { AuthGuard } from './services/auth.service';
+import { UserService } from './services/user.service';
 
 // routes variabelen
 const appRoutes: Routes = [
@@ -23,7 +26,7 @@ const appRoutes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'register', component: RegisterComponent },
   { path: 'useroverview', component: UserOverviewComponent, canActivate: [AuthGuard]},
-  { path: 'individualuser', component: IndividualUserComponent, canActivate: [AuthGuard]},
+  { path: 'individualuser/:id', component: IndividualUserComponent, canActivate: [AuthGuard]},
   { path: 'resetpassword', component: ResetPasswordComponent},
   { path: 'exercise', component: ExerciseComponent, canActivate:[AuthGuard]},
   { path: 'resetconfirmation', component: ResetConfirmationComponent},
@@ -53,7 +56,7 @@ export const firebaseConfig = {
     )
   ],
   //services
-  providers: [ HashLocationStrategy, AuthGuard ],
+  providers: [ HashLocationStrategy, AuthGuard, UserService ],
   bootstrap: [ AppComponent ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
