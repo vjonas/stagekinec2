@@ -12,7 +12,7 @@ import { routerTransition } from '../../../animations/router.animations';
 })
 
 export class IndividualUserComponent {
-    teller: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    teller: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11,12,13,14,15,16];
     isCheckboxChecked: number = 0;
 
     constructor(private router: Router) { }

@@ -55,56 +55,68 @@
 </div>
 
 <div class="container">
-    <div class="col-xs-12 card">
-        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 cardDiv"><img src="../../../../assets/images/no_picture.jpg" class="cardImage"></div>
-        <div class="col-xs-1">
-            <button (click)="goBack()" class="btn btn-danger backButton"><img style="width:20px;" src="../../../../assets/images/back.svg"></button>
+    <div class="card col-xs-12">
+        <div class="col-xs-6 col-md-3 backButtonDiv">
+            <button (click)="goBack()" class="btn btn-danger backButton glyphicon glyphicon-backward"></button>
         </div>
-        <h2 class="col-xs-3 col-sm-3">User details</h2>
-        <table class="table col-xs-12 col-sm-12 col-md-8 col-lg-8">
-            <tbody>
-                <tr>
-                    <td class="specifier">Name</td>
-                    <td class="userInfo">Jan Janssens Gonzalez Lopez Martinez</td>
-                </tr>
-                <tr>
-                    <td class="specifier">Age</td>
-                    <td class="userInfo">35</td>
-                </tr>
-                <tr>
-                    <td class="specifier">Height</td>
-                    <td class="userInfo">1m85</td>
-                </tr>
-                <tr>
-                    <td class="specifier">Weight</td>
-                    <td class="userInfo">75kg</td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="col-xs-12 col-sm-12 col-lg-7" id="programDiv">
-            <h3 class="col-xs-6 col-sm-6">Program</h3>
-            <select class="col-xs-6 col-sm-6">
-            <option value="knie">knie</option>
-            <option value="arm">arm</option>
-        </select>
-            <div>
-                <h4 class="col-xs-12 col-sm-12">Exercises</h4>
-                <ul class="col-xs-12 col-sm-6 exerciseList">
-                    <li *ngFor="let counter of teller" (click)="changeCheckbox($event)" class="exerciseLi" [ngClass]="{'checkboxChecked': counter.checked }">
-                        <input type="checkbox" #counter/>
-                        <label for="Oefening1">Naam oefening</label>
-                    </li>
-                </ul>
-                <div class="col-xs-6 col-sm-6">
-                    <button class="btn btn-primary exerciseButton" data-toggle="modal" data-target="#addModal">Add exercise</button>
-                </div>
-                <div class="col-xs-6 col-sm-6">
-                    <button *ngIf="isCheckboxChecked" class="btn btn-danger exerciseButton">Remove exercise</button>
-                </div>
+        <div class="col-xs-6 col-md-3 deleteUserDiv">
+            <button class="btn btn-danger glyphicon glyphicon-trash deleteUserButton" data-toggle="modal" data-target="#removeUserModal"></button>
+        </div>
+        <div class="col-xs-6 col-md-0 clearer"></div>
+    <div class="wrapperLeft col-xs-12 col-md-6">
+        <div class="userImageDiv col-xs-12">
+            <img class="userImage" src="../../../../assets/images/no_picture.jpg">
+            <h3 style="font-weight:bold;">Jan Janssens Gonzalez Lopez Martinez</h3>
+        </div>
+        <div class="userDetailsDiv col-xs-12">
+            <div class="row">
+            <div class="iconDiv col-xs-4">
+                <img class="userDetailsIcon" src="../../../../assets/images/age.png">
+            </div>
+            <div class="iconDiv col-xs-4">
+                <img class="userDetailsIcon" src="../../../../assets/images/height.png">
+            </div>
+            <div class="iconDiv col-xs-4">
+                <img class="userDetailsIcon" src="../../../../assets/images/weight.png">
+            </div>
+            </div>
+            <div class="row">
+            <div class="valueDiv col-xs-4">
+                <h4>35yo</h4>
+            </div>
+            <div class="valueDiv col-xs-4">
+                <h4>185cm</h4>
+            </div>
+            <div class="valueDiv col-xs-4">
+                <h4>85kg</h4>
+            </div>
             </div>
         </div>
-        <div class="col-xs-12 col-lg-5">
-            <div data-toggle="modal" data-target="#removeUserModal" class="glyphicon glyphicon-trash trashIcon"></div>
+        <div class="programDiv col-xs-12">
+            <h5>Current program</h5>
+            <select class="programCombo">
+                <option value="knie">Knee</option>
+                <option value="arm">Arm</option>
+            </select>
         </div>
+    </div>
+    <div class="wrapperRight col-xs-12 col-md-6">  
+            <h2 class="col-xs-12">Exercises</h2>
+            <div class="col-xs-12 exerciseWrapper">
+            <div class="col-xs-12 addExerciseDiv">
+            <h4 class="col-xs-9">Add new exercise</h4>
+            <div class="col-xs-3">
+            <h4 class="glyphicon glyphicon-plus exerciseInteraction" data-toggle="modal" data-target="#addModal"></h4>
+            </div>   
+            </div>
+            <div class="col-xs-12 exerciseList">
+            <div *ngFor="let counter of teller" class="exerciseListDiv">
+                <h4 class="col-xs-9">{{counter}}</h4>
+                <div class="col-xs-3"><h4 class="glyphicon glyphicon-remove-circle exerciseInteraction"></h4></div>
+                
+            </div>
+            </div>
+            </div>
+    </div>
     </div>
 </div>
