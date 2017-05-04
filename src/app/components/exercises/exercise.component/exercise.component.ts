@@ -1,6 +1,7 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 declare var $: any;
+declare var Bezier:any;
 
 @Component({
     selector: 'exercise',
@@ -125,6 +126,7 @@ export class ExerciseComponent implements AfterViewInit {
         }
     }
 
+    //method called in the html to start the drawing of a new "Volglijn"
     public drawNewLine() {
         var mousex;
         var mousey;
@@ -160,6 +162,7 @@ export class ExerciseComponent implements AfterViewInit {
             //redraw the circles and beziercurce
             this.redraw();
             this.drawLine();
+            //this.drawBezierDistance();
         })
     }
 
@@ -222,6 +225,20 @@ export class ExerciseComponent implements AfterViewInit {
             while (el.hasChildNodes()) newEl.appendChild(el.firstChild);
             el.parentNode.replaceChild(newEl, el);
             this.canvas = newEl;
+        }
+    }
+
+    private drawBezierDistance() {
+        var curve = new Bezier(100, 25, 10, 90, 50, 185, 170, 175);
+        var draw = function (evt) {
+            Bezier.drawSkeleton(curve);
+            Bezier.drawCurve(curve);
+            Bezier.setColor("rgb(255,100,100)");
+            if (evt) {
+                var mouse = { x: evt.offsetX, y: evt.offsetY };
+                var p = curve.project(mouse);
+                Bezier.drawLine(p, mouse);
+            }
         }
     }
 
