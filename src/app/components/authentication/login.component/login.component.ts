@@ -41,6 +41,8 @@ export class LoginComponent implements OnInit {
           method: AuthMethods.Password,
         }).then((success) => {
           console.log(success);
+          localStorage.setItem('currentUser', JSON.stringify({ uid: success.uid }));
+
           this.router.navigate(['/home']);
           this.errCond = false;
         }).catch((err) => {

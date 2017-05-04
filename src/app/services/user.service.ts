@@ -8,7 +8,8 @@ import { Tutor } from "../models/tutor.model";
 
 @Injectable()
 export class UserService {
-    items: Observable<any[]>;
+    addTutees: Observable<any[]>;
+    deleteTutees: Observable<any[]>;
     addTuteeBool: boolean = true;
     mentorKey: any;
 
@@ -30,7 +31,6 @@ export class UserService {
 
 
     public createMentor(userData: any, uid: string) {
-        console.log('in create mentor');
         this.af.database.list('/mentors').push({
             uid: uid,
             name: userData.value.name,
@@ -38,28 +38,39 @@ export class UserService {
             email: userData.value.email,
             exercises: [],
         });
-    }    
+    }
 
     public addTutee(uidMentor: string, uidTutee: string) {
         this.addTuteeBool = true;
-        this.items = this.af.database.list('/users', { preserveSnapshot: true });
-        this.items
+        this.addTutees = this.af.database.list('/users', { preserveSnapshot: true });
+        this.addTutees
             .subscribe(snapshots => {
                 snapshots.forEach(snapshot => {
                     if (snapshot.val().uid == uidTutee && this.addTuteeBool) {
-                        this.af.database.list('/users').update(snapshot.key,{ mentorId: uidMentor });
+                        this.af.database.list('/users').update(snapshot.key, { mentorId: uidMentor });
                         this.addTuteeBool = false;
                     }
                 });
             })
     }
 
-    public getTutees(uidMentor: string): Observable<User[]>{
-        return this.af.database.list('users', {
-                query:{
-                    orderByChild: 'mentorId',
-                    equalTo: uidMentor
+    public deleteUserFromTutees(uidTutee: string) {
+        this.deleteTutees = this.af.database.list('/users', { preserveSnapshot: true });
+        this.deleteTutees.subscribe(snapshots => {
+            snapshots.forEach(snapshot => {
+                if (snapshot.val().uid == uidTutee) {
+                    this.af.database.list('/users').update(snapshot.key, { mentorId: 0 });
                 }
+            })
+        })
+    }
+
+    public getTutees(uidMentor: string): Observable<User[]> {
+        return this.af.database.list('users', {
+            query: {
+                orderByChild: 'mentorId',
+                equalTo: uidMentor
+            }
         });
     }
 

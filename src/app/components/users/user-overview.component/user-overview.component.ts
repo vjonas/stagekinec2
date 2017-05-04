@@ -17,13 +17,13 @@ export class UserOverviewComponent implements OnInit{
     state: string = 'inactive';
     userList : User[];
     tutor: User;
+    mentorUid: string;
 
     constructor(private router: Router, private userService: UserService) { }
 
     ngOnInit() {
-       /*this.userService.getAllUsers().subscribe(users => {this.userList = users;
-                                                this.userList.forEach(user => user.age = Math.floor(((Math.abs(Date.now() - <any>(new Date(user.birthdate)))) / (1000 * 3600 * 24))/365))});*/
-       this.userService.getTutees("6jMdmywA4sSWLbLCXMUWmPVym6t1").subscribe(users => {this.userList = users;
+       this.mentorUid = JSON.parse(localStorage.getItem('currentUser')).uid;
+       this.userService.getTutees(this.mentorUid).subscribe(users => {this.userList = users;
                                                 this.userList.forEach(user => user.age = Math.floor(((Math.abs(Date.now() - <any>(new Date(user.birthdate)))) / (1000 * 3600 * 24))/365))});
     }
 
@@ -32,6 +32,6 @@ export class UserOverviewComponent implements OnInit{
     }
 
     addTutee(uid: string){
-        this.userService.addTutee("6jMdmywA4sSWLbLCXMUWmPVym6t1", uid);
+        this.userService.addTutee(this.mentorUid, uid);
     }
 }

@@ -26,8 +26,6 @@ export class IndividualUserComponent implements OnInit {
     ngOnInit(){
         this.route.params.subscribe(params => {
         this.uid = params['id']});
-
-
        this.userService.getUserById(this.uid).subscribe(user => {this.user = user[0];
        this.birthdate = new Date(this.user.birthdate);
        var timeDiff = Math.abs(Date.now() - this.birthdate);
@@ -43,7 +41,6 @@ export class IndividualUserComponent implements OnInit {
     }
 
     changeCheckbox(checkbox: any) {
-        console.log(checkbox.srcElement);
         if (checkbox.currentTarget.childNodes[1].checked == false) {
             checkbox.currentTarget.childNodes[1].checked = true;
             this.isCheckboxChecked++;
@@ -52,5 +49,10 @@ export class IndividualUserComponent implements OnInit {
             checkbox.currentTarget.childNodes[1].checked = false
             this.isCheckboxChecked--;
         }
+    }
+
+    deleteUser(){
+        this.userService.deleteUserFromTutees(this.uid);
+        this.router.navigate(["/useroverview"]);
     }
 }
