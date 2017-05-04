@@ -95,8 +95,7 @@
         <div class="programDiv col-xs-12">
             <h5>Current program</h5>
             <select class="programCombo">
-                <option value="knie">Knee</option>
-                <option value="arm">Arm</option>
+                <option *ngFor="let program of programList" value="program.name">{{program.name}}</option>
             </select>
         </div>
     </div>

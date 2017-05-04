@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { routerTransition } from '../../../animations/router.animations';
 import { UserService } from '../../../services/user.service';
 import { User } from '../../../models/user.model';
+import { Traject } from '../../../models/traject.model';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
@@ -18,6 +19,7 @@ export class IndividualUserComponent implements OnInit {
     isCheckboxChecked: number = 0;
     uid: string;
     user : User;
+    programList: Traject[];
     birthdate : any;
     age: number;
 
@@ -30,10 +32,8 @@ export class IndividualUserComponent implements OnInit {
        this.birthdate = new Date(this.user.birthdate);
        var timeDiff = Math.abs(Date.now() - this.birthdate);
        this.age = Math.floor((timeDiff / (1000 * 3600 * 24))/365);
+       this.programList = user[0].traject;
         });
-       
-
-         
     }
 
     goBack() {
