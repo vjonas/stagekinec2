@@ -10,6 +10,7 @@
 
 .backButton{
   margin:1%;
+  color:#333333;
 }
 
 .deleteUserDiv{
@@ -19,6 +20,13 @@
 .deleteUserButton{
   margin:1%;
   float:right;
+  color:red;
+}
+
+.topButtons{
+  background-color: transparent;
+  border: none;
+
 }
 
 .clearer{
@@ -128,7 +136,7 @@
 
 ::-webkit-scrollbar-thumb
 {
-	background-color: rgba(77,0,192,0.5);
+	background-color: rgba(77,0,192,0.8);
 	/*border: 2px solid #555555;*/
 }
 

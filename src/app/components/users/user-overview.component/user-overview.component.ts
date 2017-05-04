@@ -4,6 +4,7 @@ import { routerTransition } from '../../../animations/router.animations';
 import { UserService } from '../../../services/user.service';
 import { User } from '../../../models/user.model';
 import { Observable } from 'rxjs/Observable';
+import { Tutor } from '../../../models/tutor.model'
 
 @Component({
     selector: 'userOverview',
@@ -15,12 +16,15 @@ import { Observable } from 'rxjs/Observable';
 export class UserOverviewComponent implements OnInit{
     state: string = 'inactive';
     userList : User[];
+    tutor: User;
 
     constructor(private router: Router, private userService: UserService) { }
 
     ngOnInit() {
-        this.userService.getAllUsers().subscribe(users => {this.userList = users;});
-                                            
+       /*this.userService.getAllUsers().subscribe(users => {this.userList = users;
+                                                this.userList.forEach(user => user.age = Math.floor(((Math.abs(Date.now() - <any>(new Date(user.birthdate)))) / (1000 * 3600 * 24))/365))});*/
+       this.userService.getTutees("6jMdmywA4sSWLbLCXMUWmPVym6t1").subscribe(users => {this.userList = users;
+                                                this.userList.forEach(user => user.age = Math.floor(((Math.abs(Date.now() - <any>(new Date(user.birthdate)))) / (1000 * 3600 * 24))/365))});
     }
 
     goToUser(uid: string) {
@@ -28,8 +32,6 @@ export class UserOverviewComponent implements OnInit{
     }
 
     addTutee(uid: string){
-        this.userService.getUserById(uid).subscribe(user => this.userList[this.userList.length]= user[0]);
+        this.userService.addTutee("6jMdmywA4sSWLbLCXMUWmPVym6t1", uid);
     }
-
-
 }
