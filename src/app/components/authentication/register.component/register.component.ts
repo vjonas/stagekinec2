@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFire } from 'angularfire2';
 import { routerTransition } from '../../../animations/router.animations';
-import { UserService } from '../../../services/user.service';
+import { MentorService } from '../../../services/mentor.service';
 
 
 @Component({
@@ -16,7 +16,7 @@ import { UserService } from '../../../services/user.service';
 export class RegisterComponent {
     error: Error = new Error("");
 
-    constructor(public af: AngularFire, private router: Router, private userService: UserService) {
+    constructor(public af: AngularFire, private router: Router, private mentorService: MentorService) {
 
     }
 
@@ -27,7 +27,7 @@ export class RegisterComponent {
                 password: formData.value.password
             }).then((success) => {
                 console.log(success);
-                this.userService.createMentor(formData, success.uid);
+                this.mentorService.createMentor(formData, success.uid);
                 this.router.navigate(['/home'])
             }).catch((err) => {
                 this.error = err;

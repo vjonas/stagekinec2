@@ -44,7 +44,7 @@
                 <h4 class="modal-title">Remove user</h4>
             </div>
             <div class="modal-body">
-                <p>Are you sure you want to abandon this poor soul? :(</p>
+                <p>Are you sure you want to remove <span style="font-weight: bold">{{user?.name}} {{user?.lastname}}</span> from your list?</p>
             </div>
             <div class="modal-footer">
                 <button type="button" (click)="deleteUser()" class="btn btn-danger" data-dismiss="modal">Delete</button>

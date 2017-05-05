@@ -7,13 +7,14 @@ import { FullExercise } from "../models/full.exercise.model";
 
 @Injectable()
 export class ExerciseService {
+    path: string = "/excercises";
 
     constructor(private af: AngularFire) {
     }
     
 
-    getExcerciseById(excercise: string): Observable<FullExercise[]> {
-        return this.af.database.list('excercises', {
+    public getExcerciseById(excercise: string): Observable<FullExercise[]> {
+        return this.af.database.list(this.path, {
             query: {
                 orderByChild: 'excerciseid',
                 equalTo: Number(excercise)

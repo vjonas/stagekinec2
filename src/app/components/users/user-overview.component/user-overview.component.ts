@@ -23,7 +23,7 @@ export class UserOverviewComponent implements OnInit{
 
     ngOnInit() {
        this.mentorUid = JSON.parse(localStorage.getItem('currentUser')).uid;
-       this.userService.getTutees(this.mentorUid).subscribe(users => {this.userList = users;
+       this.userService.getUsersFromMentor(this.mentorUid).subscribe(users => {this.userList = users;
                                                 this.userList.forEach(user => user.age = Math.floor(((Math.abs(Date.now() - <any>(new Date(user.birthdate)))) / (1000 * 3600 * 24))/365))});
     }
 
@@ -32,6 +32,6 @@ export class UserOverviewComponent implements OnInit{
     }
 
     addTutee(uid: string){
-        this.userService.addTutee(this.mentorUid, uid);
+        this.userService.addMentorToUser(this.mentorUid, uid);
     }
 }

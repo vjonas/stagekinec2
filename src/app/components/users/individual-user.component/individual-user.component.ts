@@ -64,7 +64,7 @@ export class IndividualUserComponent implements OnInit {
     }
 
     deleteUser() {
-        this.userService.deleteUserFromTutees(this.uid);
+        this.userService.removeMentorFromUser(this.uid);
         this.router.navigate(["/useroverview"]);
     }
 
