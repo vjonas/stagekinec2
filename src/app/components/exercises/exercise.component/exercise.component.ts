@@ -1,7 +1,6 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Bezier from 'bezier-js';
-declare var $: any;
 
 @Component({
     selector: 'exercise',
@@ -17,6 +16,8 @@ export class ExerciseComponent implements AfterViewInit {
     //variables to draw the new line
     public canvas: HTMLCanvasElement;
     public context;
+    public touchPointX:number=75;
+    public touchPointY:number=50;
     public arcx: Array<number> = new Array<number>();
     public arcy: Array<number> = new Array<number>();
     public drawOk: Array<boolean> = new Array<boolean>();
@@ -66,20 +67,19 @@ export class ExerciseComponent implements AfterViewInit {
         this.lineBool = false;
         var canvas: HTMLCanvasElement;
         var ctx;
-        var x = 75;
-        var y = 50;
         var WIDTH = 960;
         var HEIGHT = 540;
         var dragok = false;
+        const self = this;
 
         this.removeCanvasListeners();
         init();
         this.canvas.addEventListener("mousedown", e => {
-            if (e.pageX < x + 15 + canvas.offsetLeft && e.pageX > x - 15 +
-                canvas.offsetLeft && e.pageY < y + 15 + canvas.offsetTop &&
-                e.pageY > y - 15 + canvas.offsetTop) {
-                x = e.pageX - canvas.offsetLeft;
-                y = e.pageY - canvas.offsetTop;
+            if (e.pageX < this.touchPointX + 15 + canvas.offsetLeft && e.pageX > this.touchPointX - 15 +
+                canvas.offsetLeft && e.pageY < this.touchPointY + 15 + canvas.offsetTop &&
+                e.pageY > this.touchPointY - 15 + canvas.offsetTop) {
+                this.touchPointX = e.pageX - canvas.offsetLeft;
+                this.touchPointY = e.pageY - canvas.offsetTop;
                 dragok = true;
             }
         });
@@ -92,10 +92,8 @@ export class ExerciseComponent implements AfterViewInit {
         this.canvas.addEventListener("mousemove", e => {
             console.log("drawtouchpoint - mouseup");
             if (dragok) {
-                x = e.pageX - canvas.offsetLeft;
-                $("#xcor").val(x);
-                y = e.pageY - canvas.offsetTop;
-                $("#ycor").val(y);
+                this.touchPointX = e.pageX - canvas.offsetLeft;
+                this.touchPointY = e.pageY - canvas.offsetTop;
                 draw();
             }
         })
@@ -119,7 +117,7 @@ export class ExerciseComponent implements AfterViewInit {
         function draw() {
             clear();
             ctx.fillStyle = "#FF0F00";
-            rect(x - 15, y - 15, 30, 30);
+            rect(self.touchPointX - 15, self.touchPointY - 15, 30, 30);
         }
 
         function clear() {
