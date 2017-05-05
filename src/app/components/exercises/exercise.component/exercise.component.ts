@@ -234,7 +234,6 @@ export class ExerciseComponent implements AfterViewInit {
 
         var mouse = { x: mouseX, y: mouseY };
         var p = curve.project(mouse);
-        console.log(p);
         this.context.beginPath();
         this.context.moveTo(mouseX,mouseY);
         this.context.lineTo(p.x,p.y);
