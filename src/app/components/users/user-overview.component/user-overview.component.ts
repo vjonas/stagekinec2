@@ -13,25 +13,27 @@ import { Tutor } from '../../../models/tutor.model'
     animations: [routerTransition()],
     host: { '[@routerTransition]': '' }
 })
-export class UserOverviewComponent implements OnInit{
+export class UserOverviewComponent implements OnInit {
     state: string = 'inactive';
-    userList : User[];
+    userList: User[];
     tutor: User;
     mentorUid: string;
 
     constructor(private router: Router, private userService: UserService) { }
 
     ngOnInit() {
-       this.mentorUid = JSON.parse(localStorage.getItem('currentUser')).uid;
-       this.userService.getUsersFromMentor(this.mentorUid).subscribe(users => {this.userList = users;
-                                                this.userList.forEach(user => user.age = Math.floor(((Math.abs(Date.now() - <any>(new Date(user.birthdate)))) / (1000 * 3600 * 24))/365))});
+        this.mentorUid = JSON.parse(localStorage.getItem('currentUser')).uid;
+        this.userService.getUsersFromMentor(this.mentorUid).subscribe(users => {
+        this.userList = users;
+            this.userList.forEach(user => user.age = Math.floor(((Math.abs(Date.now() - <any>(new Date(user.birthdate)))) / (1000 * 3600 * 24)) / 365))
+        });
     }
 
     goToUser(uid: string) {
-       this.router.navigate(['./individualuser', uid]);
+        this.router.navigate(['./individualuser', uid]);
     }
 
-    addTutee(uid: string){
+    addTutee(uid: string) {
         this.userService.addMentorToUser(this.mentorUid, uid);
     }
 }
