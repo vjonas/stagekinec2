@@ -46,8 +46,8 @@
         <p *ngIf="lineBool" class="col-xs-2">Y-coordinate point 2</p>
     </div>
     <div *ngIf="!viewState" class="col-xs-12">
-        <input class="col-xs-2 corInput" id="xcor" type="text" placeholder="x coordinate" />
-        <input class="col-xs-2 corInput" id="ycor" type="text" placeholder="y coordinate" />
+        <input class="col-xs-2 corInput" id="xcor" type="text" placeholder="x coordinate" [(ngModel)]=touchPointX/>
+        <input class="col-xs-2 corInput" id="ycor" type="text" placeholder="y coordinate" [(ngModel)]=touchPointY/>
         <input *ngIf="lineBool" id="x2cor" class="col-xs-2 corInput" type="text" placeholder="x coordinate" />
         <input *ngIf="lineBool" id="y2cor" class="col-xs-2 corInput" type="text" placeholder="y coordinate" />
     </div>
