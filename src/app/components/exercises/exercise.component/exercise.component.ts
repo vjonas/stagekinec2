@@ -1,7 +1,7 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
+import Bezier from 'bezier-js';
 declare var $: any;
-declare var Bezier:any;
 
 @Component({
     selector: 'exercise',
@@ -21,6 +21,7 @@ export class ExerciseComponent implements AfterViewInit {
     public arcy: Array<number> = new Array<number>();
     public drawOk: Array<boolean> = new Array<boolean>();
     public radius = 7;
+    private curve: any;
 
     constructor(private router: Router) {
     }
@@ -162,7 +163,7 @@ export class ExerciseComponent implements AfterViewInit {
             //redraw the circles and beziercurce
             this.redraw();
             this.drawLine();
-            //this.drawBezierDistance();
+            this.drawBezierDistance(e.clientX - this.canvas.offsetLeft, e.clientY - this.canvas.offsetTop);
         })
     }
 
@@ -228,18 +229,18 @@ export class ExerciseComponent implements AfterViewInit {
         }
     }
 
-    private drawBezierDistance() {
-        var curve = new Bezier(100, 25, 10, 90, 50, 185, 170, 175);
-        var draw = function (evt) {
-            Bezier.drawSkeleton(curve);
-            Bezier.drawCurve(curve);
-            Bezier.setColor("rgb(255,100,100)");
-            if (evt) {
-                var mouse = { x: evt.offsetX, y: evt.offsetY };
-                var p = curve.project(mouse);
-                Bezier.drawLine(p, mouse);
-            }
-        }
-    }
+    private drawBezierDistance(mouseX, mouseY) {
+        var curve: Bezier = new Bezier(this.arcx[0], this.arcy[0],this.arcx[1], this.arcy[1], this.arcx[2], this.arcy[2], this.arcx[3], this.arcy[3]);
 
+        var mouse = { x: mouseX, y: mouseY };
+        var p = curve.project(mouse);
+        console.log(p);
+        this.context.beginPath();
+        this.context.moveTo(mouseX,mouseY);
+        this.context.lineTo(p.x,p.y);
+        this.context.lineWidth = 2;
+        this.context.strokeStyle = 'blue';
+        this.context.stroke();
+        this.context.closePath();
+    }
 } 
