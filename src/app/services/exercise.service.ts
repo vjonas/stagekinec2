@@ -23,6 +23,7 @@ export class ExerciseService {
 
     public createNewExcercise(exercise: FullExercise) {
         this.af.database.list(this.path).push({
+            mentorUid:JSON.parse(localStorage.getItem('currentUser')).uid,
             description: exercise.description,
             name: exercise.name,
             steps: exercise.steps

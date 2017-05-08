@@ -6,13 +6,13 @@
             </div>
             <div class="modal-body">
                 <label for="name">Name exercise</label>
-                <input type=text placeholder="name" name="name"><br>
+                <input type=text placeholder="name" name="name" [(ngModel)]="newExercise.name"><br>
                 <label for="description">Description</label>
-                <textarea cols="50" rows="4" placeholder="description" name="description"></textarea>
+                <textarea cols="50" rows="4" placeholder="description" name="description" [(ngModel)]="newExercise.description"></textarea>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Go back</button>
-                <button type="button" class="btn btn-success" data-dismiss="modal">Add exercise</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal" (click)="createNewExercise()">Add exercise</button>
             </div>
         </div>
     </div>

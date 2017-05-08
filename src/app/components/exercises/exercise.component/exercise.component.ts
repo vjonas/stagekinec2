@@ -277,7 +277,8 @@ export class ExerciseComponent implements OnInit, AfterViewInit {
     }
 
     private createNewExercise() {
-        console.log("createnewexmethode");
+        console.log("createnewexmethode:"+this.newExercise.description + this.newExercise.name);
+
         this._exerciseService.createNewExcercise(this.newExercise);
 
     }
