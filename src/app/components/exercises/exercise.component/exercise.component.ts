@@ -9,7 +9,7 @@ import { Step } from "app/models/step.model";
 @Component({
     selector: 'exercise',
     templateUrl: './exercise.component.html',
-    styleUrls: ['./exercise.component.css']
+    styleUrls: ['./exercise.component.scss']
 })
 
 export class ExerciseComponent implements OnInit, AfterViewInit {

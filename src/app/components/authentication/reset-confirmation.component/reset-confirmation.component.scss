@@ -4,19 +4,23 @@ src: url('../../../../assets/fonts/OstrichSans-Black.otf');
 font-weight: bold;
 }
 
+$titleFont: "Ostrich";
+$titleColor: #F2F2F2;
+$confirmMsgBackground: rgba(20,20,20,0.5);
+
 h1{
   text-align:center;
   margin-top: 5%;
   margin-bottom: 5%;
-  font-family: "Ostrich";
+  font-family: $titleFont;
   font-size:5em;
-  color:#f2f2f2;
+  color:$titleColor;
 }
 
 div{
   margin:auto;
   width:400px;
-  background-color: rgba(20,20,20,0.5);
+  background-color: $confirmMsgBackground;
   text-align: center;
   padding-bottom:2%;
   border-radius: 10px;

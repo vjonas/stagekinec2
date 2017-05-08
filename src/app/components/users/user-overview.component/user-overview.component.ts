@@ -9,7 +9,7 @@ import { Tutor } from '../../../models/tutor.model'
 @Component({
     selector: 'userOverview',
     templateUrl: 'user-overview.component.html',
-    styleUrls: ['./user-overview.component.css'],
+    styleUrls: ['./user-overview.component.scss'],
     animations: [routerTransition()],
     host: { '[@routerTransition]': '' }
 })

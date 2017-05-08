@@ -1,0 +1,78 @@
+$homeDivBackgroundColor: white;
+$animatedBorderColor: #C19AFF;
+
+.homeDiv{
+  text-align: center;
+  margin-top:20%;
+  background-color:$homeDivBackgroundColor;
+  overflow-x:hidden;
+
+  &:before {
+    transform: translateX(100%);
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    border-bottom: 8px solid transparent;
+    border-left: 8px solid transparent;
+  }
+
+  &:after {
+    transform: translateX(-100%);
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    border-top: 8px solid transparent;
+    border-right: 8px solid transparent;
+  }
+
+  &:hover {
+	  color: inherit;
+	  text-decoration: none;
+    border: none;
+    box-shadow: none;
+
+    &:before {
+      transition: .1s transform linear, .1s height linear .1s;
+      transform: translateX(0);
+      height: 100%;
+      border-color:$animatedBorderColor;
+    }
+
+    &:after {
+      transition: .1s transform linear .2s, .1s height linear .3s;
+      transform: translateX(0);
+      height: 100%;
+      border-color: $animatedBorderColor    
+    }
+  }  
+
+  @media (max-width:992px){
+    &:nth-child(even){
+      margin-top:5%;
+    }
+    &:nth-child(odd){
+      margin-top:15%;
+    }
+  }
+
+  h4{
+    margin-bottom:0;
+    margin-top:30px;
+  }
+
+  .homeImage{
+    width: 100px;
+    height:100px;
+  }
+}
+
+
+
+      
+

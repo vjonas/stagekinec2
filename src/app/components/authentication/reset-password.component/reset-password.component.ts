@@ -7,7 +7,7 @@ import { routerTransition } from '../../../animations/router.animations'
 @Component({
     selector: 'resetpassword',
     templateUrl: './reset-password.component.html',
-    styleUrls: ["./reset-password.component.css"],
+    styleUrls: ["./reset-password.component.scss"],
     animations: [routerTransition()],
     host: { '[@routerTransition]': '' }
 })

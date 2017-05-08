@@ -16,40 +16,32 @@ h1{
   text-align:center;
   margin-top: 5%;
   margin-bottom: 5%;
-  font-family: $titleFont;
-  font-size:5em;
+  font-family: "Ostrich";
+  font-size: 5em;
   color:$titleColor;
 }
-
-p{
-  text-align:center;
-}
-
-
-
 
 form {
   width: 400px;
   margin: auto;
-
 
   .form-group {
     width: 90%;
     margin: auto;
 
     .form-control{
-      -webkit-transition: all 0.1s ease; 
-      -moz-transition: all 0.1s ease; 
-      -o-transition: all 0.1s ease;
-      transition: all 0.1s ease;
+    -webkit-transition: all 0.1s ease;
+    -moz-transition: all 0.1s ease;
+    -o-transition: all 0.1s ease;
+    transition: all 0.1s ease;
     }
 
     .form-control:focus{
-      -webkit-transform:scale(1.15); 
-      -moz-transform:scale(1.15); 
-      -ms-transform:scale(1.15); 
-      -o-transform:scale(1.15); 
-      transform:scale(1.15);
+      -webkit-transform:scale(1.15);
+    -moz-transform:scale(1.15); 
+    -ms-transform:scale(1.15); 
+    -o-transform:scale(1.15); 
+    transform:scale(1.15);
     }
   }
 
@@ -67,7 +59,7 @@ form {
 
   #buttons {
     margin: auto;
-    margin-top: 1%;
+    margin-top: 5%;
     width: 80%;
     text-align: center;
   }
@@ -83,18 +75,11 @@ form {
     margin-top: 3%;
   }
 
-  #loginbutton{
+  #registerbutton{
     background:$successButtonColor;
     font-size:1.3em; 
-  }
-
-  #resetpasswordbutton{
-    font-size: .8em;
-    text-align: right;
-    width:98%;
-    margin:auto;  
-  }
-
+  }  
+  
   #errMsg{
     padding: 5px;
     width:80%;
@@ -103,11 +88,8 @@ form {
     margin-bottom: 5%;
     text-align:center;
     color:$inputColorError;
-    background-color:$errorMsgBackground;
+    background-color:rgba(50,50,50,0.5);
     border-radius: 5px;
   }
 }
-
-
-
 
