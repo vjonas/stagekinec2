@@ -106,7 +106,7 @@ export class ExerciseComponent implements AfterViewInit {
         for (var i = 0; i < this.arcx.length; i++) {
             this.context.beginPath();
             this.context.arc(this.arcx[i], this.arcy[i], this.radius, 0, 2 * Math.PI, false);
-            this.context.fillStyle = "red";
+            if (i==0)this.context.fillStyle = "green";else this.context.fillStyle="red";
             this.context.fill();
             this.context.closePath();
         }
@@ -129,7 +129,7 @@ export class ExerciseComponent implements AfterViewInit {
         this.arcx.forEach((circle, i) => {
             this.context.beginPath();
             this.context.arc(this.arcx[i], this.arcy[i], this.radius, 0, 2 * Math.PI, false);
-            this.context.fillStyle = "red";
+            if (i==0)this.context.fillStyle = "green";else this.context.fillStyle="red";
             this.context.fill();
         })
     }
