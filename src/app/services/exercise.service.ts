@@ -6,7 +6,7 @@ import { FullExercise } from "../models/full.exercise.model";
 
 @Injectable()
 export class ExerciseService {
-    path: string = "/excercises";
+    path: string = "/exercises";
     private _mentorUid: string;
 
     constructor(private af: AngularFire) {

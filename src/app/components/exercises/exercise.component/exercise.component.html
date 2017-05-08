@@ -66,9 +66,9 @@
         <p class="col-xs-2">Jointtype</p>
     </div>
     <div *ngIf="!viewState" class="col-xs-12">
-        <input class="col-xs-2 corInput" type="text" placeholder="radius" value="{{newExercise.steps[activeStepToDraw]?.radius}}"/>
-        <input *ngIf="showTrackingLineDetails" class="col-xs-2 corInput" type="text" placeholder="offset in pixels"/>
-        <select class="col-xs-2 corInput" type="text">
+        <input *ngIf="newExercise.steps[activeStepToDraw]!=undefined" class="col-xs-2 corInput" type="text" placeholder="radius" [(ngModel)]="newExercise.steps[activeStepToDraw].radius"/>
+        <input *ngIf="showTrackingLineDetails && newExercise.steps[activeStepToDraw]!=undefined" class="col-xs-2 corInput" type="text" placeholder="offset in pixels" [(ngModel)]="newExercise.steps[activeStepToDraw].trackingLineOffset"/>
+        <select *ngIf="newExercise.steps[activeStepToDraw] != undefined" class="col-xs-2 corInput" type="text" [(ngModel)]="newExercise.steps[activeStepToDraw].jointType">
             <option *ngFor="let joint of kinectJoints" value="{{joint?.id}}">{{joint?.name}}</option>
         </select>
     </div>

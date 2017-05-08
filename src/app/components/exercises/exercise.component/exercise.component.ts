@@ -23,7 +23,7 @@ export class ExerciseComponent implements OnInit, AfterViewInit {
     public context;
     public drawOk: Array<boolean> = new Array<boolean>();
     private newExercise: FullExercise;
-    private activeStepToDraw: number = null;
+    private activeStepToDraw: number = 0;
     private exercisesOfMentor: FullExercise[];
 
     constructor(private router: Router, private _exerciseService: ExerciseService) {
