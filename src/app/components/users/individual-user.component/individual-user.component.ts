@@ -11,7 +11,7 @@ import { Observable } from 'rxjs/Observable';
 @Component({
     selector: 'individualUser',
     templateUrl: 'individual-user.component.html',
-    styleUrls: ['./individual-user.component.css'],
+    styleUrls: ['./individual-user.component.scss'],
     animations: [routerTransition()],
     host: { '[@routerTransition]': '' }
 })

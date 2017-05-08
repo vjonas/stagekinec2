@@ -1,0 +1,129 @@
+$textColorMain: black;
+$checkedColor:greenyellow;
+$controlsBackgroundColor: #F0F0F0;
+$listBackgroundColor: #D2D2D2;
+
+.wrapper{
+  margin-left:5%;
+  margin-right:5%;
+
+  canvas{
+    background-color:white;
+    float:left;
+    cursor: crosshair;
+    background-image: url("../../../../assets/images/exerciseBodyExample.jpg");
+  }
+
+  .controls{
+    background-color: $controlsBackgroundColor;
+    height:540px;
+    padding:0;
+
+    .exerciseCombo{
+      height:50px;
+      color:$textColorMain;
+    }
+
+    .switchModeButton{
+      height:50px;
+      border:none;
+      padding-top:0;
+      padding-bottom:0;
+      border-radius:0;
+    }
+
+    input[type=checkbox]{
+      appearance:none;
+    }
+
+    .stepList{
+      padding-top:10px;
+      height:280px;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      padding:0;
+
+      .stepLi{
+        color:$textColorMain;
+        border-bottom: black solid 1px;
+        height:50px;
+        background-color: $listBackgroundColor;
+        list-style: none;
+      }
+
+      input[type=radio]{
+        appearance:none;
+      }
+
+      input[type=checkbox]:checked + label{
+        background-color:$checkedColor;
+      }
+      
+      .checkboxChecked{
+        background-color:$checkedColor;
+      }
+
+      .newStepButton{
+        width:100%;
+        height:35px;
+        border-radius:0;
+
+        img{
+          height:100%;
+          width:100%;
+        }
+      }
+
+      .removeStepButton{
+        float:right;
+        height:100%;
+        border-radius:none;
+        
+        img{
+          height:100%;
+        }
+      }
+    }
+
+    .buttonImg{
+      margin:auto;
+      width:max-content;
+      height:max-content;
+    }
+
+    .newPointButton{
+      border-radius:0;
+
+      .newPointButtonImg{
+        width:30%;
+        height:30%;
+      }
+    }
+
+    .addExerciseButton{
+      position:absolute;
+      bottom:0;
+      left:0;
+    }
+  }
+
+  .bottomControls{
+    background-color:$controlsBackgroundColor;
+    width: 94.45%;
+    padding:0.5%;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 0;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
