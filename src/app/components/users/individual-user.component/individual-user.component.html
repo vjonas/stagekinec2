@@ -37,6 +37,25 @@
     </div>
 </div>
 
+<div id="addNewTraject" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add Traject</h4>
+            </div>
+            <div class="modal-body">
+                <ul style="padding:0;">
+                    
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" data-target="#addNewTraject">Go back</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal">Add</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div id="removeUserModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -44,7 +63,7 @@
                 <h4 class="modal-title">Remove user</h4>
             </div>
             <div class="modal-body">
-                <p>Are you sure you want to remove <span style="font-weight: bold">{{user?.name}} {{user?.lastname}}</span> from your list?</p>
+                <p>Are you sure you want to remove <span style="font-weight: bold">{{user?.name}} {{user?.lastname}}</span>                    from your list?</p>
             </div>
             <div class="modal-footer">
                 <button type="button" (click)="deleteUser()" class="btn btn-danger" data-dismiss="modal">Delete</button>
@@ -63,59 +82,62 @@
             <button class="btn btn-danger glyphicon glyphicon-trash deleteUserButton" data-toggle="modal" data-target="#removeUserModal"></button>
         </div>
         <div class="col-xs-6 col-md-0 clearer"></div>
-    <div class="wrapperLeft col-xs-12 col-md-6">
-        <div class="userImageDiv col-xs-12">
-            <img class="userImage" src="../../../../assets/images/no_picture.jpg">
-            <h3 style="font-weight:bold;">{{user?.name}} {{user?.lastname}}</h3>
+        <div class="wrapperLeft col-xs-12 col-md-6">
+            <div class="userImageDiv col-xs-12">
+                <img class="userImage" src="../../../../assets/images/no_picture.jpg">
+                <h3 style="font-weight:bold;">{{user?.name}} {{user?.lastname}}</h3>
+            </div>
+            <div class="userDetailsDiv col-xs-12">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <img class="userDetailsIcon" src="../../../../assets/images/age.png">
+                    </div>
+                    <div class="col-xs-4">
+                        <img class="userDetailsIcon" src="../../../../assets/images/height.png">
+                    </div>
+                    <div class="col-xs-4">
+                        <img class="userDetailsIcon" src="../../../../assets/images/weight.png">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="valueDiv col-xs-4">
+                        <h4>{{age}}yo</h4>
+                    </div>
+                    <div class="valueDiv col-xs-4">
+                        <h4>{{user?.length}}cm</h4>
+                    </div>
+                    <div class="valueDiv col-xs-4">
+                        <h4>{{user?.weight}}kg</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="programDiv col-xs-12">
+                <h5>Current program</h5>
+                <select class="programCombo" [disabled]="programList == null" (change)="onChangeProgram($event.target.value)">
+                   <option *ngIf="programList == null" [disabled] value="geen traject" data-dismiss="modal" data-toggle="modal" data-target="#addNewTraject" >This user doesnt have a program yet</option>
+                    <option *ngFor="let program of programList" value="{{program.id}}">{{program.name}}</option>
+                </select>
+                <button type="button" class="btn btn-danger" *ngIf="programList == null" data-dismiss="modal" data-toggle="modal" data-target="#addNewTraject">Add Traject </button>
+            </div>
         </div>
-        <div class="userDetailsDiv col-xs-12">
-            <div class="row">
-            <div class="col-xs-4">
-                <img class="userDetailsIcon" src="../../../../assets/images/age.png">
-            </div>
-            <div class="col-xs-4">
-                <img class="userDetailsIcon" src="../../../../assets/images/height.png">
-            </div>
-            <div class="col-xs-4">
-                <img class="userDetailsIcon" src="../../../../assets/images/weight.png">
-            </div>
-            </div>
-            <div class="row">
-            <div class="valueDiv col-xs-4">
-                <h4>{{age}}yo</h4>
-            </div>
-            <div class="valueDiv col-xs-4">
-                <h4>{{user?.length}}cm</h4>
-            </div>
-            <div class="valueDiv col-xs-4">
-                <h4>{{user?.weight}}kg</h4>
-            </div>
-            </div>
-        </div>
-        <div class="programDiv col-xs-12">
-            <h5>Current program</h5>
-            <select class="programCombo" [disabled]="programList == null" (change)="onChangeProgram($event.target.value)">
-                <option *ngIf="programList == null" [disabled] value="geen traject">This user doesnt have a program yet</option>
-                <option *ngFor="let program of programList" value="{{program.id}}">{{program.name}}</option>
-            </select>
-        </div>
-    </div>
-    <div class="wrapperRight col-xs-12 col-md-6">  
+        <div class="wrapperRight col-xs-12 col-md-6">
             <h2 class="col-xs-12">Exercises</h2>
             <div class="col-xs-12 exerciseWrapper">
-            <div class="col-xs-12 addExerciseDiv">
-            <h4 class="col-xs-9">Add new exercise</h4>
-            <div class="col-xs-3">
-            <h4 class="glyphicon glyphicon-plus exerciseInteraction" data-toggle="modal" data-target="#addModal"></h4>
-            </div>   
+                <div class="col-xs-12 addExerciseDiv">
+                    <h4 class="col-xs-9">Add new exercise</h4>
+                    <div class="col-xs-3">
+                        <h4 class="glyphicon glyphicon-plus exerciseInteraction" data-toggle="modal" data-target="#addModal"></h4>
+                    </div>
+                </div>
+                <div class="col-xs-12 exerciseList">
+                    <div *ngFor="let exercise of exerciseList" class="exerciseListDiv">
+                        <h4 class="col-xs-9">{{exercise?.description}}</h4>
+                        <div class="col-xs-3">
+                            <h4 class="glyphicon glyphicon-remove-circle exerciseInteraction"></h4>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-xs-12 exerciseList">
-            <div *ngFor="let exercise of exerciseList" class="exerciseListDiv">
-                <h4 class="col-xs-9">{{exercise?.description}}</h4>
-                <div class="col-xs-3"><h4 class="glyphicon glyphicon-remove-circle exerciseInteraction"></h4></div>       
-            </div>
-            </div>
-            </div>
-    </div>
+        </div>
     </div>
 </div>

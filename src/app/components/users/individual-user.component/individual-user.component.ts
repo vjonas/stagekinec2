@@ -33,7 +33,7 @@ export class IndividualUserComponent implements OnInit {
         });
         this.userService.getUserById(this.uid).subscribe(user => {
             console.log(user);
-        this.user = user;
+            this.user = user;
             this.birthdate = new Date(this.user.birthdate);
             var timeDiff = Math.abs(Date.now() - this.birthdate);
             this.age = Math.floor((timeDiff / (1000 * 3600 * 24)) / 365);
