@@ -21,17 +21,16 @@ export class ExerciseComponent implements OnInit, AfterViewInit {
     //variables to draw the new line
     public canvas: HTMLCanvasElement;
     public context;
-    public touchPointX: Array<number> = new Array<number>();
-    public touchPointY: Array<number> = new Array<number>();
-    public arcx: Array<number> = new Array<number>();
-    public arcy: Array<number> = new Array<number>();
     public drawOk: Array<boolean> = new Array<boolean>();
-    public radius = 7;
     private newExercise: FullExercise;
     private activeStepToDraw: number = null;
+    private exercisesOfMentor: FullExercise[];
 
     constructor(private router: Router, private _exerciseService: ExerciseService) {
         this.newExercise = FullExercise.createNewFullExercise();
+        this._exerciseService.getAllExercisesFromMentor().subscribe(exercices => {
+            this.exercisesOfMentor = exercices;
+        })
     }
 
     ngOnInit() {
@@ -64,13 +63,32 @@ export class ExerciseComponent implements OnInit, AfterViewInit {
             this.drawNewTrackingLine();
     }
 
-    changeMode() {
+    //change the mode from viewing an exercise to creating a new exercise
+    private changeMode() {
         if (this.viewState) {
             this.viewState = false;
+            this.exercisesOfMentor.splice(0, this.exercisesOfMentor.length); //empty the list
+            this.exercisesOfMentor.push(FullExercise.createNewFullExercise());//create 1 new exercise in the list
+            this.newExercise=FullExercise.createNewFullExercise();            
         }
         else {
             this.viewState = true;
+            //get the exercices of the mentor
+            this._exerciseService.getAllExercisesFromMentor().subscribe(exercices => {
+                this.exercisesOfMentor = exercices;
+            })
+            //clear the canvas
+            this.recreateCanvas();
+            //clear the steps
+            this.newExercise=FullExercise.createNewFullExercise();
         }
+    }
+
+    private onChangeExercise(exerciseId: string) {
+        this.exercisesOfMentor.forEach(ex => {
+            if (ex["$key"] == exerciseId)
+                this.newExercise = ex;
+        })
     }
 
     addStep() {
@@ -101,7 +119,7 @@ export class ExerciseComponent implements OnInit, AfterViewInit {
             //calculate the distance between the circle and the mousepointer
             for (var i = 0; i < 4; i++) {
                 var distance = Math.sqrt((mousex - this.newExercise.steps[this.activeStepToDraw]["x" + i]) * (mousex - this.newExercise.steps[this.activeStepToDraw]["x" + i]) + (mousey - this.newExercise.steps[this.activeStepToDraw]["y" + i]) * (mousey - this.newExercise.steps[this.activeStepToDraw]["y" + i]));
-                if (distance < this.radius) //you may drag the circle now
+                if (distance < this.newExercise.steps[this.activeStepToDraw].radius) //you may drag the circle now
                 {
                     this.drawOk[i] = true;
                 }
@@ -199,7 +217,7 @@ export class ExerciseComponent implements OnInit, AfterViewInit {
             mousey = e.clientY - this.canvas.offsetTop;
             //calculate the distance between the circle and the mousepointer            
             var distance = Math.sqrt((mousex - this.newExercise.steps[this.activeStepToDraw].x0) * (mousex - this.newExercise.steps[this.activeStepToDraw].x0) + (mousey - this.newExercise.steps[this.activeStepToDraw].y0) * (mousey - this.newExercise.steps[this.activeStepToDraw].y0));
-            if (distance < this.radius) //you may drag the circle now
+            if (distance < this.newExercise.steps[this.activeStepToDraw].radius) //you may drag the circle now
             {
                 this.drawOk[0] = true;
             }
@@ -218,18 +236,6 @@ export class ExerciseComponent implements OnInit, AfterViewInit {
             //redraw the circles and beziercurce
             this.redrawTouchPoints();
         })
-    }
-
-    private initializeTouchPoint(numberOfCircles: number) {
-        this.context = this.canvas.getContext("2d");
-        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        if (this.touchPointX.length < numberOfCircles) {
-            for (var i = 0; i < numberOfCircles; i++) {
-                this.touchPointX.push((this.canvas.width / 2) + (i * 10));
-                this.touchPointY.push((this.canvas.height / 2) + (i * 10));
-                this.drawOk.push(false);
-            }
-        }
     }
 
     private drawTouchPoints() {
@@ -277,7 +283,7 @@ export class ExerciseComponent implements OnInit, AfterViewInit {
     }
 
     private createNewExercise() {
-        console.log("createnewexmethode:"+this.newExercise.description + this.newExercise.name);
+        console.log("createnewexmethode:" + this.newExercise.description + this.newExercise.name);
 
         this._exerciseService.createNewExcercise(this.newExercise);
 

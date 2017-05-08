@@ -23,8 +23,8 @@
         <canvas id="canvas" width=960 height=540></canvas>
     </div>
     <div class="controls col-xs-3">
-        <select class="exerciseCombo col-xs-10">
-            <option *ngFor="let oefening of teller" value="{{oefening[0]}}">{{oefening}}</option>
+        <select class="exerciseCombo col-xs-10" (change)="onChangeExercise($event.target.value)">
+            <option *ngFor="let exercise of exercisesOfMentor" value="{{exercise.$key}}">{{exercise.name}}</option>
         </select>
             <button *ngIf="viewState" (click)="changeMode()" class="btn btn-primary col-xs-2 switchModeButton"><img src="../../../../assets/images/add.svg"></button>
             <button *ngIf="!viewState" (click)="changeMode()" class="btn btn-danger switchModeButton col-xs-2">Back</button>
