@@ -1,6 +1,8 @@
 canvas{
   background-color:white;
   float:left;
+  cursor: crosshair;
+  background-image: url("../../../../assets/images/exerciseBodyExample.jpg");
 }
 
 .exerciseCombo{
@@ -126,4 +128,10 @@ input[type=checkbox]:checked + label{
   position:absolute;
   bottom:0;
   left:0;
+}
+
+.bottomControls{
+  background-color:#F2F2F2;
+      width: 94.45%;
+      padding:0.5%;
 }
