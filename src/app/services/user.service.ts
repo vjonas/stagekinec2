@@ -18,13 +18,13 @@ export class UserService {
         return this.af.database.list(this.path);
     }
 
-    public getUserById(uid: string): Observable<User[]> {
+    public getUserById(uid: string): Observable<User> {
         return this.af.database.list(this.path, {
             query: {
                 orderByChild: 'uid',
                 equalTo: uid
             }
-        });
+        }).map(res=>{return res[0]});
     }
 
     public addMentorToUser(uidMentor: string, uidTutee: string) {

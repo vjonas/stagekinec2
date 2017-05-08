@@ -32,11 +32,12 @@ export class IndividualUserComponent implements OnInit {
             this.uid = params['id']
         });
         this.userService.getUserById(this.uid).subscribe(user => {
-        this.user = user[0];
+            console.log(user);
+        this.user = user;
             this.birthdate = new Date(this.user.birthdate);
             var timeDiff = Math.abs(Date.now() - this.birthdate);
             this.age = Math.floor((timeDiff / (1000 * 3600 * 24)) / 365);
-            this.programList = user[0].traject;
+            this.programList = user.traject;
             this.user.traject[0].excercises.forEach(ex => {
                 this.exerciseService.getExcerciseById(ex.excerciseid).subscribe(
                     ex2 => {
