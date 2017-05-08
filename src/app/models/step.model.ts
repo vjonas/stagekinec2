@@ -1,13 +1,21 @@
 export class Step
 {
     constructor(
-        public stepnr:number,
+        public stepNr:number,
+        public jointType:number,
+        public duration:number,
+        public maxScore:number,
+        public stepType:number,
+        public radius:number,
+        public trackingLineOffset:number,        
         public x:number,
+        public x1:number,
+        public x2:number,
+        public x3:number,
         public y:number,
-        public w:number,
-        public h:number,
-        public style:string,
-        public jointtype:number
+        public y1:number,
+        public y2:number,
+        public y3:number
     )
     {}
 }

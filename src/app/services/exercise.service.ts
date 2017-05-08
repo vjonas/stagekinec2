@@ -21,4 +21,11 @@ export class ExerciseService {
             }
         });
     }
+
+    public createNewExcercise()
+    {
+        this.af.database.list(this.path).push({            
+        });
+
+    }
 }
