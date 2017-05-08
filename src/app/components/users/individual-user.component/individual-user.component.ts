@@ -50,7 +50,7 @@ export class IndividualUserComponent implements OnInit {
     }
 
     goBack() {
-        this.router.navigate(["/useroverview"]);
+        this.router.navigate(["useroverview"]);
     }
 
     changeCheckbox(checkbox: any) {
@@ -66,7 +66,7 @@ export class IndividualUserComponent implements OnInit {
 
     deleteUser() {
         this.userService.removeMentorFromUser(this.uid);
-        this.router.navigate(["/useroverview"]);
+        this.router.navigate(["useroverview"]);
     }
 
     onChangeProgram(newTrajectId) {

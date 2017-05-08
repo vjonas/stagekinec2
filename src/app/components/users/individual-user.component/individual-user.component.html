@@ -23,9 +23,9 @@
             </div>
             <div class="modal-body">
                 <ul style="padding:0;">
-                    <li *ngFor="let counter of teller" class="exerciseLi" (click)="changeCheckbox($event)" [ngClass]="{'radioChecked': counter.checked }">
-                        <input type="radio" name="oefening" value="counter" #counter/>
-                        <label for="Oefening1">Oefening 1</label>
+                    <li *ngFor="let counter of array" class="exerciseLi" (click)="changeCheckbox($event)" [ngClass]="{'radioChecked': counter.checked }">
+                        <input type="radio" name="counter" value="counter" #counter/>
+                        <label for="counter">Exercise 1</label>
                     </li>
                 </ul>
             </div>
@@ -95,7 +95,7 @@
         <div class="programDiv col-xs-12">
             <h5>Current program</h5>
             <select class="programCombo" [disabled]="programList == null" (change)="onChangeProgram($event.target.value)">
-                <option *ngIf="programList == null" [disabled] value="geen traject">U hebt nog geen traject</option>
+                <option *ngIf="programList == null" [disabled] value="geen traject">This user doesnt have a program yet</option>
                 <option *ngFor="let program of programList" value="{{program.id}}">{{program.name}}</option>
             </select>
         </div>

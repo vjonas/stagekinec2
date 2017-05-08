@@ -30,7 +30,7 @@ export class UserOverviewComponent implements OnInit {
     }
 
     goToUser(uid: string) {
-        this.router.navigate(['./individualuser', uid]);
+        this.router.navigate(['individualuser', uid]);
     }
 
     addTutee(uid: string) {
