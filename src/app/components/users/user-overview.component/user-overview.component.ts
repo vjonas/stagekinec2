@@ -25,7 +25,7 @@ export class UserOverviewComponent implements OnInit {
         this.mentorUid = JSON.parse(localStorage.getItem('currentUser')).uid;
         this.userService.getUsersFromMentor(this.mentorUid).subscribe(users => {
         this.userList = users;
-            this.userList.forEach(user => user.age = Math.floor(((Math.abs(Date.now() - <any>(new Date(user.birthdate)))) / (1000 * 3600 * 24)) / 365))
+            this.userList.forEach(user => user.age = Math.floor(((Math.abs(Date.now() - <any>(new Date(user.birthDate)))) / (1000 * 3600 * 24)) / 365))
         });
     }
 

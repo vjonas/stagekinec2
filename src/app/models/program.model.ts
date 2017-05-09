@@ -1,6 +1,6 @@
 import { Exercise } from "app/models/exercise.model";
 
-export class Traject
+export class Program
 {
     constructor(
         public id:number,
@@ -10,12 +10,12 @@ export class Traject
     )
     {}
 
-    public static createEmptyTraject()
+    public static createEmptyProgram()
     {
-        return new Traject(0,'',0,null);
+        return new Program(0,'',0,null);
     }
 
-    public static createEmptyTrajects(): Traject[] {
-        return new Array<Traject>();
+    public static createEmptyPrograms(): Program[] {
+        return new Array<Program>();
     }
 }

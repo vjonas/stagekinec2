@@ -5,7 +5,7 @@ export class Tutor {
     constructor(
         public uid:string,
         public name:string,
-        public lastname:string,
+        public lastName:string,
         public email:string,
     )
     { }

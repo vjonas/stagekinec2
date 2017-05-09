@@ -1,7 +1,7 @@
 export class Exercise
 {
     constructor(
-        public excerciseid:string,
+        public excerciseId:string,
         public score:number
     )
 {}

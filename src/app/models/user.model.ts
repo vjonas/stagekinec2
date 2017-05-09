@@ -1,18 +1,18 @@
 import { Component } from '@angular/core';
-import { Traject } from "app/models/traject.model";
+import { Program } from "app/models/program.model";
 
 export class User {
     constructor(
         public uid:string,
         public name:string,
-        public lastname:string,
+        public lastName:string,
         public email:string,
         public weight:string,
         public length: string,
-        public birthdate:string,
+        public birthDate:string,
         public age:number,
-        public currenttraject:number,
-        public traject:Traject[]
+        public currentProgram:number,
+        public programs:Program[]
     )
     { }
 

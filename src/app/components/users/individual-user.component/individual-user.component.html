@@ -37,20 +37,18 @@
     </div>
 </div>
 
-<div id="addNewTraject" class="modal fade" role="dialog">
+<div id="addNewProgram" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Add Traject</h4>
+                <h4 class="modal-title">Add new program</h4>
             </div>
-            <div class="modal-body">
-                <ul style="padding:0;">
-                    
-                </ul>
+            <div class="modal-body">                
+                <p>Program name <input type="text" placeholder="program name" value="" #programName/></p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal" data-target="#addNewTraject">Go back</button>
-                <button type="button" class="btn btn-success" data-dismiss="modal">Add</button>
+                <button type="button" (click)="createNewProgram(programName.value)" class="btn btn-danger" data-dismiss="modal">Add Program</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
@@ -113,8 +111,10 @@
             </div>
             <div class="programDiv col-xs-12">
                 <h5>Current program</h5>
-                <select class="programCombo" [disabled]="programList == null" (change)="onChangeProgram($event.target.value)">
-                   <option *ngIf="programList == null" [disabled] (click)="addProgram()" value="geen traject" data-dismiss="modal" data-toggle="modal" data-target="#addNewTraject" >This user doesnt have a program yet +</option>
+                <select *ngIf="programList == undefined" [disabled] class="programCombo" data-dismiss="modal" data-toggle="modal" data-target="#addNewProgram">
+                   <option *ngIf="programList == undefined" [disabled]  value="no-program"  >This user doesnt have a program yet +</option>
+                </select>
+                <select *ngIf="programList != undefined" class="programCombo" (change)="onChangeProgram($event.target.value)">
                     <option *ngFor="let program of programList" value="{{program.id}}">{{program.name}}</option>
                 </select>
             </div>
