@@ -20,6 +20,11 @@ export class ProgramService {
     }
 
     public addExerciseToProgram(exerciseId: string, uid: string, programId:number, size:number){
+        console.log("addExerciseToProgram");
+        console.log(exerciseId);
+        console.log(uid);
+        console.log(programId);
+        console.log(size);
         this.af.database.object('/users/'+uid+"/programs/"+programId+"/exercises/"+size).set({
             exerciseId : exerciseId,
         });

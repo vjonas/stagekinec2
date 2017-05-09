@@ -22,7 +22,7 @@ export class ExerciseService {
         return this.af.database.list(this.path, {
             query: {
                 orderByChild: 'mentorUid',
-                equalTo: this._mentorUid
+                equalTo: JSON.parse(localStorage.getItem('currentUser')).uid
             }
         });
     }

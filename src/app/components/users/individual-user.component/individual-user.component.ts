@@ -41,16 +41,15 @@ export class IndividualUserComponent implements OnInit {
             this.age = Math.floor((timeDiff / (1000 * 3600 * 24)) / 365);
             this.programList = this.user.programs;
             this.exerciseService.getAllExercisesFromMentor().subscribe(exercises => { this.mentorExerciseList = exercises });
-            if(this.user.programs != undefined && this.user.programs[0].exercises != undefined){
-            this.userExerciseList.length = 0;
-            this.user.programs[0].exercises.forEach(ex => {
-            this.exerciseService.getExcerciseById(ex.exerciseId).subscribe(
-                ex2 => {
-                    console.log(ex2);
-                    this.userExerciseList.push(ex2);
-                }
-            )
-        });
+            if (this.user.programs != undefined && this.user.programs[0].exercises != undefined) {
+                this.userExerciseList.length = 0;
+                this.user.programs[0].exercises.forEach(ex => {
+                    this.exerciseService.getExcerciseById(ex.exerciseId).subscribe(
+                        ex2 => {
+                            this.userExerciseList.push(ex2);
+                        }
+                    )
+                });
             }
         });
     }
@@ -71,14 +70,18 @@ export class IndividualUserComponent implements OnInit {
 
     onChangeProgram(newProgramId) {
         this.userExerciseList.length = 0;
-        this.user.programs[newProgramId].exercises.forEach(ex => {
-            this.exerciseService.getExcerciseById(ex.exerciseId).subscribe(
-                ex2 => {
-                    console.log(ex2);
-                    this.userExerciseList.push(ex2);
-                }
-            )
-        });
+        //update selected program
+        this.currentProgramId = newProgramId;
+        if (this.user.programs[newProgramId].exercises != null) {
+            this.user.programs[newProgramId].exercises.forEach(ex => {
+                this.exerciseService.getExcerciseById(ex.exerciseId).subscribe(
+                    ex2 => {
+                        this.userExerciseList.push(ex2);
+                    }
+                )
+
+            });
+        }
     }
 
     createNewProgram(programName: string) {
