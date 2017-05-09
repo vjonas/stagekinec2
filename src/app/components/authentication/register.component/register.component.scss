@@ -31,30 +31,34 @@ form {
     -o-transform:scale(1.15); 
     transform:scale(1.15);
     }
-  }
 
-  input {
-    width: 90%;
-    margin: auto;
-    margin-top: 2%;
-    height: 40px;
-    color:$inputColor;
-    font-size: 15px;
-    background: white;
-    border-radius: 5px;
-    font-family: $inputFont;
-  }
+    input {
+      width: 90%;
+      margin: auto;
+      margin-top: 2%;
+      height: 40px;
+      font-size: 15px;
+      background: white;
+      border-radius: 5px;
+      font-family: $inputFont;
+    }
+  }  
 
   #buttons {
     margin: auto;
     margin-top: 5%;
     width: 80%;
     text-align: center;
-  }
 
-  button {
-    width: 100%;
-  }
+    button {
+      width: 100%;
+    }
+
+    #registerbutton{
+      background:$successButtonColor;
+      font-size:1.3em; 
+    }  
+  } 
 
   a {
     width: 100%;
@@ -62,12 +66,7 @@ form {
     font-size: 15px;
     margin-top: 3%;
   }
-
-  #registerbutton{
-    background:$successButtonColor;
-    font-size:1.3em; 
-  }  
-  
+   
   #errMsg{
     padding: 5px;
     width:80%;

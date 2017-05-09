@@ -1,11 +1,4 @@
-@font-face {
-  font-family: 'Droid';
-  src: url('../../assets/fonts/DroidSans.ttf');
-}
-
 body{
-  color: black !important;
-  font-family: 'Droid';
   background-color:#4D00C7 !important;
 }
 

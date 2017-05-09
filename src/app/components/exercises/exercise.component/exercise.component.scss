@@ -98,9 +98,21 @@
     }
 
     .addExerciseButton{
+      border: solid 4px $mainColor;
+      background-color:white;
       position:absolute;
       bottom:0;
       left:0;
+      -webkit-transition: all .3s ease; 
+      -moz-transition: all .3s ease; 
+      -o-transition: all .3s ease;
+      transition: all .3s ease;
+
+      &:hover{
+        background-color:$mainColor;
+        font-weight: bold;
+        color:$altFontColor;
+      }
     }
   }
 

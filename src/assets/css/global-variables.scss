@@ -4,13 +4,20 @@ src: url('/src/assets/fonts/OstrichSans-Black.otf');
 font-weight: bold;
 }
 
+@font-face {
+  font-family: 'Droid';
+  src: url('/src/assets/fonts/DroidSans.ttf');
+}
+
+$mainFont: "Droid";
 $mainFontColor: black;
+$altFontColor: white;
+$mainColor: #4D00C7;
 
 $titleFont: "Ostrich";
 $titleColor: #F2F2F2;
 
 $inputFont: Helvetica, sans-serif;
-$inputColor: black;
 $inputColorError:orange;
 $checkedColor:greenyellow;
 
@@ -24,3 +31,8 @@ $listBackgroundColor: #D2D2D2;
 
 $cardBackgroundColor: white;
 $animatedBorderColor: #C19AFF;
+
+body {
+  font: 100% $mainFont;
+  color: $mainFontColor;
+}

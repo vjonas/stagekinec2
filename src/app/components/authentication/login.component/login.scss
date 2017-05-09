@@ -36,42 +36,41 @@ form {
       -o-transform:scale(1.15); 
       transform:scale(1.15);
     }
-  }
 
-  input {
+    input {
     width: 90%;
     margin: auto;
     margin-top: 2%;
     height: 40px;
-    color:$inputColor;
     font-size: 15px;
     background: white;
     border-radius: 5px;
     font-family: $inputFont;
   }
+}
 
   #buttons {
     margin: auto;
     margin-top: 1%;
     width: 80%;
     text-align: center;
-  }
 
-  button {
-    width: 100%;
-  }
+    button {
+      width: 100%;
+    }
+
+    #loginbutton{
+      background:$successButtonColor;
+      font-size:1.3em; 
+    }
+  } 
 
   a {
     width: 100%;
     height: 25px;
     font-size: 15px;
     margin-top: 3%;
-  }
-
-  #loginbutton{
-    background:$successButtonColor;
-    font-size:1.3em; 
-  }
+  } 
 
   #resetpasswordbutton{
     font-size: .8em;
