@@ -80,4 +80,8 @@ export class IndividualUserComponent implements OnInit {
             )
         });
     }
+
+    addProgram(){
+        console.log("hahaha");
+    }
 }

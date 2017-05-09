@@ -114,10 +114,9 @@
             <div class="programDiv col-xs-12">
                 <h5>Current program</h5>
                 <select class="programCombo" [disabled]="programList == null" (change)="onChangeProgram($event.target.value)">
-                   <option *ngIf="programList == null" [disabled] value="geen traject" data-dismiss="modal" data-toggle="modal" data-target="#addNewTraject" >This user doesnt have a program yet</option>
+                   <option *ngIf="programList == null" [disabled] (click)="addProgram()" value="geen traject" data-dismiss="modal" data-toggle="modal" data-target="#addNewTraject" >This user doesnt have a program yet +</option>
                     <option *ngFor="let program of programList" value="{{program.id}}">{{program.name}}</option>
                 </select>
-                <button type="button" class="btn btn-danger" *ngIf="programList == null" data-dismiss="modal" data-toggle="modal" data-target="#addNewTraject">Add Traject </button>
             </div>
         </div>
         <div class="wrapperRight col-xs-12 col-md-6">
