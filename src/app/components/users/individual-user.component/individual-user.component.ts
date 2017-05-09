@@ -18,12 +18,14 @@ import { ProgramService } from "app/services/program.service";
 })
 
 export class IndividualUserComponent implements OnInit {
-    isCheckboxChecked: number = 0;
     uid: string;
     user: User;
     programList: Program[] = new Array<Program>();
-    exerciseList: Array<FullExercise> = new Array<FullExercise>();
-    birthdate: any;
+    currentProgramId: number = 0;
+    userExerciseList: Array<FullExercise> = new Array<FullExercise>();
+    mentorExerciseList: Array<FullExercise> = new Array<FullExercise>();
+    exerciseToAdd: string;
+    birthDate: any;
     age: number;
 
     constructor(private router: Router, private userService: UserService, private route: ActivatedRoute, private exerciseService: ExerciseService, private _programService: ProgramService) { }
@@ -34,31 +36,22 @@ export class IndividualUserComponent implements OnInit {
         });
         this.userService.getUserById(this.uid).subscribe(user => {
             this.user = user;
-            this.birthdate = new Date(this.user.birthDate);
-            var timeDiff = Math.abs(Date.now() - this.birthdate);
+            this.birthDate = new Date(this.user.birthDate);
+            var timeDiff = Math.abs(Date.now() - this.birthDate);
             this.age = Math.floor((timeDiff / (1000 * 3600 * 24)) / 365);
-            /*var programKeys: Array<string> = new Array<string>();
-            if (user.programs != undefined) {
-                for (var i = 0; i < Object.keys(user.programs).length; i++) {
-                    programKeys = user.programs[Object.keys(user.programs)[i]];
-                    console.log(user.programs[Object.keys(user.programs)[i]])
-                    var program: Program = new Program(user.programs[Object.keys(user.programs)[i]]["programId"], user.programs[Object.keys(user.programs)[i]]["name"], user.programs[Object.keys(user.programs)[i]]["score"], null);
-                    console.log(program);
-                    this.programList.push(program);
-                }
-            }*/
-            //console.log(user.programs[key]["name"]);
-            console.log(this.user.programs);
             this.programList = this.user.programs;
-            console.log(this.programList);
-            /*this.user.programs[0].excercises.forEach(ex => {
-                this.exerciseService.getExcerciseById(ex.excerciseId).subscribe(
-                    ex2 => {
-                        console.log(ex2);
-                        this.exerciseList.push(ex2[0]);
-                    }
-                )
-            });*/
+            this.exerciseService.getAllExercisesFromMentor().subscribe(exercises => { this.mentorExerciseList = exercises });
+            if(this.user.programs != undefined && this.user.programs[0].exercises != undefined){
+            this.userExerciseList.length = 0;
+            this.user.programs[0].exercises.forEach(ex => {
+            this.exerciseService.getExcerciseById(ex.exerciseId).subscribe(
+                ex2 => {
+                    console.log(ex2);
+                    this.userExerciseList.push(ex2);
+                }
+            )
+        });
+            }
         });
     }
 
@@ -66,15 +59,9 @@ export class IndividualUserComponent implements OnInit {
         this.router.navigate(["useroverview"]);
     }
 
-    changeCheckbox(checkbox: any) {
-        if (checkbox.currentTarget.childNodes[1].checked == false) {
-            checkbox.currentTarget.childNodes[1].checked = true;
-            this.isCheckboxChecked++;
-        }
-        else {
-            checkbox.currentTarget.childNodes[1].checked = false
-            this.isCheckboxChecked--;
-        }
+    changeRadio(radio: any) {
+        radio.currentTarget.childNodes[1].checked = true;
+        this.exerciseToAdd = radio.currentTarget.childNodes[1].value;
     }
 
     deleteUser() {
@@ -83,12 +70,12 @@ export class IndividualUserComponent implements OnInit {
     }
 
     onChangeProgram(newProgramId) {
-        this.exerciseList.length = 0;
-        this.user.programs[newProgramId].excercises.forEach(ex => {
-            this.exerciseService.getExcerciseById(ex.excerciseId).subscribe(
+        this.userExerciseList.length = 0;
+        this.user.programs[newProgramId].exercises.forEach(ex => {
+            this.exerciseService.getExcerciseById(ex.exerciseId).subscribe(
                 ex2 => {
                     console.log(ex2);
-                    this.exerciseList.push(ex2[0]);
+                    this.userExerciseList.push(ex2);
                 }
             )
         });
@@ -99,6 +86,14 @@ export class IndividualUserComponent implements OnInit {
             this._programService.createNewProgram(programName, this.user["$key"], this.user.programs.length);
         else
             this._programService.createNewProgram(programName, this.user["$key"], 0);
+    }
 
+    addExerciseToUserProgram() {
+        if (this.userExerciseList.length != 0) {
+            this._programService.addExerciseToProgram(this.exerciseToAdd, this.user["$key"], this.currentProgramId, this.userExerciseList.length);
+        }
+        else {
+            this._programService.addExerciseToProgram(this.exerciseToAdd, this.user["$key"], this.currentProgramId, 0);
+        }
     }
 }

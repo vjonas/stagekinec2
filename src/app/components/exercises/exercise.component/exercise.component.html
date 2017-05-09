@@ -61,9 +61,9 @@
     </div>
     <div class="col-xs-12 bottomControls">
     <div *ngIf="!viewState" class="col-xs-12">
-        <p class="col-xs-2">Radius</p>
-        <p *ngIf="showTrackingLineDetails" class="col-xs-2">Trackingline Offset</p>
-        <p class="col-xs-2">Jointtype</p>
+        <p *ngIf="newExercise.steps[activeStepToDraw]!=undefined" class="col-xs-2">Radius</p>
+        <p *ngIf="showTrackingLineDetails && newExercise.steps[activeStepToDraw]!=undefined" class="col-xs-2">Trackingline Offset</p>
+        <p *ngIf="newExercise.steps[activeStepToDraw] != undefined" class="col-xs-2">Jointtype</p>
     </div>
     <div *ngIf="!viewState" class="col-xs-12">
         <input *ngIf="newExercise.steps[activeStepToDraw]!=undefined" class="col-xs-2 corInput" type="text" placeholder="radius" [(ngModel)]="newExercise.steps[activeStepToDraw].radius"/>

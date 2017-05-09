@@ -23,15 +23,15 @@
             </div>
             <div class="modal-body">
                 <ul style="padding:0;">
-                    <li *ngFor="let counter of array" class="exerciseLi" (click)="changeCheckbox($event)" [ngClass]="{'radioChecked': counter.checked }">
-                        <input type="radio" name="counter" value="counter" #counter/>
-                        <label for="counter">Exercise 1</label>
+                    <li *ngFor="let exercise of mentorExerciseList" class="exerciseLi" id="mentorExerciseList" (click)="changeRadio($event)" [ngClass]="{'radioChecked': counter.checked }">
+                        <input type="radio" name="exercises" value="{{exercise.$key}}" #counter/>
+                        <label for="{{exercise.name}}">{{exercise.name}}</label>
                     </li>
                 </ul>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal" data-toggle="modal" data-target="#addModal">Go back</button>
-                <button type="button" class="btn btn-success" data-dismiss="modal">Add</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal" (click)="addExerciseToUserProgram()">Add</button>
             </div>
         </div>
     </div>
@@ -115,8 +115,9 @@
                    <option *ngIf="programList == undefined" [disabled]  value="no-program"  >This user doesnt have a program yet +</option>
                 </select>
                 <select *ngIf="programList != undefined" class="programCombo" (change)="onChangeProgram($event.target.value)">
-                    <option *ngFor="let program of programList" value="{{program.id}}">{{program.name}}</option>
+                    <option *ngFor="let program of programList" value="{{program.programId}}">{{program.name}}</option>
                 </select>
+                <button class="addProgramButton glyphicon glyphicon-plus" data-toggle="modal" data-target="#addNewProgram"></button>
             </div>
         </div>
         <div class="wrapperRight col-xs-12 col-md-6">
@@ -125,12 +126,13 @@
                 <div class="col-xs-12 addExerciseDiv">
                     <h4 class="col-xs-9">Add new exercise</h4>
                     <div class="col-xs-3">
-                        <h4 class="glyphicon glyphicon-plus exerciseInteraction" data-toggle="modal" data-target="#addModal"></h4>
+                        <h4 *ngIf="programList != undefined" class="glyphicon glyphicon-plus exerciseInteraction" data-toggle="modal" data-target="#addModal"></h4>
+                        <h4 *ngIf="programList == undefined" class="glyphicon glyphicon-plus exerciseInteraction" data-toggle="modal" data-target="#addNewProgram"></h4>
                     </div>
                 </div>
                 <div class="col-xs-12 exerciseList">
-                    <div *ngFor="let exercise of exerciseList" class="exerciseListDiv">
-                        <h4 class="col-xs-9">{{exercise?.description}}</h4>
+                    <div *ngFor="let exercise of userExerciseList" class="exerciseListDiv">
+                        <h4 class="col-xs-9">{{exercise?.name}}</h4>
                         <div class="col-xs-3">
                             <h4 class="glyphicon glyphicon-remove-circle exerciseInteraction"></h4>
                         </div>

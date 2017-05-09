@@ -11,26 +11,17 @@ export class ProgramService {
     }
 
     public createNewProgram(programName:string,uid:string,programId:number) {
-        /*this.af.database.list('/programs').push({
-            programId:program.id,
-            name:program.name,
-            score:program.score,
-            exercises:program.excercises
-        });
-
-        this.af.database.list('/users/'+uid+'/programs').push({
-            programId:program.id,
-            name:program.name,
-            score:program.score,
-            exercises:program.excercises
-        });*/
-
         this.af.database.object('/users/'+uid+'/programs/'+programId).set({
-            programId:"1",
-            name:"program.name",
-            score:"program.score",
+            programId:programId,
+            name:programName,
+            score:0,
             exercises:null
         });
     }
 
+    public addExerciseToProgram(exerciseId: string, uid: string, programId:number, size:number){
+        this.af.database.object('/users/'+uid+"/programs/"+programId+"/exercises/"+size).set({
+            exerciseId : exerciseId,
+        });
+    }
 }

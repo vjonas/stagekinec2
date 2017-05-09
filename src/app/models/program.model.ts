@@ -3,10 +3,10 @@ import { Exercise } from "app/models/exercise.model";
 export class Program
 {
     constructor(
-        public id:number,
+        public programId:number,
         public name:string,
         public score:number,
-        public excercises:Exercise[]
+        public exercises:Exercise[]
     )
     {}
 

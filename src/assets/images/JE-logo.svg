@@ -1,24 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 21.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 127.4 182.1" style="enable-background:new 0 0 127.4 182.1;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:#FFFFFF;}
-	.st1{fill:none;stroke:#FFFFFF;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
-</style>
-<g>
-	<path class="st0" d="M13.9,169.8c-3.1,0-5.8-0.2-8.1-0.5c-2.3-0.3-4.3-0.7-5.9-1.1V150c1.7,0.4,3.6,0.7,5.5,1s4,0.4,6.3,0.4
-		c2.2,0,4.2-0.2,6.1-0.7c1.9-0.5,3.5-1.3,4.9-2.4c1.4-1.2,2.5-2.7,3.3-4.6c0.8-1.9,1.2-4.4,1.2-7.3V36H49v99.7
-		c0,5.9-0.9,11.1-2.6,15.4c-1.7,4.3-4.1,7.8-7.2,10.7c-3.1,2.8-6.8,4.9-11.1,6.2C23.9,169.2,19.1,169.8,13.9,169.8z"/>
-</g>
-<g>
-	<g>
-		<path class="st0" d="M127.4,182.1H67.9V78.6h59.6v18H89.8v22.7h35v18h-35V164h37.6V182.1z"/>
-	</g>
-</g>
-<line class="st1" x1="40.5" y1="8.6" x2="74.8" y2="19.9"/>
-<line class="st1" x1="74.8" y1="19.9" x2="76.6" y2="55.9"/>
-<circle class="st0" cx="40.5" cy="8.6" r="8.6"/>
-<circle class="st0" cx="74.8" cy="19.9" r="8.6"/>
-<circle class="st0" cx="76.6" cy="55.9" r="8.6"/>
+<svg width="127.40000000000002" height="182.1" xmlns="http://www.w3.org/2000/svg">
+ <style type="text/css">.st0{fill:#FFFFFF;}
+	.st1{fill:none;stroke:#FFFFFF;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}</style>
+
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="402" width="582" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g id="svg_1">
+   <path id="svg_2" d="m13.9,169.8c-3.1,0 -5.8,-0.2 -8.1,-0.5c-2.3,-0.3 -4.3,-0.7 -5.9,-1.1l0,-18.2c1.7,0.4 3.6,0.7 5.5,1s4,0.4 6.3,0.4c2.2,0 4.2,-0.2 6.1,-0.7c1.9,-0.5 3.5,-1.3 4.9,-2.4c1.4,-1.2 2.5,-2.7 3.3,-4.6c0.8,-1.9 1.2,-4.4 1.2,-7.3l0,-100.4l21.8,0l0,99.7c0,5.9 -0.9,11.1 -2.6,15.4c-1.7,4.3 -4.1,7.8 -7.2,10.7c-3.1,2.8 -6.8,4.9 -11.1,6.2c-4.2,1.2 -9,1.8 -14.2,1.8z" class="st0"/>
+  </g>
+  <g id="svg_3">
+   <g id="svg_4">
+    <path id="svg_5" d="m127.4,182.1l-59.5,0l0,-103.5l59.6,0l0,18l-37.7,0l0,22.7l35,0l0,18l-35,0l0,26.7l37.6,0l0,18.1z" class="st0"/>
+   </g>
+  </g>
+  <line id="svg_6" y2="19.9" x2="74.8" y1="8.6" x1="40.5" class="st1"/>
+  <line id="svg_7" y2="55.9" x2="76.6" y1="19.9" x1="74.8" class="st1"/>
+  <circle id="svg_8" r="8.6" cy="8.6" cx="40.5" class="st0"/>
+  <circle id="svg_9" r="8.6" cy="19.9" cx="74.8" class="st0"/>
+  <circle id="svg_10" r="8.6" cy="55.9" cx="76.6" class="st0"/>
+  <line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_21" y2="21.598471" x2="74.82902" y1="48.695214" x1="76.441921" stroke-width="1.5" stroke="#ffffff" fill="none"/>
+  <line transform="rotate(-4.623244762420654 57.570976257324155,14.824285507202209) " stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_22" y2="19.340409" x2="68.699995" y1="10.308162" x1="46.441957" stroke-width="5" stroke="#ffffff" fill="none"/>
+  <line transform="rotate(66.03276062011719 75.31289672851562,37.08232116699219) " stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_23" y2="41.598447" x2="86.441908" y1="32.5662" x1="64.183869" stroke-width="5" stroke="#ffffff" fill="none"/>
+ </g>
 </svg>

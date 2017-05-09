@@ -14,13 +14,8 @@ export class ExerciseService {
     }
 
 
-    public getExcerciseById(excercise: string): Observable<FullExercise[]> {
-        return this.af.database.list(this.path, {
-            query: {
-                orderByChild: 'excerciseid',
-                equalTo: Number(excercise)
-            }
-        });
+    public getExcerciseById(exerciseId: string): Observable<FullExercise> {
+        return this.af.database.object(this.path+"/"+exerciseId);
     }
 
     public getAllExercisesFromMentor(): Observable<FullExercise[]> {
