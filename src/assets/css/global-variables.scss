@@ -1,0 +1,26 @@
+@font-face {
+font-family: 'Ostrich';
+src: url('/src/assets/fonts/OstrichSans-Black.otf');
+font-weight: bold;
+}
+
+$mainFontColor: black;
+
+$titleFont: "Ostrich";
+$titleColor: #F2F2F2;
+
+$inputFont: Helvetica, sans-serif;
+$inputColor: black;
+$inputColorError:orange;
+$checkedColor:greenyellow;
+
+$errorMsgBackground: rgba(50,50,50,0.5);
+$confirmMsgBackground: rgba(20,20,20,0.5);
+
+$successButtonColor:#3ED600;
+
+$controlsBackgroundColor: #F0F0F0;
+$listBackgroundColor: #D2D2D2;
+
+$cardBackgroundColor: white;
+$animatedBorderColor: #C19AFF;

@@ -1,7 +1,4 @@
-$textColorMain: black;
-$checkedColor:greenyellow;
-$controlsBackgroundColor: #F0F0F0;
-$listBackgroundColor: #D2D2D2;
+@import "../../../../assets/css/global-variables";
 
 .wrapper{
   margin-left:5%;
@@ -21,7 +18,7 @@ $listBackgroundColor: #D2D2D2;
 
     .exerciseCombo{
       height:50px;
-      color:$textColorMain;
+      color:$mainFontColor;
     }
 
     .switchModeButton{
@@ -44,7 +41,7 @@ $listBackgroundColor: #D2D2D2;
       padding:0;
 
       .stepLi{
-        color:$textColorMain;
+        color:$mainFontColor;
         border-bottom: black solid 1px;
         height:50px;
         background-color: $listBackgroundColor;

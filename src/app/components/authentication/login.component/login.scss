@@ -1,16 +1,4 @@
-@font-face {
-font-family: 'Ostrich';
-src: url('../../../../assets/fonts/OstrichSans-Black.otf');
-font-weight: bold;
-}
-
-$titleFont: "Ostrich";
-$titleColor: #F2F2F2;
-$inputFont: Helvetica, sans-serif;
-$inputColor: black;
-$inputColorError:orange;
-$errorMsgBackground: rgba(50,50,50,0.5);
-$successButtonColor:#3ED600;
+@import '../../../../assets/css/global-variables';
 
 h1{
   text-align:center;

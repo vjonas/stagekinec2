@@ -1,12 +1,4 @@
-@font-face {
-font-family: 'Ostrich';
-src: url('../../../../assets/fonts/OstrichSans-Black.otf');
-font-weight: bold;
-}
-
-$titleFont: "Ostrich";
-$titleColor: #F2F2F2;
-$confirmMsgBackground: rgba(20,20,20,0.5);
+@import "../../../../assets/css/global-variables";
 
 h1{
   text-align:center;

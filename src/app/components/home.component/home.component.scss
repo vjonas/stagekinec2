@@ -1,10 +1,10 @@
-$homeDivBackgroundColor: white;
-$animatedBorderColor: #C19AFF;
+@import "../../../assets/css/global-variables";
+@import "../../../assets/css/global-variables";
 
 .homeDiv{
   text-align: center;
-  margin-top:20%;
-  background-color:$homeDivBackgroundColor;
+  margin-top:15%;
+  background-color:$cardBackgroundColor;
   overflow-x:hidden;
 
   &:before {
