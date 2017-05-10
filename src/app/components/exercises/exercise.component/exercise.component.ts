@@ -18,7 +18,6 @@ export class ExerciseComponent implements OnInit, AfterViewInit {
     viewState: boolean = true;
     showTrackingLineDetails: boolean = false;
     kinectJoints: KinectJoint[] = new Array<KinectJoint>();
-    //variables to draw the new line
     public canvas: HTMLCanvasElement;
     public context;
     public drawOk: Array<boolean> = new Array<boolean>();
@@ -63,23 +62,19 @@ export class ExerciseComponent implements OnInit, AfterViewInit {
             this.drawNewTrackingLine();
     }
 
-    //change the mode from viewing an exercise to creating a new exercise
     private changeMode() {
         if (this.viewState) {
             this.viewState = false;
-            this.exercisesOfMentor.splice(0, this.exercisesOfMentor.length); //empty the list
-            this.exercisesOfMentor.push(FullExercise.createNewFullExercise());//create 1 new exercise in the list
+            this.exercisesOfMentor.splice(0, this.exercisesOfMentor.length); 
+            this.exercisesOfMentor.push(FullExercise.createNewFullExercise());
             this.newExercise=FullExercise.createNewFullExercise();            
         }
         else {
             this.viewState = true;
-            //get the exercices of the mentor
             this._exerciseService.getAllExercisesFromMentor().subscribe(exercices => {
                 this.exercisesOfMentor = exercices;
             })
-            //clear the canvas
             this.recreateCanvas();
-            //clear the steps
             this.newExercise=FullExercise.createNewFullExercise();
         }
     }
@@ -97,29 +92,25 @@ export class ExerciseComponent implements OnInit, AfterViewInit {
 
     removeStep(stepNr: number) {
         console.log(stepNr);
-        //delete the step
         this.newExercise.steps.splice(stepNr, 1);
-        //reset all stepnrs
         this.newExercise.steps.forEach((step, counter) => {
             this.newExercise.steps[counter].stepNr = counter;
         })
     }
 
-    //method called in the html to start the drawing of a new "Volglijn"
     public drawNewTrackingLine() {
         var mousex;
         var mousey;
         this.showTrackingLineDetails = true;
         this.recreateCanvas();
         this.drawTrackingLinePoints();
-        this.newExercise.steps[this.activeStepToDraw].stepType = 1; //set the stepType to a TrackingLine
+        this.newExercise.steps[this.activeStepToDraw].stepType = 1;
         this.canvas.addEventListener("mousedown", e => {
             mousex = e.clientX - this.canvas.offsetLeft;
             mousey = e.clientY - this.canvas.offsetTop;
-            //calculate the distance between the circle and the mousepointer
             for (var i = 0; i < 4; i++) {
                 var distance = Math.sqrt((mousex - this.newExercise.steps[this.activeStepToDraw]["x" + i]) * (mousex - this.newExercise.steps[this.activeStepToDraw]["x" + i]) + (mousey - this.newExercise.steps[this.activeStepToDraw]["y" + i]) * (mousey - this.newExercise.steps[this.activeStepToDraw]["y" + i]));
-                if (distance < this.newExercise.steps[this.activeStepToDraw].radius) //you may drag the circle now
+                if (distance < this.newExercise.steps[this.activeStepToDraw].radius)
                 {
                     this.drawOk[i] = true;
                 }
@@ -131,14 +122,12 @@ export class ExerciseComponent implements OnInit, AfterViewInit {
         })
 
         this.canvas.addEventListener("mousemove", e => {
-            //drag the circle
             this.drawOk.forEach((element, i) => {
                 if (element) {
                     this.newExercise.steps[this.activeStepToDraw]["x" + i] = e.clientX - this.canvas.offsetLeft;
                     this.newExercise.steps[this.activeStepToDraw]["y" + i] = e.clientY - this.canvas.offsetTop;
                 }
             })
-            //redraw the circles and beziercurce
             this.redrawTrackingLinePoints();
             this.drawTrackingLine();
             this.drawBezierDistance(e.clientX - this.canvas.offsetLeft, e.clientY - this.canvas.offsetTop);
@@ -157,7 +146,6 @@ export class ExerciseComponent implements OnInit, AfterViewInit {
 
     private redrawTrackingLinePoints() {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        //this.arcx.forEach((circle, i) => {
         for (var i = 0; i < 4; i++) {
             this.context.beginPath();
             this.context.arc(this.newExercise.steps[this.activeStepToDraw]["x" + i], this.newExercise.steps[this.activeStepToDraw]["y" + i], this.newExercise.steps[this.activeStepToDraw].radius, 0, 2 * Math.PI, false);
@@ -176,7 +164,6 @@ export class ExerciseComponent implements OnInit, AfterViewInit {
         this.context.closePath();
     }
 
-    //clone the canvas to remove the eventListeners
     private recreateCanvas() {
         var newEl = this.canvas.cloneNode(false);
         while (this.canvas.hasChildNodes()) newEl.appendChild(this.canvas.firstChild);
@@ -185,7 +172,6 @@ export class ExerciseComponent implements OnInit, AfterViewInit {
         this.context = this.canvas.getContext('2d');
     }
 
-    //draw the line between the 'volglijn' and the mouse
     private drawBezierDistance(mouseX, mouseY) {
         var curve: Bezier = new Bezier(this.newExercise.steps[this.activeStepToDraw].x0, this.newExercise.steps[this.activeStepToDraw].y0, this.newExercise.steps[this.activeStepToDraw].x1, this.newExercise.steps[this.activeStepToDraw].y1, this.newExercise.steps[this.activeStepToDraw].x2, this.newExercise.steps[this.activeStepToDraw].y2, this.newExercise.steps[this.activeStepToDraw].x3, this.newExercise.steps[this.activeStepToDraw].y3);
         var mouse = { x: mouseX, y: mouseY };
@@ -200,24 +186,18 @@ export class ExerciseComponent implements OnInit, AfterViewInit {
         this.context.closePath();
     }
 
-
-
-
-
-    //draw the touchpoints
     public drawNewTouchPoint() {
         var mousex;
         var mousey;
         this.showTrackingLineDetails = false;
         this.recreateCanvas();
         this.drawTouchPoints();
-        this.newExercise.steps[this.activeStepToDraw].stepType = 0; //set the stepType to a TouchPoint        
+        this.newExercise.steps[this.activeStepToDraw].stepType = 0;       
         this.canvas.addEventListener("mousedown", e => {
             mousex = e.clientX - this.canvas.offsetLeft;
             mousey = e.clientY - this.canvas.offsetTop;
-            //calculate the distance between the circle and the mousepointer            
             var distance = Math.sqrt((mousex - this.newExercise.steps[this.activeStepToDraw].x0) * (mousex - this.newExercise.steps[this.activeStepToDraw].x0) + (mousey - this.newExercise.steps[this.activeStepToDraw].y0) * (mousey - this.newExercise.steps[this.activeStepToDraw].y0));
-            if (distance < this.newExercise.steps[this.activeStepToDraw].radius) //you may drag the circle now
+            if (distance < this.newExercise.steps[this.activeStepToDraw].radius)
             {
                 this.drawOk[0] = true;
             }
@@ -227,13 +207,10 @@ export class ExerciseComponent implements OnInit, AfterViewInit {
             this.drawOk[0] = false;
         });
         this.canvas.addEventListener("mousemove", e => {
-            //drag the circle            
             if (this.drawOk[0]) {
                 this.newExercise.steps[this.activeStepToDraw].x0 = e.clientX - this.canvas.offsetLeft;
                 this.newExercise.steps[this.activeStepToDraw].y0 = e.clientY - this.canvas.offsetTop;
             }
-
-            //redraw the circles and beziercurce
             this.redrawTouchPoints();
         })
     }

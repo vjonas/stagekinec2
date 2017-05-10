@@ -24,8 +24,8 @@
             <div class="modal-body">
                 <ul style="padding:0;">
                     <li *ngFor="let exercise of mentorExerciseList" class="exerciseLi" id="mentorExerciseList" (click)="changeRadio($event)" [ngClass]="{'radioChecked': counter.checked }">
-                        <input type="radio" name="exercises" value="{{exercise.$key}}" #counter/>
-                        <label for="{{exercise.name}}">{{exercise.name}}</label>
+                        <input type="radio" name="exercises" [id]="{{exercise.name}}" [value]="{{exercise.$key}}" #counter/>
+                        <label [for]="{{exercise.name}}">{{exercise.name}}</label>
                     </li>
                 </ul>
             </div>
@@ -115,7 +115,7 @@
                    <option *ngIf="programList == undefined" [disabled]  value="no-program"  >This user doesnt have a program yet +</option>
                 </select>
                 <select *ngIf="programList != undefined" class="programCombo" (change)="onChangeProgram($event.target.value)">
-                    <option *ngFor="let program of programList" value="{{program.programId}}">{{program.name}}</option>
+                    <option *ngFor="let program of programList" [value]="{{program.programId}}">{{program.name}}</option>
                 </select>
                 <button class="addProgramButton glyphicon glyphicon-plus" data-toggle="modal" data-target="#addNewProgram"></button>
             </div>

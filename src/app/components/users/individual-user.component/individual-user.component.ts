@@ -70,7 +70,6 @@ export class IndividualUserComponent implements OnInit {
 
     onChangeProgram(newProgramId) {
         this.userExerciseList.length = 0;
-        //update selected program
         this.currentProgramId = newProgramId;
         if (this.user.programs[newProgramId].exercises != null) {
             Object.keys(this.user.programs[newProgramId].exercises).forEach(ex => {

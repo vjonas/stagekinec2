@@ -23,7 +23,6 @@ import { ExerciseService } from './services/exercise.service';
 import { MentorService } from './services/mentor.service';
 import { ProgramService } from "app/services/program.service";
 
-// routes variabelen
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
