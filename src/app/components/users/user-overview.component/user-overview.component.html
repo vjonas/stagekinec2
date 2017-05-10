@@ -1,66 +1,52 @@
 <div id="addUserModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Add user</h4>
-      </div>
-      <div class="modal-body">
-            <p>User uid</p>
-            <input style="width:400px" type="text" id="uid" placeholder="user uid" #uidInput>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Go back</button>
-        <button type="button" class="btn btn-success" (click)="addTutee(uidInput.value)" data-dismiss="modal">Add</button>
-      </div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add user</h4>
+            </div>
+            <div class="modal-body">
+                <p>User uid</p>
+                <input style="width:400px" type="text" id="uid" placeholder="user uid" #uidInput>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Go back</button>
+                <button type="button" class="btn btn-success" (click)="addTutee(uidInput.value)" data-dismiss="modal">Add</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="wrapper">
+    <div *ngFor="let user of userList" (click)="goToUser(user.uid)" class="col-xs-12 col-sm-6 col-md-6 col-lg-3 cardWrapper">
+        <div class="card">
+            <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 cardDiv"><img src="../../../assets/images/no_picture.jpg" class="cardImage"></div>
+
+            <table class="table col-xs-7 col-sm-7 ">
+                <tbody>
+                    <tr>
+                        <td class="specifier">Name</td>
+                        <td class="userInfo">{{user?.name}} {{user?.lastName}}</td>
+                    </tr>
+                    <tr>
+                        <td class="specifier">Age</td>
+                        <td class="userInfo">{{user?.age}}yo</td>
+                    </tr>
+                    <tr>
+                        <td class="specifier">Height</td>
+                        <td class="userInfo">{{user?.length}}cm</td>
+                    </tr>
+                    <tr>
+                        <td class="specifier">Weight</td>
+                        <td class="userInfo">{{user.weight}}kg</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 
-  </div>
+    <div data-toggle="modal" data-target="#addUserModal" class="col-xs-12 col-sm-6 col-md-6 col-lg-3 cardWrapper">
+        <div class="card" id="addCard">
+            <p>Add user</p>
+            <img class="addImage" src="../../../assets/images/adduser.png"></div>
+    </div>
 </div>
-      <div class="wrapper">   
-        <div *ngFor="let user of userList" (click)="goToUser(user.uid)" class="col-xs-12 col-sm-6 col-md-6 col-lg-3 cardWrapper">
-        <div class="card">
-        <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 cardDiv"><img src="../../../assets/images/no_picture.jpg" class="cardImage"></div>
-
-        <table class="table col-xs-7 col-sm-7 ">
-              <tbody>
-                    <tr><td class="specifier">Name</td><td class="userInfo">{{user?.name}} {{user?.lastName}}</td></tr>
-                    <tr><td class="specifier">Age</td><td class="userInfo">{{user?.age}}yo</td></tr>
-                    <tr><td class="specifier">Height</td><td class="userInfo">{{user?.length}}cm</td></tr>
-                    <tr><td class="specifier">Weight</td><td class="userInfo">{{user.weight}}kg</td></tr>
-              </tbody>
-        </table>
-        </div>
-        </div>
-        
-        <div data-toggle="modal" data-target="#addUserModal" class="col-xs-12 col-sm-6 col-md-6 col-lg-3 cardWrapper">
-        <div class="card" id="addCard">
-            <p>Add user</p>
-            <img class="addImage" src="../../../assets/images/adduser.png"></div>
-        </div>
-        <div data-toggle="modal" data-target="#addUserModal" class="col-xs-12 col-sm-6 col-md-6 col-lg-3 cardWrapper">
-        <div class="card" id="addCard">
-            <p>Add user</p>
-            <img class="addImage" src="../../../assets/images/adduser.png"></div>
-        </div>
-        <div data-toggle="modal" data-target="#addUserModal" class="col-xs-12 col-sm-6 col-md-6 col-lg-3 cardWrapper">
-        <div class="card" id="addCard">
-            <p>Add user</p>
-            <img class="addImage" src="../../../assets/images/adduser.png"></div>
-        </div>
-        <div data-toggle="modal" data-target="#addUserModal" class="col-xs-12 col-sm-6 col-md-6 col-lg-3 cardWrapper">
-        <div class="card" id="addCard">
-            <p>Add user</p>
-            <img class="addImage" src="../../../assets/images/adduser.png"></div>
-        </div>
-        <div data-toggle="modal" data-target="#addUserModal" class="col-xs-12 col-sm-6 col-md-6 col-lg-3 cardWrapper">
-        <div class="card" id="addCard">
-            <p>Add user</p>
-            <img class="addImage" src="../../../assets/images/adduser.png"></div>
-        </div>
-        <div data-toggle="modal" data-target="#addUserModal" class="col-xs-12 col-sm-6 col-md-6 col-lg-3 cardWrapper">
-        <div class="card" id="addCard">
-            <p>Add user</p>
-            <img class="addImage" src="../../../assets/images/adduser.png"></div>
-        </div>
-
-        </div>

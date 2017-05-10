@@ -1,9 +1,9 @@
 import { Component, AfterViewInit, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { KinectJoint } from '../../../models/kinectJoint.model'
-import Bezier from 'bezier-js';
 import { FullExercise } from "app/models/full.exercise.model";
 import { ExerciseService } from "app/services/exercise.service";
+import { DrawService } from "../../../services/draw.service";
 import { Step } from "app/models/step.model";
 
 @Component({
@@ -13,7 +13,6 @@ import { Step } from "app/models/step.model";
 })
 
 export class ExerciseComponent implements OnInit, AfterViewInit {
-    teller: number[][] = [[0, 2, 3], [1, 3, 4, 5], [2, 6]];
     newExerciseSteps: number[] = [0];
     viewState: boolean = true;
     showTrackingLineDetails: boolean = false;
@@ -25,7 +24,7 @@ export class ExerciseComponent implements OnInit, AfterViewInit {
     private activeStepToDraw: number = 0;
     private exercisesOfMentor: FullExercise[];
 
-    constructor(private router: Router, private _exerciseService: ExerciseService) {
+    constructor(private router: Router, private _exerciseService: ExerciseService, private _drawService: DrawService) {
         this.newExercise = FullExercise.createNewFullExercise();
         this._exerciseService.getAllExercisesFromMentor().subscribe(exercices => {
             this.exercisesOfMentor = exercices;
@@ -74,7 +73,8 @@ export class ExerciseComponent implements OnInit, AfterViewInit {
             this._exerciseService.getAllExercisesFromMentor().subscribe(exercices => {
                 this.exercisesOfMentor = exercices;
             })
-            this.recreateCanvas();
+            this._drawService.recreateCanvas(this.canvas);
+            this.canvas = <HTMLCanvasElement>document.getElementById("canvas");
             this.newExercise=FullExercise.createNewFullExercise();
         }
     }
@@ -102,8 +102,9 @@ export class ExerciseComponent implements OnInit, AfterViewInit {
         var mousex;
         var mousey;
         this.showTrackingLineDetails = true;
-        this.recreateCanvas();
-        this.drawTrackingLinePoints();
+        this.context = this._drawService.recreateCanvas(this.canvas);
+        this.canvas = <HTMLCanvasElement>document.getElementById("canvas");
+        this._drawService.drawTrackingLine(this.canvas, this.newExercise, this.activeStepToDraw);
         this.newExercise.steps[this.activeStepToDraw].stepType = 1;
         this.canvas.addEventListener("mousedown", e => {
             mousex = e.clientX - this.canvas.offsetLeft;
@@ -128,71 +129,18 @@ export class ExerciseComponent implements OnInit, AfterViewInit {
                     this.newExercise.steps[this.activeStepToDraw]["y" + i] = e.clientY - this.canvas.offsetTop;
                 }
             })
-            this.redrawTrackingLinePoints();
-            this.drawTrackingLine();
-            this.drawBezierDistance(e.clientX - (window.innerWidth*.05), e.clientY - this.canvas.parentElement.parentElement.parentElement.offsetTop);
-            console.log(this.canvas.parentElement.parentElement.parentElement.offsetTop);
+            this._drawService.drawTrackingLine(this.canvas, this.newExercise, this.activeStepToDraw);
+            this._drawService.drawBezierDistance(e.clientX - this.canvas.offsetLeft, e.clientY - this.canvas.offsetTop,this.canvas, this.newExercise, this.activeStepToDraw);
         })
-    }
-
-    private drawTrackingLinePoints() {
-        for (var i = 0; i < 4; i++) {
-            this.context.beginPath();
-            this.context.arc(this.newExercise.steps[this.activeStepToDraw]["x" + i], this.newExercise.steps[this.activeStepToDraw]["y" + i], this.newExercise.steps[this.activeStepToDraw].radius, 0, 2 * Math.PI, false);
-            if (i == 0) this.context.fillStyle = "green"; else this.context.fillStyle = "red";
-            this.context.fill();
-            this.context.closePath();
-        }
-    }
-
-    private redrawTrackingLinePoints() {
-        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        for (var i = 0; i < 4; i++) {
-            this.context.beginPath();
-            this.context.arc(this.newExercise.steps[this.activeStepToDraw]["x" + i], this.newExercise.steps[this.activeStepToDraw]["y" + i], this.newExercise.steps[this.activeStepToDraw].radius, 0, 2 * Math.PI, false);
-            if (i == 0) this.context.fillStyle = "green"; else this.context.fillStyle = "red";
-            this.context.fill();
-        }
-    }
-
-    private drawTrackingLine() {
-        this.context.beginPath();
-        this.context.moveTo(this.newExercise.steps[this.activeStepToDraw].x0, this.newExercise.steps[this.activeStepToDraw].y0);
-        this.context.bezierCurveTo(this.newExercise.steps[this.activeStepToDraw].x1, this.newExercise.steps[this.activeStepToDraw].y1, this.newExercise.steps[this.activeStepToDraw].x2, this.newExercise.steps[this.activeStepToDraw].y2, this.newExercise.steps[this.activeStepToDraw].x3, this.newExercise.steps[this.activeStepToDraw].y3);
-        this.context.lineWidth = 2;
-        this.context.strokeStyle = 'blue';
-        this.context.stroke();
-        this.context.closePath();
-    }
-
-    private recreateCanvas() {
-        var newEl = this.canvas.cloneNode(false);
-        while (this.canvas.hasChildNodes()) newEl.appendChild(this.canvas.firstChild);
-        this.canvas.parentNode.replaceChild(newEl, this.canvas);
-        this.canvas = <HTMLCanvasElement>newEl;
-        this.context = this.canvas.getContext('2d');
-    }
-
-    private drawBezierDistance(mouseX, mouseY) {
-        var curve: Bezier = new Bezier(this.newExercise.steps[this.activeStepToDraw].x0, this.newExercise.steps[this.activeStepToDraw].y0, this.newExercise.steps[this.activeStepToDraw].x1, this.newExercise.steps[this.activeStepToDraw].y1, this.newExercise.steps[this.activeStepToDraw].x2, this.newExercise.steps[this.activeStepToDraw].y2, this.newExercise.steps[this.activeStepToDraw].x3, this.newExercise.steps[this.activeStepToDraw].y3);
-        var mouse = { x: mouseX, y: mouseY };
-        var p = curve.project(mouse);
-
-        this.context.beginPath();
-        this.context.moveTo(mouseX, mouseY);
-        this.context.lineTo(p.x, p.y);
-        this.context.lineWidth = 2;
-        this.context.strokeStyle = 'blue';
-        this.context.stroke();
-        this.context.closePath();
     }
 
     public drawNewTouchPoint() {
         var mousex;
         var mousey;
         this.showTrackingLineDetails = false;
-        this.recreateCanvas();
-        this.drawTouchPoints();
+        this.context = this._drawService.recreateCanvas(this.canvas);
+        this.canvas = <HTMLCanvasElement>document.getElementById("canvas");
+        this._drawService.drawTouchPoints(this.canvas, this.newExercise, this.activeStepToDraw);
         this.newExercise.steps[this.activeStepToDraw].stepType = 0;       
         this.canvas.addEventListener("mousedown", e => {
             mousex = e.clientX - this.canvas.offsetLeft;
@@ -212,24 +160,8 @@ export class ExerciseComponent implements OnInit, AfterViewInit {
                 this.newExercise.steps[this.activeStepToDraw].x0 = e.clientX - this.canvas.offsetLeft;
                 this.newExercise.steps[this.activeStepToDraw].y0 = e.clientY - this.canvas.offsetTop;
             }
-            this.redrawTouchPoints();
+            this._drawService.drawTouchPoints(this.canvas, this.newExercise, this.activeStepToDraw);
         })
-    }
-
-    private drawTouchPoints() {
-        this.context.beginPath();
-        this.context.arc(this.newExercise.steps[this.activeStepToDraw].x0, this.newExercise.steps[this.activeStepToDraw].y0, this.newExercise.steps[this.activeStepToDraw].radius, 0, 2 * Math.PI, false);
-        this.context.fillStyle = "red";
-        this.context.fill();
-        this.context.closePath();
-    }
-
-    private redrawTouchPoints() {
-        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        this.context.beginPath();
-        this.context.arc(this.newExercise.steps[this.activeStepToDraw].x0, this.newExercise.steps[this.activeStepToDraw].y0, this.newExercise.steps[this.activeStepToDraw].radius, 0, 2 * Math.PI, false);
-        this.context.fillStyle = "red";
-        this.context.fill();
     }
 
     private fillComboboxWithJoints() {
@@ -261,9 +193,6 @@ export class ExerciseComponent implements OnInit, AfterViewInit {
     }
 
     private createNewExercise() {
-        console.log("createnewexmethode:" + this.newExercise.description + this.newExercise.name);
-
         this._exerciseService.createNewExcercise(this.newExercise);
-
     }
 } 
