@@ -24,7 +24,7 @@
     </div>
     <div class="controls col-xs-3">
         <select class="exerciseCombo col-xs-10" (change)="onChangeExercise($event.target.value)">
-            <option *ngFor="let exercise of exercisesOfMentor" value="{{exercise.$key}}">{{exercise.name}}</option>
+            <option *ngFor="let exercise of exercisesOfMentor" [value]="exercise.$key">{{exercise.name}}</option>
         </select>
             <button *ngIf="viewState" (click)="changeMode()" class="btn btn-primary col-xs-2 switchModeButton"><img src="../../../../assets/images/add.svg"></button>
             <button *ngIf="!viewState" (click)="changeMode()" class="btn btn-danger switchModeButton col-xs-2">Back</button>
@@ -42,7 +42,7 @@
             <ul class="col-xs-12 col-sm-12 stepList">
                 <li (click)="addStep()" class="btn btn-primary newStepButton"><img src="../../../../assets/images/add.svg"></li>
                 <li *ngFor="let step of newExercise?.steps" (click)="changeStepToEdit($event,step.stepNr)"class="stepLi" [ngClass]="{'checkboxChecked': counter.checked }">
-                    <input type="radio" name="step" value="step" [id]="step.stepNr" #counter/>
+                    <input type="radio" name="step" [value]="step" [id]="step.stepNr" #counter/>
                     <label [for]="step.stepNr">Step {{step.stepNr+1}}</label>
                     <button (click)="removeStep(step.stepNr)" class="btn btn-danger removeStepButton"><img src="../../../../assets/images/delete.svg"></button>
                 </li>
@@ -66,9 +66,9 @@
         <p *ngIf="newExercise.steps[activeStepToDraw] != undefined" class="col-xs-2">Jointtype</p>
     </div>
     <div *ngIf="!viewState" class="col-xs-12">
-        <input *ngIf="newExercise.steps[activeStepToDraw]!=undefined" class="col-xs-2 corInput" type="text" placeholder="radius" [(ngModel)]="newExercise.steps[activeStepToDraw].radius"/>
+        <input *ngIf="newExercise.steps[activeStepToDraw]!=undefined" class="col-xs-2" type="text" placeholder="radius" [(ngModel)]="newExercise.steps[activeStepToDraw].radius"/>
         <input *ngIf="showTrackingLineDetails && newExercise.steps[activeStepToDraw]!=undefined" class="col-xs-2 corInput" type="text" placeholder="offset in pixels" [(ngModel)]="newExercise.steps[activeStepToDraw].trackingLineOffset"/>
-        <select *ngIf="newExercise.steps[activeStepToDraw] != undefined" class="col-xs-2 corInput" type="text" [(ngModel)]="newExercise.steps[activeStepToDraw].jointType">
+        <select *ngIf="newExercise.steps[activeStepToDraw] != undefined" class="col-xs-2" type="text" [(ngModel)]="newExercise.steps[activeStepToDraw].jointType">
             <option *ngFor="let joint of kinectJoints" [value]="joint?.id">{{joint?.name}}</option>
         </select>
     </div>

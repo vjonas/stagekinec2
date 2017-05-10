@@ -1,19 +1,15 @@
 <div class="wrapperOuter">
   <div class="wrapperInner">
-
     <h1>Login</h1>
     <form name="form" (ngSubmit)="onSubmit(formData)" #formData='ngForm'>
       <p *ngIf="error.message != ''" id="errMsg">{{error.message}}</p>
       <div class="form-group">
         <input type="email" placeholder="Email" class="form-control" name="email" (ngModel)="email" required/>
       </div>
-
-
       <div class="form-group">
         <input type="password" placeholder="Password" class="form-control" name="password" (ngModel)="password" required />
         <a [routerLink]="['/resetpassword']" id="resetpasswordbutton" class="btn btn-link">Forgot password?</a>
       </div>
-
       <div class="form-group" id="buttons">
         <button id=loginbutton type="submit" [disabled]="!formData.valid" class="btn btn-primary">Login</button>
       </div>

@@ -14,7 +14,7 @@ import { routerTransition } from '../../../animations/router.animations'
 
 export class ResetPasswordComponent {
     private auth: any;
-    errCond = false;
+    errOccurred = false;
     error: Error = new Error("");
 
     constructor(private af: AngularFire, @Inject(FirebaseApp) fa: any,
@@ -28,10 +28,10 @@ export class ResetPasswordComponent {
             .then((success) => {
                 console.log(success);
                 this.router.navigate(['/resetconfirmation']);
-                this.errCond = false;
+                this.errOccurred = false;
             }).catch((err) => {
                 console.log(err);
-                this.errCond = true;
+                this.errOccurred = true;
                 this.error = err;
             })
     }

@@ -15,7 +15,7 @@ import { routerTransition } from '../../../animations/router.animations';
 
 export class LoginComponent implements OnInit {
   invalidLogin: boolean;
-  errCond: boolean = false;
+  errorOccurred: boolean = false;
   error: Error = new Error("");
 
   constructor(public af: AngularFire, private router: Router) {
@@ -42,12 +42,11 @@ export class LoginComponent implements OnInit {
         }).then((success) => {
           console.log(success);
           localStorage.setItem('currentUser', JSON.stringify({ uid: success.uid }));
-
           this.router.navigate(['/home']);
-          this.errCond = false;
+          this.errorOccurred = false;
         }).catch((err) => {
           console.log(err);
-          this.errCond = true;
+          this.errorOccurred = true;
           this.error = err;
         })
     }

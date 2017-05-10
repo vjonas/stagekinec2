@@ -25,8 +25,6 @@ export class IndividualUserComponent implements OnInit {
     userExerciseList: Array<FullExercise> = new Array<FullExercise>();
     mentorExerciseList: Array<FullExercise> = new Array<FullExercise>();
     exerciseToAdd: string;
-    birthDate: any;
-    age: number;
 
     constructor(private router: Router, private userService: UserService, private route: ActivatedRoute, private exerciseService: ExerciseService, private _programService: ProgramService) { }
 
@@ -36,9 +34,7 @@ export class IndividualUserComponent implements OnInit {
         });
         this.userService.getUserById(this.uid).subscribe(user => {
             this.user = user;
-            this.birthDate = new Date(this.user.birthDate);
-            var timeDiff = Math.abs(Date.now() - this.birthDate);
-            this.age = Math.floor((timeDiff / (1000 * 3600 * 24)) / 365);
+            this.user.age = Math.floor((Math.abs(Date.now() - <any>new Date(this.user.birthDate)) / (1000 * 3600 * 24)) / 365);
             this.programList = this.user.programs;
             this.exerciseService.getAllExercisesFromMentor().subscribe(exercises => { this.mentorExerciseList = exercises });
             if (this.user.programs != undefined && this.user.programs[0].exercises != undefined) {
