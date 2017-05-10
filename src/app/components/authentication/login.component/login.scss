@@ -1,96 +1,110 @@
 @import '../../../../assets/css/global-variables';
+.wrapperOuter{
+  position: relative;
+  height:80vh;
 
-h1{
-  text-align:center;
-  margin-top: 5%;
-  margin-bottom: 5%;
-  font-family: $titleFont;
-  font-size:5em;
-  color:$titleColor;
-}
+  .wrapperInner{
+    width:100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
-p{
-  text-align:center;
-}
-
-form {
-  width: 400px;
-  margin: auto;
-
-
-  .form-group {
-    width: 90%;
-    margin: auto;
-
-    .form-control{
-      -webkit-transition: all 0.1s ease; 
-      -moz-transition: all 0.1s ease; 
-      -o-transition: all 0.1s ease;
-      transition: all 0.1s ease;
+    h1{
+      text-align:center;
+      margin-top:0;
+      margin-bottom: 2%;
+      font-family: $titleFont;
+      font-size:5em;
+      color:$titleColor;
     }
 
-    .form-control:focus{
-      -webkit-transform:scale(1.15); 
-      -moz-transform:scale(1.15); 
-      -ms-transform:scale(1.15); 
-      -o-transform:scale(1.15); 
-      transform:scale(1.15);
+    p{
+      text-align:center;
     }
 
-    input {
-    width: 90%;
-    margin: auto;
-    margin-top: 2%;
-    height: 40px;
-    font-size: 15px;
-    background: white;
-    border-radius: 5px;
-    font-family: $inputFont;
+    form {
+      width: 400px;
+      margin: auto;
+
+
+      .form-group {
+        width: 90%;
+        margin: auto;
+
+        .form-control{
+          -webkit-transition: all 0.1s ease; 
+          -moz-transition: all 0.1s ease; 
+          -o-transition: all 0.1s ease;
+          transition: all 0.1s ease;
+        }
+
+        .form-control:focus{
+          -webkit-transform:scale(1.15); 
+          -moz-transform:scale(1.15); 
+          -ms-transform:scale(1.15); 
+          -o-transform:scale(1.15); 
+          transform:scale(1.15);
+        }
+
+        input {
+        width: 90%;
+        margin: auto;
+        margin-top: 2%;
+        height: 40px;
+        font-size: 15px;
+        background: white;
+        border-radius: 5px;
+        font-family: $inputFont;
+      }
+    }
+
+      #buttons {
+        margin: auto;
+        margin-top: 1%;
+        width: 80%;
+        text-align: center;
+
+        button {
+          width: 100%;
+        }
+
+        #loginbutton{
+          background:$successButtonColor;
+          font-size:1.3em; 
+        }
+      } 
+
+      a {
+        width: 100%;
+        height: 25px;
+        font-size: 15px;
+        margin-top: 3%;
+      } 
+
+      #resetpasswordbutton{
+        font-size: .8em;
+        text-align: right;
+        width:98%;
+        margin:auto;  
+      }
+
+      #errMsg{
+        padding: 5px;
+        width:80%;
+        margin:auto;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        text-align:center;
+        color:$inputColorError;
+        background-color:$errorMsgBackground;
+        border-radius: 5px;
+      }
+    }
   }
 }
 
-  #buttons {
-    margin: auto;
-    margin-top: 1%;
-    width: 80%;
-    text-align: center;
 
-    button {
-      width: 100%;
-    }
-
-    #loginbutton{
-      background:$successButtonColor;
-      font-size:1.3em; 
-    }
-  } 
-
-  a {
-    width: 100%;
-    height: 25px;
-    font-size: 15px;
-    margin-top: 3%;
-  } 
-
-  #resetpasswordbutton{
-    font-size: .8em;
-    text-align: right;
-    width:98%;
-    margin:auto;  
-  }
-
-  #errMsg{
-    padding: 5px;
-    width:80%;
-    margin:auto;
-    margin-top: 5%;
-    margin-bottom: 5%;
-    text-align:center;
-    color:$inputColorError;
-    background-color:$errorMsgBackground;
-    border-radius: 5px;
-  }
-}
 
 
 

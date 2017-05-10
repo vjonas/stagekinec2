@@ -130,7 +130,8 @@ export class ExerciseComponent implements OnInit, AfterViewInit {
             })
             this.redrawTrackingLinePoints();
             this.drawTrackingLine();
-            this.drawBezierDistance(e.clientX - this.canvas.offsetLeft, e.clientY - this.canvas.offsetTop);
+            this.drawBezierDistance(e.clientX - (window.innerWidth*.05), e.clientY - this.canvas.parentElement.parentElement.parentElement.offsetTop);
+            console.log(this.canvas.parentElement.parentElement.parentElement.offsetTop);
         })
     }
 

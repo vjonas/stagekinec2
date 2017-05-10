@@ -1,32 +1,36 @@
-<h1>Register</h1>
-<form name="form" #formData='ngForm' (ngSubmit)="onSubmit(formData)" novalidate>
-  <p *ngIf="error.message != ''" id="errMsg">{{error.message}}</p>
+<div class="wrapperOuter">
+  <div class="wrapperInner">
+    <h1>Register</h1>
+    <form name="form" #formData='ngForm' (ngSubmit)="onSubmit(formData)" novalidate>
+      <p *ngIf="error.message != ''" id="errMsg">{{error.message}}</p>
 
-  <div class="form-group">
-    <input type="text" placeholder="Name" class="form-control" name="name" (ngModel)="name" required />
+      <div class="form-group">
+        <input type="text" placeholder="Name" class="form-control" name="name" (ngModel)="name" required />
+      </div>
+
+      <div class="form-group">
+        <input type="text" placeholder="Last name" class="form-control" name="lastname" (ngModel)="lastname" required />
+      </div>
+
+      <div class="form-group">
+        <input type="email" placeholder="Email" class="form-control" name="email" (ngModel)="email" required />
+      </div>
+
+      <div class="form-group">
+        <input type="password" placeholder="Password" class="form-control" name="password" (ngModel)="password" required validateEqual="repeatPassword"
+        />
+      </div>
+
+      <div class="form-group">
+        <input type="password" placeholder="Repeat your password" class="form-control" name="repeatPassword" required validateEqual="password"
+        />
+      </div>
+
+      <div class="form-group" id="buttons">
+        <button type="submit" id=registerbutton [disabled]="!formData.valid" class="btn btn-success">Register</button>
+        <a [routerLink]="['/login']" id="loginButton" class="btn btn-link">Go Back</a>
+      </div>
+
+    </form>
   </div>
-
-  <div class="form-group">
-    <input type="text" placeholder="Last name" class="form-control" name="lastname" (ngModel)="lastname" required />
-  </div>
-
-  <div class="form-group">
-    <input type="email" placeholder="Email" class="form-control" name="email" (ngModel)="email" required />
-  </div>
-
-  <div class="form-group">
-    <input type="password" placeholder="Password" class="form-control" name="password" (ngModel)="password" required validateEqual="repeatPassword"
-    />
-  </div>
-
-  <div class="form-group">
-    <input type="password" placeholder="Repeat your password" class="form-control" name="repeatPassword" required validateEqual="password"
-    />
-  </div>
-
-  <div class="form-group" id="buttons">
-    <button type="submit" id=registerbutton [disabled]="!formData.valid" class="btn btn-success">Register</button>
-    <a [routerLink]="['/login']" id="loginButton" class="btn btn-link">Go Back</a>
-  </div>
-
-  <form>
+</div>
