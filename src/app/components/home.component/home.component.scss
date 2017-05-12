@@ -1,5 +1,8 @@
 @import "../../../assets/css/global-variables";
 
+$cardBackgroundColor: $cardColor;
+$animatedBorderColor: $mainColorAccent;
+
 .outerWrapper{
   position: relative;
   height:80vh;
@@ -16,7 +19,7 @@
       background-color:$cardBackgroundColor;
       overflow-x:hidden;
 
-      &:before {
+      &::before {
         transform: translateX(100%);
         content: '';
         position: absolute;
@@ -28,7 +31,7 @@
         border-left: 8px solid transparent;
       }
 
-      &:after {
+      &::after {
         transform: translateX(-100%);
         content: '';
         position: absolute;
@@ -46,14 +49,14 @@
         border: none;
         box-shadow: none;
 
-        &:before {
+        &::before {
           transition: .1s transform linear, .1s height linear .1s;
           transform: translateX(0);
           height: 100%;
           border-color:$animatedBorderColor;
         }
 
-        &:after {
+        &::after {
           transition: .1s transform linear .2s, .1s height linear .3s;
           transform: translateX(0);
           height: 100%;

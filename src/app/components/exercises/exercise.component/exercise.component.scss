@@ -1,5 +1,9 @@
 @import "../../../../assets/css/global-variables";
 
+$checkedColor:$successColor;
+$controlsBackgroundColor: $cardAccentColor;
+$listBackgroundColor: $cardAccentColorAlt;
+
 .wrapper{
   margin-left:5%;
   margin-right:5%;

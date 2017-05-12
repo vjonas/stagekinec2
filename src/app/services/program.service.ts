@@ -28,4 +28,12 @@ export class ProgramService {
             exerciseId : exerciseId,
         });
     }
+
+    public removeExerciseFromProgram(exerciseKey: string, uid: string, currentProgramId: number){
+        console.log(exerciseKey);
+        console.log(uid);
+        console.log(currentProgramId);
+        this.af.database.object("/users/"+uid+"/programs/"+currentProgramId+"/exercises/"+exerciseKey).remove();
+        console.log("HAHAHAHAHA");
+    }
 }

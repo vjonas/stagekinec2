@@ -113,7 +113,7 @@
                         </div>
                     </div>
                     <div class="programDiv col-xs-12">
-                        <h5>Current program</h5>
+                        <h5 (click)="setCurrentProgram()" class="setCurrentProgram">Set as current program</h5>
                         <select *ngIf="programList == undefined" [disabled] class="programCombo" data-dismiss="modal" data-toggle="modal" data-target="#addNewProgram">
                    <option *ngIf="programList == undefined" [disabled]  value="no-program"  >This user doesnt have a program yet +</option>
                 </select>
@@ -137,7 +137,7 @@
                             <div *ngFor="let exercise of userExerciseList" class="exerciseListDiv">
                                 <h4 class="col-xs-9">{{exercise?.name}}</h4>
                                 <div class="col-xs-3">
-                                    <h4 class="glyphicon glyphicon-remove-circle exerciseInteraction"></h4>
+                                    <h4 (click)="removeExerciseFromProgram(exercise['$key'])" class="glyphicon glyphicon-remove-circle exerciseInteraction"></h4>
                                 </div>
                             </div>
                         </div>

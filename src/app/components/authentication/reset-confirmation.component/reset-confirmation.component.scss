@@ -1,5 +1,11 @@
 @import "../../../../assets/css/global-variables";
 
+$titleFont: "Ostrich";
+$titleColor: $altFontColor;
+$errorMsgBackground: $errorBackgroundColor;
+$successButtonColor:$successColor;
+$confirmMsgBackground: rgba(20,20,20,0.5);
+
 h1{
   text-align:center;
   margin-top: 5%;
@@ -16,7 +22,7 @@ div{
   text-align: center;
   padding-bottom:2%;
   border-radius: 10px;
-   text-shadow: 0px 1px #777777;
+   text-shadow: 0px 1px $textShadowColor;
 }
 
 button{

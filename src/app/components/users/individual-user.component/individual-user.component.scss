@@ -86,6 +86,10 @@
           margin-bottom:1%;
         }
 
+        .setCurrentProgram{
+          cursor: pointer;
+        }
+
         .programCombo{
           width:89%;
           height:50px;
@@ -122,6 +126,7 @@
 
             .exerciseInteraction{
               float:right;
+              cursor: pointer;
             }
           }
 

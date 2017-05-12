@@ -29,6 +29,7 @@ export class IndividualUserComponent implements OnInit {
     constructor(private router: Router, private userService: UserService, private route: ActivatedRoute, private exerciseService: ExerciseService, private _programService: ProgramService) { }
 
     ngOnInit() {
+
         this.route.params.subscribe(params => {
             this.uid = params['id']
         });
@@ -60,8 +61,12 @@ export class IndividualUserComponent implements OnInit {
     }
 
     deleteUser() {
-        this.userService.removeMentorFromUser(this.uid);
+        this.userService.removeMentorFromUser(this.user["$key"]);
         this.router.navigate(["useroverview"]);
+    }
+
+    setCurrentProgram(){
+        this.userService.setCurrentProgram(this.currentProgramId, this.user["$key"]);
     }
 
     onChangeProgram(newProgramId) {
@@ -88,5 +93,9 @@ export class IndividualUserComponent implements OnInit {
 
     addExerciseToUserProgram() {
         this._programService.addExerciseToProgram(this.exerciseToAdd, this.user["$key"], this.currentProgramId);
+    }
+
+    removeExerciseFromProgram(exerciseKey: string){
+        this._programService.removeExerciseFromProgram(exerciseKey, this.user["$key"], this.currentProgramId);
     }
 }

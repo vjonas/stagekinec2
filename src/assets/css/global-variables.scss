@@ -10,27 +10,21 @@ font-weight: bold;
 }
 
 $mainFont: "Droid";
-$mainFontColor: black;
-$altFontColor: white;
-$mainColor: #4D00C7;
-
-$titleFont: "Ostrich";
-$titleColor: #F2F2F2;
-
 $inputFont: Helvetica, sans-serif;
-$inputColorError:orange;
-$checkedColor:greenyellow;
+$mainFontColor: black;
+$textShadowColor: #777777;
+$altFontColor: #F2F2F2;
+$mainColor: #4D00C7;
+$mainColorAccent: #C19AFF;
+$addCardBackgroundColor:#FFA207;
+$errorColor: orange;
+$errorBackgroundColor: rgba(50,50,50,0.5);
+$successColor: #3ED600;
+$cardColor: white;
+$cardAccentColor: #F0F0F0;
+$cardAccentColorAlt: #D2D2D2;
 
-$errorMsgBackground: rgba(50,50,50,0.5);
-$confirmMsgBackground: rgba(20,20,20,0.5);
-
-$successButtonColor:#3ED600;
-
-$controlsBackgroundColor: #F0F0F0;
-$listBackgroundColor: #D2D2D2;
-
-$cardBackgroundColor: white;
-$animatedBorderColor: #C19AFF;
+$inputColorError:$errorColor;
 
 body {
   font: 100% $mainFont;

@@ -1,5 +1,10 @@
 @import '../../../../assets/css/global-variables';
 
+$titleFont: "Ostrich";
+$titleColor: $altFontColor;
+$errorMsgBackground: $errorBackgroundColor;
+$successButtonColor:$successColor;
+
 .wrapperOuter{
   position: relative;
   height:80vh;

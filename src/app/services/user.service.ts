@@ -6,6 +6,13 @@ import { User } from "../models/user.model";
 import { Exercise } from "app/models/exercise.model";
 import { Tutor } from "../models/tutor.model";
 
+let contacts = [
+  { id: 1, name: 'Pascal Precht', twitter: '@PascalPrecht' },
+  { id: 2, name: 'Christoph Burgdorf', twitter: '@cburgdorf' },
+  { id: 3, name: 'Thomas Burleson', twitter: '@thomasburleson' },
+  { id: 4, name: 'Dominic Elm', twitter: '@elmd_' }
+];
+
 @Injectable()
 export class UserService {
     path: string = "/users";
@@ -18,7 +25,7 @@ export class UserService {
         return this.af.database.list(this.path);
     }
 
-    public getUserById(uid: string): Observable<User> {
+    public getUserById(uid: string) {
         return this.af.database.list(this.path, {
             query: {
                 orderByChild: 'uid',
@@ -41,15 +48,8 @@ export class UserService {
             })
     }
 
-    public removeMentorFromUser(uidTutee: string) {
-        var deleteTutees = this.af.database.list(this.path, { preserveSnapshot: true });
-        deleteTutees.subscribe(snapshots => {
-            snapshots.forEach(snapshot => {
-                if (snapshot.val().uid == uidTutee) {
-                    this.af.database.list(this.path).update(snapshot.key, { mentorId: 0 });
-                }
-            })
-        })
+    public removeMentorFromUser(userKey: string) {
+        this.af.database.object(this.path+"/"+userKey).update({ mentorId: 0 });
     }
 
     public getUsersFromMentor(uidMentor: string): Observable<User[]> {
@@ -59,6 +59,10 @@ export class UserService {
                 equalTo: uidMentor
             }
         });
+    }
+
+    public setCurrentProgram(programId: number, userKey: string){
+        this.af.database.object(this.path+"/"+userKey).update({currentProgram: programId});
     }
 
 }
