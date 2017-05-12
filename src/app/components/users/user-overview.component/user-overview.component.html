@@ -17,6 +17,11 @@
     </div>
 </div>
 <div class="wrapper">
+    <div data-toggle="modal" data-target="#addUserModal" class="col-xs-12 col-sm-6 col-md-6 col-lg-3 cardWrapper">
+        <div class="card" id="addCard">
+            <p>Add user</p>
+            <img class="addImage" src="../../../assets/images/user.svg"></div>
+    </div>
     <div *ngFor="let user of userList" (click)="goToUser(user.uid)" class="col-xs-12 col-sm-6 col-md-6 col-lg-3 cardWrapper">
         <div class="card">
             <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 cardDiv"><img src="../../../assets/images/no_picture.jpg" class="cardImage"></div>
@@ -42,11 +47,5 @@
                 </tbody>
             </table>
         </div>
-    </div>
-
-    <div data-toggle="modal" data-target="#addUserModal" class="col-xs-12 col-sm-6 col-md-6 col-lg-3 cardWrapper">
-        <div class="card" id="addCard">
-            <p>Add user</p>
-            <img class="addImage" src="../../../assets/images/user.svg"></div>
     </div>
 </div>

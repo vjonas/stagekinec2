@@ -11,7 +11,7 @@ export class DrawService{
         for (var i = 0; i < 4; i++) {
             context.beginPath();
             context.arc(newExercise.steps[activeStepToDraw]["x" + i], newExercise.steps[activeStepToDraw]["y" + i], newExercise.steps[activeStepToDraw].radius, 0, 2 * Math.PI, false);
-            if (i == 0) context.fillStyle = "green"; else context.fillStyle = "red";
+            if (i == 0) context.fillStyle = "green"; else if(i<3) context.fillStyle = "blue"; else context.fillStyle="red";
             context.fill();
             context.closePath();
         }
@@ -22,6 +22,7 @@ export class DrawService{
         context.strokeStyle = 'blue';
         context.stroke();
         context.closePath();
+        console.log(newExercise);
     }
 
     drawBezierDistance(mouseX: number, mouseY: number, canvas: HTMLCanvasElement, newExercise: FullExercise, activeStepToDraw: number) {
@@ -44,7 +45,7 @@ export class DrawService{
         context.clearRect(0, 0, canvas.width, canvas.height);
         context.beginPath();
         context.arc(newExercise.steps[activeStepToDraw].x0, newExercise.steps[activeStepToDraw].y0, newExercise.steps[activeStepToDraw].radius, 0, 2 * Math.PI, false);
-        context.fillStyle = "red";
+        context.fillStyle = "green";
         context.fill();
         context.closePath();
     }
