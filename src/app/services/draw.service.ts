@@ -1,17 +1,17 @@
-import {Injectable} from '@angular/core';
-import {FullExercise} from '../models/full.exercise.model';
+import { Injectable } from '@angular/core';
+import { FullExercise } from '../models/full.exercise.model';
 import Bezier from 'bezier-js';
 
 @Injectable()
-export class DrawService{
-    
+export class DrawService {
+
     drawTrackingLine(canvas: HTMLCanvasElement, newExercise: FullExercise, activeStepToDraw: number) {
         var context = canvas.getContext("2d");
         context.clearRect(0, 0, canvas.width, canvas.height);
         for (var i = 0; i < 4; i++) {
             context.beginPath();
             context.arc(newExercise.steps[activeStepToDraw]["x" + i], newExercise.steps[activeStepToDraw]["y" + i], newExercise.steps[activeStepToDraw].radius, 0, 2 * Math.PI, false);
-            if (i == 0) context.fillStyle = "green"; else if(i<3) context.fillStyle = "blue"; else context.fillStyle="red";
+            if (i == 0) context.fillStyle = "green"; else if (i < 3) context.fillStyle = "blue"; else context.fillStyle = "red";
             context.fill();
             context.closePath();
         }
@@ -22,7 +22,6 @@ export class DrawService{
         context.strokeStyle = 'blue';
         context.stroke();
         context.closePath();
-        console.log(newExercise);
     }
 
     drawBezierDistance(mouseX: number, mouseY: number, canvas: HTMLCanvasElement, newExercise: FullExercise, activeStepToDraw: number) {
@@ -41,10 +40,13 @@ export class DrawService{
     }
 
     drawTouchPoints(canvas: HTMLCanvasElement, newExercise: FullExercise, activeStepToDraw: number) {
+        console.log(newExercise.steps[activeStepToDraw].stepType);
         var context = canvas.getContext("2d");
         context.clearRect(0, 0, canvas.width, canvas.height);
         context.beginPath();
         context.arc(newExercise.steps[activeStepToDraw].x0, newExercise.steps[activeStepToDraw].y0, newExercise.steps[activeStepToDraw].radius, 0, 2 * Math.PI, false);
+        if (newExercise.steps[activeStepToDraw].stepType == 2)
+            context.arc(newExercise.steps[activeStepToDraw].x1, newExercise.steps[activeStepToDraw].y1, newExercise.steps[activeStepToDraw].radius, 0, 2 * Math.PI, false);
         context.fillStyle = "green";
         context.fill();
         context.closePath();
