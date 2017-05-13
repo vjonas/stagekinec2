@@ -1,6 +1,6 @@
 @import "../../../../assets/css/global-variables";
 
-$checkedColor:$successColor;
+$checkedColor:$textShadowColor;
 $controlsBackgroundColor: $cardAccentColor;
 $listBackgroundColor: $cardAccentColorAlt;
 
@@ -30,7 +30,7 @@ $listBackgroundColor: $cardAccentColorAlt;
       border:none;
       padding-top:0;
       padding-bottom:0;
-      border-radius:0;
+      border-radius:0px;
     }
 
     input[type=checkbox]{
@@ -78,7 +78,7 @@ $listBackgroundColor: $cardAccentColorAlt;
       .removeStepButton{
         float:right;
         height:100%;
-        border-radius:none;
+        border-radius:0px;
         
         img{
           height:100%;
