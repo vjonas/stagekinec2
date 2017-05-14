@@ -18,7 +18,7 @@ export class Step {
     ) {
     }
     public static createNewStep(stepNr:number,canvasWidth:number,canvasHeight:number): Step {
-        return new Step(stepNr, 7, 10,15, 0, 15, 10,299,417,573,669,200,94,94,200);
+        return new Step(stepNr, 7, 10,15, 0, 15, 50,299,417,573,669,200,94,94,200);
     }
 
 }

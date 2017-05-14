@@ -67,7 +67,12 @@
     </div>
     <div *ngIf="!viewState" class="col-xs-12">
         <input *ngIf="newExercise.steps[activeStepToDraw]!=undefined" class="col-xs-2" type="text" placeholder="radius" [(ngModel)]="newExercise.steps[activeStepToDraw].radius"/>
-        <input *ngIf="showTrackingLineDetails && newExercise.steps[activeStepToDraw]!=undefined" class="col-xs-2 corInput" type="text" placeholder="offset in pixels" [(ngModel)]="newExercise.steps[activeStepToDraw].trackingLineOffset"/>
+        <!--<input *ngIf="showTrackingLineDetails && newExercise.steps[activeStepToDraw]!=undefined" class="col-xs-2 corInput" type="text" placeholder="offset in pixels" [(ngModel)]="newExercise.steps[activeStepToDraw].trackingLineOffset"/>-->
+        <select *ngIf="showTrackingLineDetails && newExercise.steps[activeStepToDraw] != undefined" class="col-xs-2" type="text" name="offset-tracking-line" [(ngModel)]="newExercise.steps[activeStepToDraw].trackingLineOffset">
+            <option value="80">Easy</option>
+            <option value="50">Medium</option>
+            <option value="25">Hard</option>
+        </select>
         <select *ngIf="newExercise.steps[activeStepToDraw] != undefined" class="col-xs-2" type="text" [(ngModel)]="newExercise.steps[activeStepToDraw].jointType">
             <option *ngFor="let joint of kinectJoints" [value]="joint?.id">{{joint?.name}}</option>
         </select>
