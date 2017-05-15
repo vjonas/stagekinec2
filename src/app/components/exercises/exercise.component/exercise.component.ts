@@ -137,7 +137,7 @@ export class ExerciseComponent implements OnInit, AfterViewInit {
     public drawNewTouchPoint(activateSecondTouchPoint: boolean) {
         var mousex;
         var mousey;
-        this.showTrackingLineDetails = false;        
+        this.showTrackingLineDetails = false;
         this.context = this._drawService.recreateCanvas(this.canvas);
         this.canvas = <HTMLCanvasElement>document.getElementById("canvas");
         if (activateSecondTouchPoint)
@@ -162,7 +162,6 @@ export class ExerciseComponent implements OnInit, AfterViewInit {
             this.drawOk[1] = false;
         });
         this.canvas.addEventListener("mousemove", e => {
-            console.log("mousemove: " + this.newExercise.steps[this.activeStepToDraw].stepType)
             if (this.drawOk[0]) {
                 this.newExercise.steps[this.activeStepToDraw].x0 = e.clientX - this.canvas.offsetLeft;
                 this.newExercise.steps[this.activeStepToDraw].y0 = e.clientY - this.canvas.offsetTop;
@@ -205,5 +204,32 @@ export class ExerciseComponent implements OnInit, AfterViewInit {
 
     private createNewExercise() {
         this._exerciseService.createNewExcercise(this.newExercise);
+    }
+
+    private checkBottomControls(bottomControlsState: number) {
+        if (bottomControlsState == 0) //1 touchpoint
+        {
+            if (!this.viewState && this.newExercise.steps[this.activeStepToDraw]!= undefined && this.newExercise.steps[this.activeStepToDraw].stepType == 0)
+                return true
+            else
+                return false;
+
+        }
+        else if (bottomControlsState == 1) //trackingline
+        {
+            if (!this.viewState && this.newExercise.steps[this.activeStepToDraw]!= undefined && this.newExercise.steps[this.activeStepToDraw].stepType == 1)
+                return true
+            else
+                return false;
+
+        }
+        else if (bottomControlsState == 2) //2 TouchPoints
+        {
+            if (!this.viewState && this.newExercise.steps[this.activeStepToDraw]!= undefined && this.newExercise.steps[this.activeStepToDraw].stepType == 2)
+                return true
+            else
+                return false;
+        }
+
     }
 } 

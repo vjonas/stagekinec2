@@ -45,11 +45,16 @@ export class DrawService {
         context.clearRect(0, 0, canvas.width, canvas.height);
         context.beginPath();
         context.arc(newExercise.steps[activeStepToDraw].x0, newExercise.steps[activeStepToDraw].y0, newExercise.steps[activeStepToDraw].radius, 0, 2 * Math.PI, false);
-        if (newExercise.steps[activeStepToDraw].stepType == 2)
-            context.arc(newExercise.steps[activeStepToDraw].x1, newExercise.steps[activeStepToDraw].y1, newExercise.steps[activeStepToDraw].radius, 0, 2 * Math.PI, false);
         context.fillStyle = "green";
         context.fill();
         context.closePath();
+        if (newExercise.steps[activeStepToDraw].stepType == 2) {
+            context.beginPath();
+            context.arc(newExercise.steps[activeStepToDraw].x1, newExercise.steps[activeStepToDraw].y1, newExercise.steps[activeStepToDraw].radius, 0, 2 * Math.PI, false);
+            context.fillStyle = "red";
+            context.fill();
+            context.closePath();
+        }
     }
 
     recreateCanvas(canvas: HTMLCanvasElement): CanvasRenderingContext2D {
