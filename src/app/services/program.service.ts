@@ -20,20 +20,12 @@ export class ProgramService {
     }
 
     public addExerciseToProgram(exerciseId: string, uid: string, programId:number){
-        console.log("addExerciseToProgram");
-        console.log(exerciseId);
-        console.log(uid);
-        console.log(programId);
         this.af.database.object('/users/'+uid+"/programs/"+programId+"/exercises/"+exerciseId).set({
             exerciseId : exerciseId,
         });
     }
 
     public removeExerciseFromProgram(exerciseKey: string, uid: string, currentProgramId: number){
-        console.log(exerciseKey);
-        console.log(uid);
-        console.log(currentProgramId);
         this.af.database.object("/users/"+uid+"/programs/"+currentProgramId+"/exercises/"+exerciseKey).remove();
-        console.log("HAHAHAHAHA");
     }
 }
