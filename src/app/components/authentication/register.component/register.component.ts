@@ -26,14 +26,11 @@ export class RegisterComponent {
                 email: formData.value.email,
                 password: formData.value.password
             }).then((success) => {
-                console.log(success);
                 this.mentorService.createMentor(formData, success.uid);
                 localStorage.setItem('currentUser', JSON.stringify({ uid: success.uid }));
                 this.router.navigate(['/home'])
             }).catch((err) => {
                 this.error = err;
-                console.log(err);
-                console.log(this.error.message);
             })
         }
     }

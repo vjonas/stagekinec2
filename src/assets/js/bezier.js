@@ -844,8 +844,6 @@
           break;
         }
 
-        // console.log("L835: [F] arc found", t_s, prev_e, prev_arc.x, prev_arc.y, prev_arc.s, prev_arc.e);
-
         prev_arc = (prev_arc ? prev_arc : arc);
         circles.push(prev_arc);
         t_s = prev_e;

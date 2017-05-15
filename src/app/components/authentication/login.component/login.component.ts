@@ -32,7 +32,6 @@ export class LoginComponent implements OnInit {
 
   onSubmit(formData) {
     if (formData.valid) {
-      console.log(formData.value);
       this.af.auth.login({
         email: formData.value.email,
         password: formData.value.password
@@ -40,12 +39,10 @@ export class LoginComponent implements OnInit {
           provider: AuthProviders.Password,
           method: AuthMethods.Password,
         }).then((success) => {
-          console.log(success);
           localStorage.setItem('currentUser', JSON.stringify({ uid: success.uid }));
           this.router.navigate(['/home']);
           this.errorOccurred = false;
         }).catch((err) => {
-          console.log(err);
           this.errorOccurred = true;
           this.error = err;
         })
@@ -59,7 +56,6 @@ export class LoginComponent implements OnInit {
     }).then((success) => {
       this.router.navigate(['/home']);
     }).catch((err) => {
-      console.log(err);
       this.error = err;
     })
   }

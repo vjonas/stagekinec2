@@ -60,7 +60,6 @@ export class DrawService {
     }
 
     drawTouchPoints(canvas: HTMLCanvasElement, newExercise: FullExercise, activeStepToDraw: number) {
-        console.log(newExercise.steps[activeStepToDraw].stepType);
         var context = canvas.getContext("2d");
         context.clearRect(0, 0, canvas.width, canvas.height);
         context.beginPath();

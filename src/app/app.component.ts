@@ -23,7 +23,6 @@ export class AppComponent {
         this.af.auth.logout();
         this.name = null;
         localStorage.clear();
-        console.log("logged out");
         this.router.navigateByUrl('/login');
     }
 
