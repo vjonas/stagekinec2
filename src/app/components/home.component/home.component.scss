@@ -16,10 +16,21 @@ $animatedBorderColor: $mainColorAccent;
     transform: translate(-50%, -50%);
 }
 
+.logoDiv{
+  text-align:center; 
+  margin-top:-1%;  
+
+  @media (max-width: 992px){
+    margin-top:5%;
+    margin-bottom:5%;
+  }
+}
+
 .homeDiv{
   text-align: center;
   background-color:$cardBackgroundColor;
   overflow-x:hidden;
+  border-radius: 5px;
 
   &::before {
     transform: translateX(100%);
