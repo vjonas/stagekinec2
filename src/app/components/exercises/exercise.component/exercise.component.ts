@@ -28,7 +28,7 @@ export class ExerciseComponent implements OnInit, AfterViewInit {
         this.newExercise = FullExercise.createNewFullExercise();
         this._exerciseService.getAllExercisesFromMentor().subscribe(exercices => {
             this.exercisesOfMentor = exercices;
-        })
+        });     
     }
 
     ngOnInit() {
@@ -68,6 +68,9 @@ export class ExerciseComponent implements OnInit, AfterViewInit {
             this.exercisesOfMentor.splice(0, this.exercisesOfMentor.length);
             this.exercisesOfMentor.push(FullExercise.createNewFullExercise());
             this.newExercise = FullExercise.createNewFullExercise();
+            this.newExercise.steps.push(new Step(0,7,0,10,2,15,30,300,673,0,0,247,247,0,0,11));
+
+
         }
         else {
             this.viewState = true;
