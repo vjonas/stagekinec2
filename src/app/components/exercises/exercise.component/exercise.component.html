@@ -69,7 +69,7 @@
         </div>
         <div *ngIf="checkBottomControls(0)" class="col-xs-12">
             <input class="col-xs-2" type="text" placeholder="radius" [(ngModel)]="newExercise.steps[activeStepToDraw].radius" />
-            <select class="col-xs-2" type="text" [(ngModel)]="newExercise.steps[activeStepToDraw].jointType">
+            <select class="col-xs-2 jointCombo" type="text" [(ngModel)]="newExercise.steps[activeStepToDraw].jointType">
             <option *ngFor="let joint of kinectJoints" [value]="joint?.id">{{joint?.name}}</option>
         </select>
         </div>
@@ -82,10 +82,10 @@
         </div>
         <div *ngIf="checkBottomControls(2)" class="col-xs-12">
             <input class="col-xs-2" type="text" placeholder="radius" [(ngModel)]="newExercise.steps[activeStepToDraw].radius" />
-            <select class="col-xs-2" type="text" [(ngModel)]="newExercise.steps[activeStepToDraw].jointType">
+            <select class="col-xs-2 jointCombo" type="text" [(ngModel)]="newExercise.steps[activeStepToDraw].jointType">
             <option *ngFor="let joint of kinectJoints" [value]="joint?.id">{{joint?.name}}</option>
         </select>
-            <select class="col-xs-2" type="text" [(ngModel)]="newExercise.steps[activeStepToDraw].secondJointType">
+            <select class="col-xs-2 jointCombo" type="text" [(ngModel)]="newExercise.steps[activeStepToDraw].secondJointType">
             <option *ngFor="let joint of kinectJoints" [value]="joint?.id">{{joint?.name}}</option>
         </select>
         </div>
@@ -98,13 +98,13 @@
         </div>
         <div *ngIf="checkBottomControls(1)" class="col-xs-12">
             <input class="col-xs-2" type="text" placeholder="radius" [(ngModel)]="newExercise.steps[activeStepToDraw].radius" />
-            <select *ngIf="showTrackingLineDetails && newExercise.steps[activeStepToDraw] != undefined" class="col-xs-2" type="text"
+            <select *ngIf="showTrackingLineDetails && newExercise.steps[activeStepToDraw] != undefined" class="col-xs-2 jointCombo" type="text"
                 name="offset-tracking-line" [(ngModel)]="newExercise.steps[activeStepToDraw].trackingLineOffset">
             <option value="80">Easy</option>
             <option value="50">Medium</option>
             <option value="25">Hard</option>
         </select>
-            <select class="col-xs-2" type="text" [(ngModel)]="newExercise.steps[activeStepToDraw].jointType">
+            <select class="col-xs-2 jointCombo" type="text" [(ngModel)]="newExercise.steps[activeStepToDraw].jointType">
             <option *ngFor="let joint of kinectJoints" [value]="joint?.id">{{joint?.name}}</option>
         </select>
         </div>

@@ -7,124 +7,128 @@ $listBackgroundColor: $cardAccentColorAlt;
 .wrapper{
   margin-left:5%;
   margin-right:5%;
+}
 
-  canvas{
-    background-color:white;
-    float:left;
-    cursor: crosshair;
-    background-image: url("../../../../assets/images/exerciseBodyExample.jpg");
-  }
+canvas{
+  background-color:white;
+  float:left;
+  cursor: crosshair;
+  background-image: url("../../../../assets/images/exerciseBodyExample.jpg");
+}
 
-  .controls{
-    background-color: $controlsBackgroundColor;
-    height:540px;
-    padding:0;
+.controls{
+  background-color: $controlsBackgroundColor;
+  height:540px;
+  padding:0;
+}
 
-    .exerciseCombo{
-      height:50px;
-      color:$mainFontColor;
-    }
+.exerciseCombo{
+  height:50px;
+  color:$mainFontColor;
+}
 
-    .switchModeButton{
-      height:50px;
-      border:none;
-      padding-top:0;
-      padding-bottom:0;
-      border-radius:0px;
-    }
+.switchModeButton{
+  height:50px;
+  border:none;
+  padding-top:0;
+  padding-bottom:0;
+  border-radius:0px;
+}
 
-    input[type=checkbox]{
-      appearance:none;
-    }
+input[type=checkbox]{
+  appearance:none;
+}
 
-    .stepList{
-      padding-top:10px;
-      height:280px;
-      overflow-y: scroll;
-      overflow-x: hidden;
-      padding:0;
+.stepList{
+  padding-top:10px;
+  height:280px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding:0;
+}
 
-      .stepLi{
-        color:$mainFontColor;
-        border-bottom: black solid 1px;
-        height:50px;
-        background-color: $listBackgroundColor;
-        list-style: none;
-      }
+.stepLi{
+  color:$mainFontColor;
+  border-bottom: black solid 1px;
+  height:50px;
+  background-color: $listBackgroundColor;
+  list-style: none;
+}
 
-      input[type=radio]{
-        appearance:none;
-      }
+input[type=radio]{
+  appearance:none;
+}
 
-      input[type=checkbox]:checked + label{
-        background-color:$checkedColor;
-      }
+input[type=checkbox]:checked + label{
+  background-color:$checkedColor;
+}
       
-      .checkboxChecked{
-        background-color:$checkedColor;
-      }
+.checkboxChecked{
+  background-color:$checkedColor;
+}
 
-      .newStepButton{
-        width:100%;
-        height:35px;
-        border-radius:0;
+.newStepButton{
+  width:100%;
+  height:35px;
+  border-radius:0;
 
-        img{
-          height:100%;
-          width:100%;
-        }
-      }
+  img{
+    height:100%;
+    width:100%;
+  }
+}
 
-      .removeStepButton{
-        float:right;
-        height:100%;
-        border-radius:0px;
+.removeStepButton{
+  float:right;
+  height:100%;
+  border-radius:0px;
         
-        img{
-          height:100%;
-        }
-      }
-    }
-
-    .buttonImg{
-      margin:auto;
-      width:max-content;
-      height:max-content;
-    }
-
-    .newPointButton{
-      border-radius:0;
-
-      .newPointButtonImg{
-        width:30%;
-        height:30%;
-      }
-    }
-
-    .addExerciseButton{
-      border: solid 4px $mainColor;
-      background-color:white;
-      position:absolute;
-      bottom:0;
-      left:0;
-      -webkit-transition: all .3s ease; 
-      -moz-transition: all .3s ease; 
-      -o-transition: all .3s ease;
-      transition: all .3s ease;
-
-      &:hover{
-        background-color:$mainColor;
-        font-weight: bold;
-        color:$altFontColor;
-      }
-    }
+  img{
+    height:100%;
   }
+}
 
-  .bottomControls{
-    background-color:$controlsBackgroundColor;
-    width: 94.45%;
-    padding:0.5%;
+.buttonImg{
+  margin:auto;
+  width:max-content;
+  height:max-content;
+}
+
+.newPointButton{
+  border-radius:0;    
+}
+
+.newPointButtonImg{
+  width:30%;
+  height:30%;
+}
+
+.addExerciseButton{
+  border: solid 4px $mainColor;
+  background-color:white;
+  position:absolute;
+  bottom:0;
+  left:0;
+  -webkit-transition: all .3s ease; 
+  -moz-transition: all .3s ease; 
+  -o-transition: all .3s ease;
+  transition: all .3s ease;
+
+  &:hover{
+    background-color:$mainColor;
+    font-weight: bold;
+    color:$altFontColor;
   }
+}
+
+.bottomControls{
+  background-color:$controlsBackgroundColor;
+  width: 94.45%;
+  padding:0.5%;
+}
+
+.jointCombo{
+  height:26px;
 }
 
 ::-webkit-scrollbar {
