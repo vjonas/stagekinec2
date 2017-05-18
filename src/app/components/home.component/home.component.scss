@@ -30,7 +30,6 @@ $animatedBorderColor: $mainColorAccent;
   text-align: center;
   background-color:$cardBackgroundColor;
   overflow-x:hidden;
-  border-radius: 5px;
 
   &::before {
     transform: translateX(100%);

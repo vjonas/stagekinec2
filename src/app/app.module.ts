@@ -16,6 +16,7 @@ import { RegisterComponent } from './components/authentication/register.componen
 import { ResetPasswordComponent } from './components/authentication/reset-password.component/reset-password.component';
 import { ResetConfirmationComponent} from './components/authentication/reset-confirmation.component/reset-confirmation.component';
 import { ExerciseComponent } from './components/exercises/exercise.component/exercise.component';
+import { UserExerciseComponent } from './components/users/user-exercise.component/user-exercise.component';
 
 import { AuthGuard } from './services/auth.service';
 import { UserService } from './services/user.service';
@@ -47,8 +48,7 @@ export const firebaseConfig = {
 
 @NgModule({
   declarations: [
-    AppComponent, HomeComponent, LoginComponent, UserOverviewComponent, IndividualUserComponent, RegisterComponent, ResetPasswordComponent, ResetConfirmationComponent, ExerciseComponent
-  ],
+    AppComponent, HomeComponent, LoginComponent, UserOverviewComponent, IndividualUserComponent, RegisterComponent, ResetPasswordComponent, ResetConfirmationComponent, ExerciseComponent, UserExerciseComponent ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

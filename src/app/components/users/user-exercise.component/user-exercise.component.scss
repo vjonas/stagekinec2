@@ -1,0 +1,38 @@
+.shader{
+    position:fixed;
+    width:100vw;
+    height:100vh;
+    top:0;
+    left:0;
+    background-color:rgba(0,0,0,0.5);
+}
+
+.shaderExerciseNotSelected{
+    display:none;
+}
+
+.wrapper{
+    position:fixed;
+    background-color:white;
+    top:10vh;
+    left:15vw;
+    width:70vw;
+    height:85vh;
+}
+
+.wrapperExerciseNotSelected{
+    display:none;
+}
+
+.header{
+    border-bottom:black 2px solid;
+}
+
+.backButton{
+    background-color: rgba(0,0,0,0);
+    border: none;
+    float:right;   
+    font-size: 1.5em;
+    margin-top: 4%;
+    padding-right: 0;
+}

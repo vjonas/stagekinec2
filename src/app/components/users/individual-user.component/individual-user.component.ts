@@ -25,6 +25,7 @@ export class IndividualUserComponent implements OnInit {
     userExerciseList: Array<FullExercise> = new Array<FullExercise>();
     mentorExerciseList: Array<FullExercise> = new Array<FullExercise>();
     exerciseToAdd: string;
+    selectedExercise: FullExercise = null;
 
     constructor(private router: Router, private userService: UserService, private route: ActivatedRoute, private exerciseService: ExerciseService, private _programService: ProgramService) { }
 
@@ -98,4 +99,12 @@ export class IndividualUserComponent implements OnInit {
     removeExerciseFromProgram(exerciseKey: string){
         this._programService.removeExerciseFromProgram(exerciseKey, this.user["$key"], this.currentProgramId);
     }
-}
+
+    setSelectedExercise(exercise: FullExercise){
+        this.selectedExercise = exercise;
+    }
+
+    onNotify(message: string): void {
+        this.selectedExercise = null;
+    };
+  }
