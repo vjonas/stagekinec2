@@ -18,14 +18,14 @@ import { ProgramService } from "app/services/program.service";
 })
 
 export class IndividualUserComponent implements OnInit {
-    uid: string;
-    user: User;
-    programList: Program[] = new Array<Program>();
-    currentProgramId: number = 0;
-    userExerciseList: Array<FullExercise> = new Array<FullExercise>();
-    mentorExerciseList: Array<FullExercise> = new Array<FullExercise>();
-    exerciseToAdd: string;
-    selectedExercise: FullExercise = null;
+    private uid: string;
+    private user: User;
+    private programList: Program[] = new Array<Program>();
+    private currentProgramId: number = 0;
+    private userExerciseList: Array<FullExercise> = new Array<FullExercise>();
+    private mentorExerciseList: Array<FullExercise> = new Array<FullExercise>();
+    private exerciseToAdd: string;
+    private selectedExercise: FullExercise = null;
 
     constructor(private router: Router, private userService: UserService, private route: ActivatedRoute, private exerciseService: ExerciseService, private _programService: ProgramService) { }
 
@@ -66,7 +66,7 @@ export class IndividualUserComponent implements OnInit {
         this.router.navigate(["useroverview"]);
     }
 
-    setCurrentProgram(){
+    setCurrentProgram() {
         this.userService.setCurrentProgram(this.currentProgramId, this.user["$key"]);
     }
 
@@ -95,15 +95,15 @@ export class IndividualUserComponent implements OnInit {
         this._programService.addExerciseToProgram(this.exerciseToAdd, this.user["$key"], this.currentProgramId);
     }
 
-    removeExerciseFromProgram(exerciseKey: string){
+    removeExerciseFromProgram(exerciseKey: string) {
         this._programService.removeExerciseFromProgram(exerciseKey, this.user["$key"], this.currentProgramId);
     }
 
-    setSelectedExercise(exercise: FullExercise){
+    setSelectedExercise(exercise: FullExercise) {
         this.selectedExercise = exercise;
     }
 
     onNotify(message: string): void {
         this.selectedExercise = null;
     };
-  }
+}
