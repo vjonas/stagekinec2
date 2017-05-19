@@ -80,7 +80,6 @@ export class IndividualUserComponent implements OnInit {
                         this.userExerciseList.push(ex2);
                     }
                 )
-
             });
         }
     }

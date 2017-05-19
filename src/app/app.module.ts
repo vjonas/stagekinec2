@@ -24,6 +24,7 @@ import { ExerciseService } from './services/exercise.service';
 import { MentorService } from './services/mentor.service';
 import { ProgramService } from "app/services/program.service";
 import { DrawService } from "./services/draw.service";
+import { CompletedExerciseService } from "./services/completed-exercises.service";
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -59,7 +60,7 @@ export const firebaseConfig = {
     )
   ],
   //services
-  providers: [ HashLocationStrategy, AuthGuard, UserService, ExerciseService, MentorService, ProgramService, DrawService ],
+  providers: [ HashLocationStrategy, AuthGuard, UserService, ExerciseService, MentorService, ProgramService, DrawService, CompletedExerciseService ],
   bootstrap: [ AppComponent ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

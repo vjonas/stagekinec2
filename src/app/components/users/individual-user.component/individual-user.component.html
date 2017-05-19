@@ -147,4 +147,4 @@
         </div>
     </div>
 </div>
-<exerciseUser [exercise]="selectedExercise" (notify)='onNotify($event)'></exerciseUser>
+<exerciseUser [exercise]="selectedExercise" [uid]="uid" [selectedProgram]="currentProgramId" (notify)='onNotify($event)'></exerciseUser>
