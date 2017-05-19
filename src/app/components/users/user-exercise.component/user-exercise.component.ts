@@ -17,7 +17,7 @@ export class UserExerciseComponent implements OnChanges {
     private completedExerciseList: CompletedExercise[];
     private showComponent: boolean = false;
     private maxScore: number = 0;
-    private scorePerExercise: number[] = new Array<number>();
+    private scorePerCompleteExerciseList: number[] = new Array<number>();
     private latestScore: number = 0;
     private latestScorePercentage: number = 0;
     private highscore: number = 0;
@@ -62,16 +62,16 @@ export class UserExerciseComponent implements OnChanges {
                 if (step.stepNr > this.CALIBRATION_STEP_NR)
                 { scorePerExercise += step.score; }
             });
-            this.scorePerExercise.push(scorePerExercise);
+            this.scorePerCompleteExerciseList.push(scorePerExercise);
             scorePerExercise = 0
         });
-        this.scorePerExercise.forEach(score => { if (this.highscore < score) { this.highscore = score } });
+        this.scorePerCompleteExerciseList.forEach(score => { if (this.highscore < score) { this.highscore = score } });
         this.completedExerciseList[0].completedSteps.forEach(step => this.latestScore += step.score);
         var totalScore = 0;
-        this.scorePerExercise.forEach(score => totalScore += score);
+        this.scorePerCompleteExerciseList.forEach(score => totalScore += score);
         console.log("totalscore:" + totalScore);
-        console.log("scorelistlength:" + this.scorePerExercise.length);
-        this.averageScore = Math.round(totalScore / this.scorePerExercise.length);
+        console.log("scorelistlength:" + this.scorePerCompleteExerciseList.length);
+        this.averageScore = Math.round(totalScore / this.scorePerCompleteExerciseList.length);
         this.highscore = Math.round(this.highscore);
         this.latestScore = Math.round(this.latestScore);
 
@@ -91,7 +91,7 @@ export class UserExerciseComponent implements OnChanges {
         this.latestScorePercentage = 0;
         this.highscorePercentage = 0;
         this.averageScorePercentage = 0;
-        this.scorePerExercise.length = 0;
+        this.scorePerCompleteExerciseList.length = 0;
     }
 }
 
