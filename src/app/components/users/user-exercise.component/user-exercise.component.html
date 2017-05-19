@@ -14,8 +14,8 @@
                 <h3>Lastest score</h3>
             </div>
             <div class="col-xs-7 progress">
-                <div class="progress-bar progress-bar-success"  [ngClass]="{'progress-bar-warning' : latestScore < 30, 'progress-bar-danger' : latestScore < 30}" role="progressbar" [attr.aria-valuenow]="latestScore" aria-valuemin="0"
-                    aria-valuemax="maxScore" style="min-width: 2em;" [style.width]="(latestScore/maxScore)*100 + '%'">
+                <div class="progress-bar progress-bar-success"  [ngClass]="{'progress-bar-warning' : latestScore < maxScore*.6, 'progress-bar-danger' : latestScore < maxScore*.3}" role="progressbar" [attr.aria-valuenow]="latestScore" aria-valuemin="0"
+                    [attr.aria-valuemax]="maxScore" style="min-width: 2em;" [style.width]="(latestScore/maxScore)*100 + '%'">
                     {{latestScorePercentage}}%
                 </div>
             </div>
@@ -28,8 +28,8 @@
                 <h3>Highscore</h3>
             </div>
             <div class="col-xs-7 progress">
-                <div class="progress-bar progress-bar-success"  [ngClass]="{'progress-bar-warning' : highscore < 30, 'progress-bar-danger' : highscore < 30}" role="progressbar" [attr.aria-valuenow]="highscore" aria-valuemin="0"
-                    aria-valuemax="maxScore" style="min-width: 2em;" [style.width]="(highscore/maxScore)*100 + '%'">
+                <div class="progress-bar progress-bar-success"  [ngClass]="{'progress-bar-warning' : highscore < maxScore*.6, 'progress-bar-danger' : highscore < maxScore*.3}" role="progressbar" [attr.aria-valuenow]="highscore" aria-valuemin="0"
+                    [attr.aria-valuemax]="maxScore" style="min-width: 2em;" [style.width]="(highscore/maxScore)*100 + '%'">
                     {{highscorePercentage}}%
                 </div>
             </div>
@@ -42,8 +42,8 @@
                 <h3>Average score</h3>
             </div>
             <div class="col-xs-7 progress">
-                <div class="progress-bar progress-bar-success"  [ngClass]="{'progress-bar-warning' : averageScore < 30, 'progress-bar-danger' : averageScore < 30}" role="progressbar" [attr.aria-valuenow]="averageScore" aria-valuemin="0"
-                    aria-valuemax="maxScore" style="min-width: 2em;" [style.width]="(averageScore/maxScore)*100 + '%'">
+                <div class="progress-bar progress-bar-success"  [ngClass]="{'progress-bar-warning' : averageScore < maxScore*.6, 'progress-bar-danger' : averageScore < maxScore*.3}" role="progressbar" [attr.aria-valuenow]="averageScore" aria-valuemin="0"
+                    [attr.aria-valuemax]="maxScore" style="min-width: 2em;" [style.width]="(averageScore/maxScore)*100 + '%'">
                     {{averageScorePercentage}}%
                 </div>
             </div>
