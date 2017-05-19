@@ -17,7 +17,7 @@ export class UserExerciseComponent implements OnChanges {
     private completedExerciseList: CompletedExercise[];
     private showComponent: boolean = false;
     private maxScore: number = 0;
-    private scoreList: number[] = new Array<number>();
+    private scorePerExercise: number[] = new Array<number>();
     private latestScore: number = 0;
     private latestScorePercentage: number = 0;
     private highscore: number = 0;
@@ -30,8 +30,6 @@ export class UserExerciseComponent implements OnChanges {
     }
 
     ngOnChanges(changes) {
-        console.log(changes);
-        console.log(this.exercise);
         if (changes.exercise != undefined && changes.exercise.currentValue != null) {
             this.showComponent = true;
             this.loadScores();
@@ -51,27 +49,31 @@ export class UserExerciseComponent implements OnChanges {
             { this.maxScore += step.maxScore; }
         });
         this._completedExerciseService.getCompletedExercisesByUser(this.uid, this.selectedProgram, this.exercise['$key'])
-            .subscribe((res: CompletedExercise[]) => {
-                this.completedExerciseList = res;
+            .subscribe((completedExercise: CompletedExercise[]) => {
+                this.completedExerciseList = completedExercise;
                 this.calculateScores()
             });
     }
 
     private calculateScores() {
-        var score = 0;
+        var scorePerExercise = 0;
         this.completedExerciseList.forEach((completedExercise: CompletedExercise) => {
             completedExercise.completedSteps.forEach(step => {
                 if (step.stepNr > this.CALIBRATION_STEP_NR)
-                { score += step.score; this.scoreList.push(score) }
-            }); score = 0
+                { scorePerExercise += step.score; }
+            });
+            this.scorePerExercise.push(scorePerExercise);
+            scorePerExercise = 0
         });
-        this.scoreList.forEach(score => { if (this.highscore < score) { this.highscore = score } });
+        this.scorePerExercise.forEach(score => { if (this.highscore < score) { this.highscore = score } });
         this.completedExerciseList[0].completedSteps.forEach(step => this.latestScore += step.score);
         var totalScore = 0;
-        this.scoreList.forEach(score => totalScore += score);
-        this.averageScore = Math.round(totalScore / this.scoreList.length);
-        this.highscore=Math.round(this.highscore);
-        this.latestScore=Math.round(this.latestScore);
+        this.scorePerExercise.forEach(score => totalScore += score);
+        console.log("totalscore:" + totalScore);
+        console.log("scorelistlength:" + this.scorePerExercise.length);
+        this.averageScore = Math.round(totalScore / this.scorePerExercise.length);
+        this.highscore = Math.round(this.highscore);
+        this.latestScore = Math.round(this.latestScore);
 
         this.latestScorePercentage = Math.round((this.latestScore / this.maxScore) * 100);
         this.highscorePercentage = Math.round((this.highscore / this.maxScore) * 100);
@@ -89,7 +91,7 @@ export class UserExerciseComponent implements OnChanges {
         this.latestScorePercentage = 0;
         this.highscorePercentage = 0;
         this.averageScorePercentage = 0;
-        this.scoreList.length=0;
+        this.scorePerExercise.length = 0;
     }
 }
 
