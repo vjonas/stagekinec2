@@ -98,10 +98,17 @@ export class IndividualUserComponent implements OnInit {
     }
 
     private createNewProgram(programName: string) {
+        var newProgramToAdd:Program=Program.createEmptyProgram();
+        newProgramToAdd.name=programName;        
         if (this.programList != undefined)
-            this._programService.createNewProgram(programName, this.user.uid, this.user.programs.length);
+        {
+            newProgramToAdd.programId=this.user.programs.length;
+        }
         else
-            this._programService.createNewProgram(programName, this.user.uid, 0);
+        {
+            newProgramToAdd.programId=0;
+        }
+            this._programService.createNewProgram(newProgramToAdd, this.user.uid);        
     }
 
     private addExerciseToUserProgram() {

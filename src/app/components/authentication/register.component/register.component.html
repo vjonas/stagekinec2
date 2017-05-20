@@ -4,13 +4,13 @@
     <form name="form" #formData='ngForm' (ngSubmit)="onSubmit(formData)" novalidate>
       <p *ngIf="error.message != ''" id="errMsg">{{error.message}}</p>
       <div class="form-group">
-        <input type="text" placeholder="Name" class="form-control" name="name" (ngModel)="name" required />
+        <input type="text" placeholder="Name" class="form-control" name="name" [(ngModel)]="mentorToAdd.name" required />
       </div>
       <div class="form-group">
-        <input type="text" placeholder="Last name" class="form-control" name="lastname" (ngModel)="lastname" required />
+        <input type="text" placeholder="Last name" class="form-control" name="lastname"  [(ngModel)]="mentorToAdd.lastname" required />
       </div>
       <div class="form-group">
-        <input type="email" placeholder="Email" class="form-control" name="email" (ngModel)="email" required />
+        <input type="email" placeholder="Email" class="form-control" name="email"  [(ngModel)]="mentorToAdd.email" required />
       </div>
       <div class="form-group">
         <input type="password" placeholder="Password" class="form-control" name="password" (ngModel)="password" required validateEqual="repeatPassword"

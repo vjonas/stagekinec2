@@ -1,7 +1,6 @@
+import { Program } from './../models/program.model';
 import { Injectable } from '@angular/core';
 import { AngularFire, FirebaseListObservable, AngularFireDatabase } from 'angularfire2';
-import { Observable } from 'rxjs/Observable';
-import { Program } from "app/models/program.model";
 import { UserService } from "./user.service";
 
 @Injectable()
@@ -11,23 +10,18 @@ export class ProgramService {
     constructor(private af: AngularFire, private _userService: UserService) {
     }
 
-    public createNewProgram(programName:string,uid:string,programId:number) {
-        this.af.database.object('/users/'+uid+'/programs/'+programId).set({
-            programId:programId,
-            name:programName,
-            score:0,
-            exercises:null
-        });
-        this._userService.setCurrentProgram(programId, uid);
+    public createNewProgram(newProgramToAdd: Program, userId: string) {
+        this.af.database.object('/users/' + userId + '/programs/' + newProgramToAdd.programId).set(newProgramToAdd);
+        //this._userService.setCurrentProgram(newProgramToAdd.programId, userId);
     }
 
-    public addExerciseToProgram(exerciseId: string, uid: string, programId:number){
-        this.af.database.object('/users/'+uid+"/programs/"+programId+"/exercises/"+exerciseId).set({
-            exerciseId : exerciseId,
+    public addExerciseToProgram(exerciseId: string, userId: string, programId: number) {
+        this.af.database.object('/users/' + userId + "/programs/" + programId + "/exercises/" + exerciseId).set({
+            exerciseId: exerciseId,
         });
     }
 
-    public removeExerciseFromProgram(exerciseKey: string, uid: string, currentProgramId: number){
-        this.af.database.object("/users/"+uid+"/programs/"+currentProgramId+"/exercises/"+exerciseKey).remove();
+    public removeExerciseFromProgram(exerciseId: string, userId: string, currentProgramId: number) {
+        this.af.database.object("/users/" + userId + "/programs/" + currentProgramId + "/exercises/" + exerciseId).remove();
     }
 }

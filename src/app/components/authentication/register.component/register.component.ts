@@ -1,3 +1,4 @@
+import { Tutor } from './../../../models/tutor.model';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFire } from 'angularfire2';
@@ -15,6 +16,7 @@ import { MentorService } from '../../../services/mentor.service';
 
 export class RegisterComponent {
     error: Error = new Error("");
+    private mentorToAdd:Tutor = Tutor.createEmptyUser();
 
     constructor(public af: AngularFire, private router: Router, private mentorService: MentorService) {
 
@@ -26,7 +28,8 @@ export class RegisterComponent {
                 email: formData.value.email,
                 password: formData.value.password
             }).then((success) => {
-                this.mentorService.createMentor(formData, success.uid);
+                this.mentorToAdd.uid=success.uid;
+                this.mentorService.createMentor(this.mentorToAdd);
                 localStorage.setItem('currentUser', JSON.stringify({ uid: success.uid }));
                 this.router.navigate(['/home'])
             }).catch((err) => {

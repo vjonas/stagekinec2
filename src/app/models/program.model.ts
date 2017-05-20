@@ -12,7 +12,7 @@ export class Program
 
     public static createEmptyProgram()
     {
-        return new Program(0,'',0,null);
+        return new Program(null,'',0,null);
     }
 
     public static createEmptyPrograms(): Program[] {

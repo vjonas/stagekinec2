@@ -6,12 +6,6 @@ import { User } from "../models/user.model";
 import { Exercise } from "app/models/exercise.model";
 import { Tutor } from "../models/tutor.model";
 
-let contacts = [
-    { id: 1, name: 'Pascal Precht', twitter: '@PascalPrecht' },
-    { id: 2, name: 'Christoph Burgdorf', twitter: '@cburgdorf' },
-    { id: 3, name: 'Thomas Burleson', twitter: '@thomasburleson' },
-    { id: 4, name: 'Dominic Elm', twitter: '@elmd_' }
-];
 
 @Injectable()
 export class UserService {
