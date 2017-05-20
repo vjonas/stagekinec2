@@ -26,6 +26,8 @@ export class IndividualUserComponent implements OnInit {
     private mentorExerciseList: Array<FullExercise> = new Array<FullExercise>();
     private exerciseToAdd: string;
     private selectedExercise: FullExercise = null;
+    private programIdToShow:number;
+    private loadCurrentProgramOfUserOnce:boolean=false;
 
     constructor(private router: Router, private userService: UserService, private route: ActivatedRoute, private exerciseService: ExerciseService, private _programService: ProgramService) { }
 
@@ -34,15 +36,26 @@ export class IndividualUserComponent implements OnInit {
         this.route.params.subscribe(params => {
             this.uid = params['id']
         });
-        this.userService.getUserById(this.uid).subscribe(user => {
+        this.loadUserData();
+
+    }
+
+    private loadUserData() {
+        this.userService.getUserById(this.uid).subscribe((user: User) => {
             this.user = user;
             this.user.age = Math.floor((Math.abs(Date.now() - <any>new Date(this.user.birthDate)) / (1000 * 3600 * 24)) / 365);
             this.programList = this.user.programs;
-            this.exerciseService.getAllExercisesFromMentor().subscribe(exercises => { this.mentorExerciseList = exercises });
-            if (this.user.programs != undefined && this.user.programs[0].exercises != undefined) {
+            if(!this.loadCurrentProgramOfUserOnce)
+            {
+                this.programIdToShow=this.user.currentProgram;
+                this.loadCurrentProgramOfUserOnce=true;
+            }
+            console.log(this.programIdToShow);
+            this.exerciseService.getAllExercisesFromMentor().subscribe((exercises: FullExercise[]) => { this.mentorExerciseList = exercises });
+            if (this.user.programs != undefined && this.user.programs[this.programIdToShow].exercises != undefined) {
                 this.userExerciseList.length = 0;
-                Object.keys(this.user.programs[0].exercises).forEach(ex => {
-                    this.exerciseService.getExcerciseById(this.user.programs[0].exercises[ex].exerciseId).subscribe(
+                Object.keys(this.user.programs[this.programIdToShow].exercises).forEach(ex => {
+                    this.exerciseService.getExcerciseById(this.user.programs[this.programIdToShow].exercises[ex].exerciseId).subscribe(
                         ex2 => {
                             this.userExerciseList.push(ex2);
                         }
@@ -52,27 +65,28 @@ export class IndividualUserComponent implements OnInit {
         });
     }
 
-    goBack() {
+    private goBack() {
         this.router.navigate(["useroverview"]);
     }
 
-    changeRadio(radio: any) {
+    private changeRadio(radio: any) {
         radio.currentTarget.childNodes[1].checked = true;
         this.exerciseToAdd = radio.currentTarget.childNodes[1].value;
     }
 
-    deleteUser() {
+    private deleteUser() {
         this.userService.removeMentorFromUser(this.user["$key"]);
         this.router.navigate(["useroverview"]);
     }
 
-    setCurrentProgram() {
+    private setCurrentProgram() {
         this.userService.setCurrentProgram(this.currentProgramId, this.user["$key"]);
     }
 
-    onChangeProgram(newProgramId) {
+    private onChangeProgram(newProgramId) {
         this.userExerciseList.length = 0;
         this.currentProgramId = newProgramId;
+        this.programIdToShow=newProgramId;
         if (this.user.programs[newProgramId].exercises != null) {
             Object.keys(this.user.programs[newProgramId].exercises).forEach(ex => {
                 this.exerciseService.getExcerciseById(this.user.programs[newProgramId].exercises[ex].exerciseId).subscribe(
@@ -84,22 +98,22 @@ export class IndividualUserComponent implements OnInit {
         }
     }
 
-    createNewProgram(programName: string) {
+    private createNewProgram(programName: string) {
         if (this.programList != undefined)
             this._programService.createNewProgram(programName, this.user["$key"], this.user.programs.length);
         else
             this._programService.createNewProgram(programName, this.user["$key"], 0);
     }
 
-    addExerciseToUserProgram() {
+    private addExerciseToUserProgram() {
         this._programService.addExerciseToProgram(this.exerciseToAdd, this.user["$key"], this.currentProgramId);
     }
 
-    removeExerciseFromProgram(exerciseKey: string) {
+    private removeExerciseFromProgram(exerciseKey: string) {
         this._programService.removeExerciseFromProgram(exerciseKey, this.user["$key"], this.currentProgramId);
     }
 
-    setSelectedExercise(exercise: FullExercise) {
+    private setSelectedExercise(exercise: FullExercise) {
         this.selectedExercise = exercise;
     }
 

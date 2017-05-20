@@ -115,11 +115,11 @@
                     <div class="programDiv col-xs-12">
                         <h5 (click)="setCurrentProgram()" class="setCurrentProgram">Set as current program</h5>
                         <select *ngIf="programList == undefined" [disabled] class="programCombo" data-dismiss="modal" data-toggle="modal" data-target="#addNewProgram">
-                   <option *ngIf="programList == undefined" [disabled]  value="no-program">This user doesnt have a program yet +</option>
-                </select>
+                             <option *ngIf="programList == undefined" [disabled]  value="no-program">This user doesnt have a program yet +</option>
+                        </select>
                         <select *ngIf="programList != undefined" class="programCombo" (change)="onChangeProgram($event.target.value)">
-                    <option *ngFor="let program of programList" [value]="program.programId">{{program.name}}</option>
-                </select>
+                            <option *ngFor="let program of programList" [selected]="program.programId==programIdToShow" [value]="program.programId">{{program.name}}</option>
+                        </select>
                         <button class="addProgramButton glyphicon glyphicon-plus" data-toggle="modal" data-target="#addNewProgram"></button>
                     </div>
                 </div>
