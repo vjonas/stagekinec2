@@ -113,7 +113,7 @@
                         </div>
                     </div>
                     <div class="programDiv col-xs-12">
-                        <h5 (click)="setCurrentProgram()" class="setCurrentProgram">Set as current program</h5>
+                        <h5 *ngIf="programIdToShow!=currentProgramId" (click)="setCurrentProgram()" class="setCurrentProgram">Set as current program</h5>
                         <select *ngIf="programList == undefined" [disabled] class="programCombo" data-dismiss="modal" data-toggle="modal" data-target="#addNewProgram">
                              <option *ngIf="programList == undefined" [disabled]  value="no-program">This user doesnt have a program yet +</option>
                         </select>

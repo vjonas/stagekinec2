@@ -45,12 +45,12 @@ export class IndividualUserComponent implements OnInit {
             this.user = user;
             this.user.age = Math.floor((Math.abs(Date.now() - <any>new Date(this.user.birthDate)) / (1000 * 3600 * 24)) / 365);
             this.programList = this.user.programs;
+            this.currentProgramId=this.user.currentProgram;
             if(!this.loadCurrentProgramOfUserOnce)
             {
                 this.programIdToShow=this.user.currentProgram;
                 this.loadCurrentProgramOfUserOnce=true;
             }
-            console.log(this.programIdToShow);
             this.exerciseService.getAllExercisesFromMentor().subscribe((exercises: FullExercise[]) => { this.mentorExerciseList = exercises });
             if (this.user.programs != undefined && this.user.programs[this.programIdToShow].exercises != undefined) {
                 this.userExerciseList.length = 0;
@@ -80,12 +80,11 @@ export class IndividualUserComponent implements OnInit {
     }
 
     private setCurrentProgram() {
-        this.userService.setCurrentProgram(this.currentProgramId, this.user["$key"]);
+        this.userService.setCurrentProgram(this.programIdToShow, this.user["$key"]);
     }
 
     private onChangeProgram(newProgramId) {
         this.userExerciseList.length = 0;
-        this.currentProgramId = newProgramId;
         this.programIdToShow=newProgramId;
         if (this.user.programs[newProgramId].exercises != null) {
             Object.keys(this.user.programs[newProgramId].exercises).forEach(ex => {
@@ -106,11 +105,11 @@ export class IndividualUserComponent implements OnInit {
     }
 
     private addExerciseToUserProgram() {
-        this._programService.addExerciseToProgram(this.exerciseToAdd, this.user["$key"], this.currentProgramId);
+        this._programService.addExerciseToProgram(this.exerciseToAdd, this.user["$key"], this.programIdToShow);
     }
 
     private removeExerciseFromProgram(exerciseKey: string) {
-        this._programService.removeExerciseFromProgram(exerciseKey, this.user["$key"], this.currentProgramId);
+        this._programService.removeExerciseFromProgram(exerciseKey, this.user["$key"], this.programIdToShow);
     }
 
     private setSelectedExercise(exercise: FullExercise) {
