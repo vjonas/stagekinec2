@@ -29,7 +29,7 @@ export class UserService {
     }
 
     public addMentorToUser(mentorId: string, userId: string) {
-        this.af.database.object(this.path + "/"+userId).update({ mentorId: mentorId });
+        this.af.database.object(this.path + "/" + userId).update({ mentorId: mentorId });
     }
 
     public removeMentorFromUser(userId: string) {
@@ -47,6 +47,6 @@ export class UserService {
 
     public setCurrentProgram(programId: number, userId: string) {
         this.af.database.object(this.path + "/" + userId).update({ currentProgram: programId });
-    }
+    }    
 
 }

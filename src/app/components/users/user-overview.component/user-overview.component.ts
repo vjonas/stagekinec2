@@ -1,3 +1,4 @@
+import { MentorService } from './../../../services/mentor.service';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { routerTransition } from '../../../animations/router.animations';
@@ -19,10 +20,10 @@ export class UserOverviewComponent implements OnInit {
     tutor: User;
     mentorUid: string;
 
-    constructor(private router: Router, private userService: UserService) { }
+    constructor(private router: Router, private userService: UserService,private mentorService:MentorService) { }
 
     ngOnInit() {
-        this.mentorUid = JSON.parse(localStorage.getItem('currentUser')).uid;
+        this.mentorUid = this.mentorService.getMentorId();
         this.userService.getUsersFromMentor(this.mentorUid).subscribe(users => {
         this.userList = users;
             this.userList.forEach(user => user.age = Math.floor(((Math.abs(Date.now() - <any>(new Date(user.birthDate)))) / (1000 * 3600 * 24)) / 365))

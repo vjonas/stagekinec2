@@ -17,4 +17,8 @@ export class MentorService {
         this.af.database.object(this.path+"/"+mentorToAdd.uid).set(mentorToAdd)
     }
 
+    public getMentorId(): string {
+        return this.af.auth.getAuth().uid;
+    }
+
 }
