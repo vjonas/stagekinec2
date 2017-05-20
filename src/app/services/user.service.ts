@@ -25,39 +25,34 @@ export class UserService {
         return this.af.database.list(this.path);
     }
 
-    public getUserById(uid: string): Observable<User> {
+    public getUserById(userId: string): Observable<User> {
         return this.af.database.list(this.path, {
             query: {
                 orderByChild: 'uid',
-                equalTo: uid
+                equalTo: userId
             }
         }).map(res => { return res[0] });
     }
 
-    public addMentorToUser(uidMentor: string, uidTutee: string) {        
-        console.log(uidTutee);
-        this.getUserById(uidTutee).subscribe(
-            (user: User) => {
-                this.af.database.object(this.path + "/" + user["$key"]).update({ mentorId: uidMentor });
-            }
-        )
+    public addMentorToUser(mentorId: string, userId: string) {
+        this.af.database.object(this.path + "/"+userId).update({ mentorId: mentorId });
     }
 
-    public removeMentorFromUser(userKey: string) {
-        this.af.database.object(this.path + "/" + userKey).update({ mentorId: 0 });
+    public removeMentorFromUser(userId: string) {
+        this.af.database.object(this.path + "/" + userId).update({ mentorId: 0 });
     }
 
-    public getUsersFromMentor(uidMentor: string): Observable<User[]> {
+    public getUsersFromMentor(mentorId: string): Observable<User[]> {
         return this.af.database.list(this.path, {
             query: {
                 orderByChild: 'mentorId',
-                equalTo: uidMentor
+                equalTo: mentorId
             }
         });
     }
 
-    public setCurrentProgram(programId: number, userKey: string) {
-        this.af.database.object(this.path + "/" + userKey).update({ currentProgram: programId });
+    public setCurrentProgram(programId: number, userId: string) {
+        this.af.database.object(this.path + "/" + userId).update({ currentProgram: programId });
     }
 
 }

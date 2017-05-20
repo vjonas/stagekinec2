@@ -75,12 +75,12 @@ export class IndividualUserComponent implements OnInit {
     }
 
     private deleteUser() {
-        this.userService.removeMentorFromUser(this.user["$key"]);
+        this.userService.removeMentorFromUser(this.user.uid);
         this.router.navigate(["useroverview"]);
     }
 
     private setCurrentProgram() {
-        this.userService.setCurrentProgram(this.programIdToShow, this.user["$key"]);
+        this.userService.setCurrentProgram(this.programIdToShow, this.user.uid);
     }
 
     private onChangeProgram(newProgramId) {
@@ -99,17 +99,17 @@ export class IndividualUserComponent implements OnInit {
 
     private createNewProgram(programName: string) {
         if (this.programList != undefined)
-            this._programService.createNewProgram(programName, this.user["$key"], this.user.programs.length);
+            this._programService.createNewProgram(programName, this.user.uid, this.user.programs.length);
         else
-            this._programService.createNewProgram(programName, this.user["$key"], 0);
+            this._programService.createNewProgram(programName, this.user.uid, 0);
     }
 
     private addExerciseToUserProgram() {
-        this._programService.addExerciseToProgram(this.exerciseToAdd, this.user["$key"], this.programIdToShow);
+        this._programService.addExerciseToProgram(this.exerciseToAdd, this.user.uid, this.programIdToShow);
     }
 
     private removeExerciseFromProgram(exerciseKey: string) {
-        this._programService.removeExerciseFromProgram(exerciseKey, this.user["$key"], this.programIdToShow);
+        this._programService.removeExerciseFromProgram(exerciseKey, this.user.uid, this.programIdToShow);
     }
 
     private setSelectedExercise(exercise: FullExercise) {
