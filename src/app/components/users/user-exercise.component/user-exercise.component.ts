@@ -14,7 +14,8 @@ export class UserExerciseComponent implements OnChanges {
     @Input() private uid: string;
     @Input() private selectedProgram: number;
     @Output() notify: EventEmitter<String> = new EventEmitter<String>();
-    private completedExerciseList: CompletedExercise[];
+    private dataLoaded = false;
+    private completedExerciseList: CompletedExercise[] = new Array();
     private showComponent: boolean = false;
     private maxScore: number = 0;
     private scorePerCompleteExerciseList: number[] = new Array<number>();
@@ -51,7 +52,8 @@ export class UserExerciseComponent implements OnChanges {
         this._completedExerciseService.getCompletedExercisesByUser(this.uid, this.selectedProgram, this.exercise['$key'])
             .subscribe((completedExercise: CompletedExercise[]) => {
                 this.completedExerciseList = completedExercise;
-                this.calculateScores()
+                this.calculateScores();
+                this.dataLoaded =true;
             });
     }
 
@@ -66,7 +68,9 @@ export class UserExerciseComponent implements OnChanges {
             scorePerExercise = 0
         });
         this.scorePerCompleteExerciseList.forEach(score => { if (this.highscore < score) { this.highscore = score } });
+        if(this.completedExerciseList.length != 0){
         this.completedExerciseList[0].completedSteps.forEach(step => this.latestScore += step.score);
+        }
         var totalScore = 0;
         this.scorePerCompleteExerciseList.forEach(score => totalScore += score);
         console.log("totalscore:" + totalScore);
@@ -78,9 +82,6 @@ export class UserExerciseComponent implements OnChanges {
         this.latestScorePercentage = Math.round((this.latestScore / this.maxScore) * 100);
         this.highscorePercentage = Math.round((this.highscore / this.maxScore) * 100);
         this.averageScorePercentage = Math.round((this.averageScore / this.maxScore) * 100);
-
-
-
     }
 
     private resetScores() {
@@ -92,6 +93,7 @@ export class UserExerciseComponent implements OnChanges {
         this.highscorePercentage = 0;
         this.averageScorePercentage = 0;
         this.scorePerCompleteExerciseList.length = 0;
+        this.dataLoaded = false;
     }
 }
 
