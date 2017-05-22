@@ -5,7 +5,18 @@
             <h3 class="col-xs-6">{{exercise?.name}}</h3>
             <div class="col-xs-6"><button class="glyphicon glyphicon-remove-circle backButton" (click)="goBack()"></button></div>
         </div>
-        <div class="col-xs-12 graphArea">
+        <div *ngIf="!dataLoaded" class="col-xs-12">
+            <div style="text-align:center" class="col-xs-12">
+            <img style="width:50%" src="../../../../assets/images/preloader.gif">
+            </div>
+        </div>
+        <div style="text-align: center;" *ngIf="dataLoaded && completedExerciseList.length == 0" class="col-xs-12">
+            <h1>The user hasn't completed this exercise yet</h1>
+            <div class="col-xs-12">
+            <img style="width:25%; margin-top:2%;"src="../../../../assets/images/frownyFace.jpg">
+            </div>
+        </div>
+        <div *ngIf="dataLoaded && completedExerciseList.length != 0" class="col-xs-12 graphArea">
             <div class="col-xs-12">
                 <h5 class="col-xs-2 col-xs-offset-10">Max score {{maxScore}}</h5>
             </div>
