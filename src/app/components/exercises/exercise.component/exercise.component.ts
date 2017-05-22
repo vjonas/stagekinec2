@@ -28,6 +28,7 @@ export class ExerciseComponent implements OnInit, AfterViewInit {
         this.newExercise = FullExercise.createNewFullExercise();
         this._exerciseService.getAllExercisesFromMentor().subscribe(exercices => {
             this.exercisesOfMentor = exercices;
+            this.newExercise = exercices[0];
         });     
     }
 
@@ -55,11 +56,22 @@ export class ExerciseComponent implements OnInit, AfterViewInit {
         checkbox.currentTarget.childNodes[1].checked = true;
         this.activeStepToDraw = stepNr;
         if (this.newExercise.steps[this.activeStepToDraw].stepType == 0)
-            this.drawNewTouchPoint(false);
+            this.drawNewTouchPoint(true,false);
         else if (this.newExercise.steps[this.activeStepToDraw].stepType == 2)
-            this.drawNewTouchPoint(true);
+            this.drawNewTouchPoint(true,true);
         else
-            this.drawNewTrackingLine();
+            this.drawNewTrackingLine(true);
+    }
+
+    changeStepToView(checkbox: any, stepNr: number){
+        checkbox.currentTarget.childNodes[1].checked = true;
+        this.activeStepToDraw = stepNr;
+        if (this.newExercise.steps[this.activeStepToDraw].stepType == 0)
+            this.drawNewTouchPoint(false,false);
+        else if (this.newExercise.steps[this.activeStepToDraw].stepType == 2)
+            this.drawNewTouchPoint(false,true);
+        else
+            this.drawNewTrackingLine(false);
     }
 
     private changeMode() {
@@ -68,14 +80,15 @@ export class ExerciseComponent implements OnInit, AfterViewInit {
             this.exercisesOfMentor.splice(0, this.exercisesOfMentor.length);
             this.exercisesOfMentor.push(FullExercise.createNewFullExercise());
             this.newExercise = FullExercise.createNewFullExercise();
-            this.newExercise.steps.push(new Step(0,7,0,10,2,15,30,300,673,0,0,247,247,0,0,11));
-
-
+            this.newExercise.steps.push(Step.createNewCalibrationStep());
+            this._drawService.recreateCanvas(this.canvas);
+            this.canvas = <HTMLCanvasElement>document.getElementById("canvas");
         }
         else {
             this.viewState = true;
             this._exerciseService.getAllExercisesFromMentor().subscribe(exercices => {
                 this.exercisesOfMentor = exercices;
+                this.newExercise = exercices[0];
             })
             this._drawService.recreateCanvas(this.canvas);
             this.canvas = <HTMLCanvasElement>document.getElementById("canvas");
@@ -87,6 +100,8 @@ export class ExerciseComponent implements OnInit, AfterViewInit {
         this.exercisesOfMentor.forEach(ex => {
             if (ex["$key"] == exerciseId){
                 this.newExercise = ex;
+                this._drawService.recreateCanvas(this.canvas);
+                this.canvas = <HTMLCanvasElement>document.getElementById("canvas");
             }
         })
     }
@@ -102,7 +117,7 @@ export class ExerciseComponent implements OnInit, AfterViewInit {
         })
     }
 
-    public drawNewTrackingLine() {
+    public drawNewTrackingLine(editable: boolean) {
         const self = this;
         var mousex;
         var mousey;
@@ -111,6 +126,7 @@ export class ExerciseComponent implements OnInit, AfterViewInit {
         this.canvas = <HTMLCanvasElement>document.getElementById("canvas");
         this._drawService.drawTrackingLine(this.canvas, this.newExercise, this.activeStepToDraw);
         this.newExercise.steps[this.activeStepToDraw].stepType = 1;
+        if(editable){
         this.canvas.addEventListener("mousedown", e => {
             mousex = e.clientX - this.canvas.offsetLeft;
             mousey = e.clientY - this.canvas.offsetTop;
@@ -121,7 +137,7 @@ export class ExerciseComponent implements OnInit, AfterViewInit {
                 }
             }
         })
-
+        
         this.canvas.addEventListener("mouseup", e => {
             this.drawOk.forEach((e, i) => this.drawOk[i] = false);
         })
@@ -136,19 +152,23 @@ export class ExerciseComponent implements OnInit, AfterViewInit {
             this._drawService.drawTrackingLine(this.canvas, this.newExercise, this.activeStepToDraw);
             this._drawService.drawBezierDistance(e.clientX - this.canvas.offsetLeft, e.clientY - this.canvas.offsetTop, this.canvas, this.newExercise, this.activeStepToDraw);
         })
+        }
     }
 
-    public drawNewTouchPoint(activateSecondTouchPoint: boolean) {
+    public drawNewTouchPoint(editable:boolean, activateSecondTouchPoint: boolean) {
         var mousex;
         var mousey;
         this.showTrackingLineDetails = false;
         this.context = this._drawService.recreateCanvas(this.canvas);
         this.canvas = <HTMLCanvasElement>document.getElementById("canvas");
-        if (activateSecondTouchPoint)
+        if (activateSecondTouchPoint){
             this.newExercise.steps[this.activeStepToDraw].stepType = 2;
-        else
+        }
+        else{
             this.newExercise.steps[this.activeStepToDraw].stepType = 0;
+        }
         this._drawService.drawTouchPoints(this.canvas, this.newExercise, this.activeStepToDraw);
+        if(editable){
         this.canvas.addEventListener("mousedown", e => {
             mousex = e.clientX - this.canvas.offsetLeft;
             mousey = e.clientY - this.canvas.offsetTop;
@@ -176,6 +196,7 @@ export class ExerciseComponent implements OnInit, AfterViewInit {
             }
             this._drawService.drawTouchPoints(this.canvas, this.newExercise, this.activeStepToDraw);
         })
+        }
     }
 
     private fillComboboxWithJoints() {

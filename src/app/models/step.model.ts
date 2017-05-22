@@ -21,4 +21,8 @@ export class Step {
     public static createNewStep(stepNr:number,canvasWidth:number,canvasHeight:number): Step {
         return new Step(stepNr, 7, 10,15, 0, 15, 50,299,417,573,669,200,94,94,200,11);
     }
+
+    public static createNewCalibrationStep(): Step{
+        return new Step(0,7,0,10,2,15,30,300,673,0,0,247,247,0,0,11);
+    }
 }
