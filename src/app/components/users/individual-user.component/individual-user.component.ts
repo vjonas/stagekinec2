@@ -52,7 +52,7 @@ export class IndividualUserComponent implements OnInit {
                 this.loadCurrentProgramOfUserOnce=true;
             }
             this.exerciseService.getAllExercisesFromMentor().subscribe((exercises: FullExercise[]) => { this.mentorExerciseList = exercises });
-            if (this.user.programs != undefined && this.user.programs[this.programIdToShow].exercises != undefined) {
+            if (this.user.programs != undefined && this.user.programs[this.programIdToShow]!=null && this.user.programs[this.programIdToShow].exercises != undefined) {
                 this.userExerciseList.length = 0;
                 Object.keys(this.user.programs[this.programIdToShow].exercises).forEach(ex => {
                     this.exerciseService.getExcerciseById(this.user.programs[this.programIdToShow].exercises[ex].exerciseId).subscribe(
@@ -89,6 +89,7 @@ export class IndividualUserComponent implements OnInit {
 
     private onChangeProgram(newProgramId) {
         this.userExerciseList.length = 0;
+        console.log(newProgramId);
         this.programIdToShow=newProgramId;
         if (this.user.programs[newProgramId].exercises != null) {
             Object.keys(this.user.programs[newProgramId].exercises).forEach(ex => {
@@ -111,6 +112,7 @@ export class IndividualUserComponent implements OnInit {
         else
         {
             newProgramToAdd.programId=0;
+            this.programIdToShow=0;
         }
             this._programService.createNewProgram(newProgramToAdd, this.user.uid);        
     }
