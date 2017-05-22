@@ -134,9 +134,9 @@
                             </div>
                         </div>
                         <div class="col-xs-12 exerciseList">
-                            <div *ngFor="let exercise of userExerciseList" (click)="setSelectedExercise(exercise)" class="exerciseListDiv">
-                                <h4 data-target="modal" data-toggle="#showExerciseModal" class="col-xs-9">{{exercise?.name}}</h4>
-                                <div class="col-xs-3">
+                            <div *ngFor="let exercise of userExerciseList" class="exerciseListDiv">
+                                <h4 data-target="modal" data-toggle="#showExerciseModal" (click)="setSelectedExercise(exercise)" class="col-xs-11">{{exercise?.name}}</h4>
+                                <div class="col-xs-1">
                                     <h4 (click)="removeExerciseFromProgram(exercise['$key'])" class="glyphicon glyphicon-remove-circle exerciseInteraction"></h4>
                                 </div>
                             </div>

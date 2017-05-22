@@ -39,7 +39,6 @@ export class LoginComponent implements OnInit {
           provider: AuthProviders.Password,
           method: AuthMethods.Password,
         }).then((success) => {
-          localStorage.setItem('currentUser', JSON.stringify({ uid: success.uid }));
           this.router.navigate(['/home']);
           this.errorOccurred = false;
         }).catch((err) => {

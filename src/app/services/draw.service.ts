@@ -18,27 +18,34 @@ export class DrawService {
         for (var i = 0; i < 4; i++) {
             context.beginPath();
             context.arc(newExercise.steps[activeStepToDraw]["x" + i], newExercise.steps[activeStepToDraw]["y" + i], newExercise.steps[activeStepToDraw].radius, 0, 2 * Math.PI, false);
-            if (i == 0) context.fillStyle = "green"; else if (i < 3) context.fillStyle = "blue"; else context.fillStyle = "red";
+            if (i == 0) {
+                context.fillStyle = "green";
+            }
+            else if (i < 3) {
+                context.fillStyle = "blue";
+            } else {
+                context.fillStyle = "red";
+            }
             context.fill();
             context.closePath();
         }
         this.drawOffsetOfTrackingLine(context, newExercise, activeStepToDraw);
     }
 
-    drawOffsetOfTrackingLine(context: CanvasRenderingContext2D, newExercise:FullExercise, activeStepToDraw:number){
+    drawOffsetOfTrackingLine(context: CanvasRenderingContext2D, newExercise: FullExercise, activeStepToDraw: number) {
         var offsetLeft = new Bezier(newExercise.steps[activeStepToDraw].x0, newExercise.steps[activeStepToDraw].y0, newExercise.steps[activeStepToDraw].x1, newExercise.steps[activeStepToDraw].y1, newExercise.steps[activeStepToDraw].x2, newExercise.steps[activeStepToDraw].y2, newExercise.steps[activeStepToDraw].x3, newExercise.steps[activeStepToDraw].y3).offset(newExercise.steps[activeStepToDraw].trackingLineOffset);
         var offsetRight = new Bezier(newExercise.steps[activeStepToDraw].x0, newExercise.steps[activeStepToDraw].y0, newExercise.steps[activeStepToDraw].x1, newExercise.steps[activeStepToDraw].y1, newExercise.steps[activeStepToDraw].x2, newExercise.steps[activeStepToDraw].y2, newExercise.steps[activeStepToDraw].x3, newExercise.steps[activeStepToDraw].y3).offset(-newExercise.steps[activeStepToDraw].trackingLineOffset);
         context.beginPath();
         context.moveTo(offsetLeft[0].points[0].x, offsetLeft[0].points[0].y);
-        for(var i=0; i < Object.keys(offsetLeft).length; i++){
+        for (var i = 0; i < Object.keys(offsetLeft).length; i++) {
             context.strokeStyle = "red";
-            context.bezierCurveTo(offsetLeft[i].points[1].x,offsetLeft[i].points[1].y,offsetLeft[i].points[2].x,offsetLeft[i].points[2].y,offsetLeft[i].points[3].x,offsetLeft[i].points[3].y);
+            context.bezierCurveTo(offsetLeft[i].points[1].x, offsetLeft[i].points[1].y, offsetLeft[i].points[2].x, offsetLeft[i].points[2].y, offsetLeft[i].points[3].x, offsetLeft[i].points[3].y);
             context.stroke();
         }
-        context.moveTo(offsetRight[0].points[0].x,offsetRight[0].points[0].y);
-        for(var i=0; i < Object.keys(offsetRight).length; i++){
+        context.moveTo(offsetRight[0].points[0].x, offsetRight[0].points[0].y);
+        for (var i = 0; i < Object.keys(offsetRight).length; i++) {
             context.strokeStyle = "red";
-            context.bezierCurveTo(offsetRight[i].points[1].x,offsetRight[i].points[1].y,offsetRight[i].points[2].x,offsetRight[i].points[2].y,offsetRight[i].points[3].x,offsetRight[i].points[3].y);
+            context.bezierCurveTo(offsetRight[i].points[1].x, offsetRight[i].points[1].y, offsetRight[i].points[2].x, offsetRight[i].points[2].y, offsetRight[i].points[3].x, offsetRight[i].points[3].y);
             context.stroke();
         }
         context.closePath();

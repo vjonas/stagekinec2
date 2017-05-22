@@ -23,18 +23,22 @@ export class UserOverviewComponent implements OnInit {
     constructor(private router: Router, private userService: UserService,private mentorService:MentorService) { }
 
     ngOnInit() {
+        this.loadMentorData();
+    }
+
+    private goToUser(uid: string) {
+        this.router.navigate(['individualuser', uid]);
+    }
+
+    private addTutee(uid: string) {
+        this.userService.addMentorToUser(this.mentorUid, uid);
+    }
+
+    private loadMentorData(){
         this.mentorUid = this.mentorService.getMentorId();
         this.userService.getUsersFromMentor(this.mentorUid).subscribe(users => {
         this.userList = users;
             this.userList.forEach(user => user.age = Math.floor(((Math.abs(Date.now() - <any>(new Date(user.birthDate)))) / (1000 * 3600 * 24)) / 365))
         });
-    }
-
-    goToUser(uid: string) {
-        this.router.navigate(['individualuser', uid]);
-    }
-
-    addTutee(uid: string) {
-        this.userService.addMentorToUser(this.mentorUid, uid);
     }
 }

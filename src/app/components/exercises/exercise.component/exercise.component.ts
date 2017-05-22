@@ -85,8 +85,9 @@ export class ExerciseComponent implements OnInit, AfterViewInit {
 
     private onChangeExercise(exerciseId: string) {
         this.exercisesOfMentor.forEach(ex => {
-            if (ex["$key"] == exerciseId)
+            if (ex["$key"] == exerciseId){
                 this.newExercise = ex;
+            }
         })
     }
 

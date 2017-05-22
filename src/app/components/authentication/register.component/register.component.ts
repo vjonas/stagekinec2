@@ -30,7 +30,6 @@ export class RegisterComponent {
             }).then((success) => {
                 this.mentorToAdd.uid=success.uid;
                 this.mentorService.createMentor(this.mentorToAdd);
-                localStorage.setItem('currentUser', JSON.stringify({ uid: success.uid }));
                 this.router.navigate(['/home'])
             }).catch((err) => {
                 this.error = err;
