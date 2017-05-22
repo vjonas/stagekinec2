@@ -27,7 +27,6 @@ export class ExerciseService {
         });
     }
 
-
     public createNewExcercise(exercise: FullExercise) {
         var mentorId = this.mentorService.getMentorId();
         exercise.mentorUid = mentorId;
