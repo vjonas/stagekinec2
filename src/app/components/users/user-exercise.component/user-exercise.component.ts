@@ -48,7 +48,7 @@ export class UserExerciseComponent implements OnChanges {
             if (step.stepNr > this.CALIBRATION_STEP_NR)
             { this.maxScore += step.maxScore; }
         });
-        this._completedExerciseService.getCompletedExercisesByUser(this.uid, this.selectedProgram, this.exercise['$key'])
+        this._completedExerciseService.getCompletedExercisesByUser(this.uid, this.selectedProgram, this.exercise.exerciseId)
             .subscribe((completedExercise: CompletedExercise[]) => {
                 this.completedExerciseList = completedExercise;
                 this.calculateScores()

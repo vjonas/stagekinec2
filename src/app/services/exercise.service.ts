@@ -9,16 +9,16 @@ import { FullExercise } from "../models/full.exercise.model";
 export class ExerciseService {
     path: string = "/exercises";
 
-    constructor(private af: AngularFire,private mentorService:MentorService) {
+    constructor(private af: AngularFire, private mentorService: MentorService) {
     }
 
 
     public getExcerciseById(exerciseId: string): Observable<FullExercise> {
-        return this.af.database.object(this.path+"/"+exerciseId);
+        return this.af.database.object(this.path + "/" + exerciseId);
     }
 
     public getAllExercisesFromMentor(): Observable<FullExercise[]> {
-        var mentorId=this.mentorService.getMentorId();
+        var mentorId = this.mentorService.getMentorId();
         return this.af.database.list(this.path, {
             query: {
                 orderByChild: 'mentorUid',
@@ -29,12 +29,10 @@ export class ExerciseService {
 
 
     public createNewExcercise(exercise: FullExercise) {
-        var mentorId=this.mentorService.getMentorId();        
-        this.af.database.list(this.path).push({
-            mentorUid:mentorId,
-            description: exercise.description,
-            name: exercise.name,
-            steps: exercise.steps
-        });
+        var mentorId = this.mentorService.getMentorId();
+        exercise.mentorUid = mentorId;
+        this.af.database.list(this.path).push(exercise).then(res => {
+            this.af.database.object(this.path + "/" + res.key).update({ exerciseId: res.key });
+        })
     }
 }

@@ -5,9 +5,10 @@ export class FullExercise {
         public mentorUid:string,
         public name: string,
         public description: string,
-        public steps: Step[]
+        public steps: Step[],
+        public exerciseId:string
     ) { }
     public static createNewFullExercise(): FullExercise {
-        return new FullExercise(null, "NewExercise","", new Array<Step>());
+        return new FullExercise(null, "NewExercise","", new Array<Step>(),null);
     }
 }
