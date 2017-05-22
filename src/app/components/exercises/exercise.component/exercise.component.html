@@ -63,50 +63,62 @@
     <div class="col-xs-12 bottomControls">
         <!--1 Touchpoint bottomcontrols-->
         <div *ngIf="checkBottomControls(0)" class="col-xs-12">
-            <p *ngIf="newExercise.steps[activeStepToDraw]!=undefined" class="col-xs-2">Radius</p>
+            <p *ngIf="newExercise.steps[activeStepToDraw]!=undefined" class="col-xs-1">Radius</p>
             <p *ngIf="showTrackingLineDetails && newExercise.steps[activeStepToDraw]!=undefined" class="col-xs-2">Trackingline Offset</p>
             <p *ngIf="newExercise.steps[activeStepToDraw] != undefined" class="col-xs-2">Jointtype</p>
+            <p *ngIf="newExercise.steps[activeStepToDraw]!=undefined" class="col-xs-1">Score</p>
+            <p *ngIf="newExercise.steps[activeStepToDraw]!= undefined" class="col-xs-1">Duration</p>
         </div>
         <div *ngIf="checkBottomControls(0)" class="col-xs-12">
-            <input class="col-xs-2" type="text" placeholder="radius" [(ngModel)]="newExercise.steps[activeStepToDraw].radius" />
+            <input class="col-xs-1" type="text" placeholder="Radius" [(ngModel)]="newExercise.steps[activeStepToDraw].radius" />
             <select class="col-xs-2 jointCombo" type="text" [(ngModel)]="newExercise.steps[activeStepToDraw].jointType">
             <option *ngFor="let joint of kinectJoints" [value]="joint?.id">{{joint?.name}}</option>
-        </select>
+            </select>
+            <input class="col-xs-1" type="number" placeholder="Score" [(ngModel)]="newExercise.steps[activeStepToDraw].maxScore"/>
+            <input class="col-xs-1" type="number" placeholder="Duration" [(ngModel)]="newExercise.steps[activeStepToDraw].duration"/>
         </div>
 
         <!--2 Touchpoints bottomcontrols-->
         <div *ngIf="checkBottomControls(2)" class="col-xs-12">
-            <p *ngIf="newExercise.steps[activeStepToDraw]!=undefined" class="col-xs-2">Radius</p>
+            <p *ngIf="newExercise.steps[activeStepToDraw]!=undefined" class="col-xs-1">Radius</p>
             <p *ngIf="newExercise.steps[activeStepToDraw] != undefined" class="col-xs-2">Green Jointtype</p>
             <p *ngIf="newExercise.steps[activeStepToDraw] != undefined" class="col-xs-2">Red Jointtype</p>
+            <p *ngIf="newExercise.steps[activeStepToDraw]!=undefined" class="col-xs-1">Score</p>
+            <p *ngIf="newExercise.steps[activeStepToDraw]!= undefined" class="col-xs-1">Duration</p>
         </div>
         <div *ngIf="checkBottomControls(2)" class="col-xs-12">
-            <input class="col-xs-2" type="text" placeholder="radius" [(ngModel)]="newExercise.steps[activeStepToDraw].radius" />
+            <input class="col-xs-1" type="text" placeholder="radius" [(ngModel)]="newExercise.steps[activeStepToDraw].radius" />
             <select class="col-xs-2 jointCombo" type="text" [(ngModel)]="newExercise.steps[activeStepToDraw].jointType">
             <option *ngFor="let joint of kinectJoints" [value]="joint?.id">{{joint?.name}}</option>
-        </select>
+            </select>
             <select class="col-xs-2 jointCombo" type="text" [(ngModel)]="newExercise.steps[activeStepToDraw].secondJointType">
             <option *ngFor="let joint of kinectJoints" [value]="joint?.id">{{joint?.name}}</option>
-        </select>
+            </select>
+            <input class="col-xs-1" type="number" placeholder="Score" [(ngModel)]="newExercise.steps[activeStepToDraw].maxScore"/>
+            <input class="col-xs-1" type="number" placeholder="Duration" [(ngModel)]="newExercise.steps[activeStepToDraw].duration"/>
         </div>
 
         <!--Trackingline-->
         <div *ngIf="checkBottomControls(1)" class="col-xs-12">
-            <p *ngIf="newExercise.steps[activeStepToDraw]!=undefined" class="col-xs-2">Radius</p>
+            <p *ngIf="newExercise.steps[activeStepToDraw]!=undefined" class="col-xs-1">Radius</p>
             <p *ngIf="showTrackingLineDetails && newExercise.steps[activeStepToDraw]!=undefined" class="col-xs-2">Trackingline Offset</p>
             <p *ngIf="newExercise.steps[activeStepToDraw] != undefined" class="col-xs-2">Jointtype</p>
+            <p *ngIf="newExercise.steps[activeStepToDraw]!=undefined" class="col-xs-1">Score</p>
+            <p *ngIf="newExercise.steps[activeStepToDraw]!= undefined" class="col-xs-1">Duration</p>
         </div>
         <div *ngIf="checkBottomControls(1)" class="col-xs-12">
-            <input class="col-xs-2" type="text" placeholder="radius" [(ngModel)]="newExercise.steps[activeStepToDraw].radius" />
+            <input class="col-xs-1" type="text" placeholder="radius" [(ngModel)]="newExercise.steps[activeStepToDraw].radius" />
             <select *ngIf="showTrackingLineDetails && newExercise.steps[activeStepToDraw] != undefined" class="col-xs-2 jointCombo" type="text"
                 name="offset-tracking-line" [(ngModel)]="newExercise.steps[activeStepToDraw].trackingLineOffset">
             <option value="80">Easy</option>
             <option value="50">Medium</option>
             <option value="25">Hard</option>
-        </select>
+            </select>
             <select class="col-xs-2 jointCombo" type="text" [(ngModel)]="newExercise.steps[activeStepToDraw].jointType">
             <option *ngFor="let joint of kinectJoints" [value]="joint?.id">{{joint?.name}}</option>
-        </select>
+            </select>
+            <input class="col-xs-1" type="number" placeholder="Score" [(ngModel)]="newExercise.steps[activeStepToDraw].maxScore"/>
+            <input class="col-xs-1" type="number" placeholder="Duration" [(ngModel)]="newExercise.steps[activeStepToDraw].duration"/>
         </div>
     </div>
 </div>
