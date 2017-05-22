@@ -54,6 +54,7 @@ export class IndividualUserComponent implements OnInit {
             this.exerciseService.getAllExercisesFromMentor().subscribe((exercises: FullExercise[]) => { this.mentorExerciseList = exercises });
             if (this.user.programs != undefined && this.user.programs[this.programIdToShow].exercises != undefined) {
                 this.userExerciseList.length = 0;
+                console.log("change in exList");
                 Object.keys(this.user.programs[this.programIdToShow].exercises).forEach(ex => {
                     this.exerciseService.getExcerciseById(this.user.programs[this.programIdToShow].exercises[ex].exerciseId).subscribe(
                         ex2 => {
@@ -61,6 +62,10 @@ export class IndividualUserComponent implements OnInit {
                         }
                     )
                 });
+            }
+            else
+            {
+                this.userExerciseList.length = 0;
             }
         });
     }
