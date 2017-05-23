@@ -25,10 +25,38 @@ $successColor: #3ED600;
 $cardColor: white;
 $cardAccentColor: #F0F0F0;
 $cardAccentColorAlt: #D2D2D2;
+$headerColor: $mainColorAccent2;
+
+
 
 $inputColorError:$errorColor;
 
 body {
   font: 100% $mainFont;
   color: $mainFontColor;
+}
+
+.btn-danger{
+  background-color: $headerColor;
+  color:$altFontColor;
+  border: white 1px solid;
+  border-radius:0px;
+  &:hover{
+    background-color: transparent;
+    color: $mainFontColor;
+    border: $headerColor 1px solid;
+  }
+}
+
+.btn-default{
+  border-radius: 0px;
+  &:hover{
+   border-radius: 0px;
+  }
+}
+
+.modal-header{
+  color:$altFontColor;
+  font-weight: bolder;
+  background-color:$headerColor;
 }

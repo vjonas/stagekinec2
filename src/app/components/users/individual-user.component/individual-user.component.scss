@@ -1,24 +1,5 @@
-@import "../../../../assets/css/global-variables";
-
-$headerColor: $mainColorAccent2;
-
-.btn-danger{
-  background-color: $headerColor;
-  color:$altFontColor;
-  border: white 2px solid;
+@import "../../../../assets/css/global-style";
   
-  &:hover{
-    background-color: transparent;
-    color: $mainFontColor;
-    border: $headerColor 2px solid;
-  }
-}
-
-.modal-header{
-  color:$altFontColor;
-  font-weight: bolder;
-  background-color:$headerColor;
-}
 
 .wrapperOuter{
   position: relative;
