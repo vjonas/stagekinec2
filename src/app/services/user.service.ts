@@ -20,20 +20,16 @@ export class UserService {
     }
 
     public getUserById(userId: string): Observable<User> {
-        return this.af.database.list(this.path, {
-            query: {
-                orderByChild: 'uid',
-                equalTo: userId
-            }
-        }).map(res => { return res[0] });
+        return this.af.database.object(this.path+"/"+userId);
     }
 
     public addMentorToUser(mentorId: string, userId: string) {
-        this.af.database.object(this.path + "/" + userId).update({ mentorId: mentorId });
+        this.getUserById(userId).subscribe(user => console.log(user));
+       // this.af.database.object(this.path + "/" + userId).update({ mentorId: mentorId });
     }
 
     public removeMentorFromUser(userId: string) {
-        this.af.database.object(this.path + "/" + userId).update({ mentorId: 0 });
+        this.af.database.object(this.path + "/" + userId).update({ mentorId: null });
     }
 
     public getUsersFromMentor(mentorId: string): Observable<User[]> {

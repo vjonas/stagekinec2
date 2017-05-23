@@ -1,5 +1,25 @@
 @import "../../../../assets/css/global-variables";
 
+$headerColor: $mainColorAccent2;
+
+.btn-danger{
+  background-color: $headerColor;
+  color:$altFontColor;
+  border: white 2px solid;
+  
+  &:hover{
+    background-color: transparent;
+    color: $mainFontColor;
+    border: $headerColor 2px solid;
+  }
+}
+
+.modal-header{
+  color:$altFontColor;
+  font-weight: bolder;
+  background-color:$headerColor;
+}
+
 .wrapperOuter{
   position: relative;
   height:80vh;
@@ -111,7 +131,7 @@ h5{
   margin:0;
   border:none;
   color:$altFontColor;
-  background-color: rgba(77,0,192,0.5);
+  background-color: $headerColor;
 }
 
 .wrapperRight{
@@ -130,6 +150,11 @@ h5{
   color:#F2F2F2;
   padding:0;
   background-color: rgba(77,0,192,0.5);
+
+  h4{
+    line-height: 50px;
+    margin:0;
+  }
 }
 
 .exerciseInteraction{
