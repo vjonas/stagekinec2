@@ -23,9 +23,21 @@ export class UserService {
         return this.af.database.object(this.path+"/"+userId);
     }
 
-    public addMentorToUser(mentorId: string, userId: string) {
-        this.getUserById(userId).subscribe(user => console.log(user));
-       // this.af.database.object(this.path + "/" + userId).update({ mentorId: mentorId });
+    public getUserByIdOnce(userId: string): Observable<User> {
+        return this.af.database.object(this.path+"/"+userId).take(1);
+    }
+
+    public addMentorToUser(mentorId: string, userId: string): Observable<boolean> {
+        return Observable.create(observable => {
+            this.getUserByIdOnce(userId).subscribe((user: User)=> {
+            if(user.uid === userId){
+                this.af.database.object(this.path + "/" + userId).update({ mentorId: mentorId });
+                observable.next(false);
+            }else{
+                observable.next(true);
+            }
+        });
+        });
     }
 
     public removeMentorFromUser(userId: string) {

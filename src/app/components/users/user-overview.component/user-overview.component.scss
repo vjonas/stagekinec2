@@ -5,6 +5,16 @@ $addCardTextColor:$altFontColor;
 $cardBackgroundColor: $cardColor;
 $animatedBorderColor: $mainColorAccent;
 
+.errormsg{
+  display: none;
+}
+
+.errormsgShow{
+  display:block;
+  background-color: rgba(255,255,255,.3);
+  color:orange;
+}
+
 .wrapper{
   margin-left:5%;
   margin-right:5%;
@@ -152,5 +162,9 @@ $animatedBorderColor: $mainColorAccent;
     float:left;
     margin:1%;
   }
+}
+
+.modal-body-error{
+  height:80px;
 }
 		
