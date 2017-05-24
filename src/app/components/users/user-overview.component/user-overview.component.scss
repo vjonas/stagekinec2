@@ -158,6 +158,8 @@ $animatedBorderColor: $mainColorAccent;
 .modal-body{
   height: 60px;
 
+  transition: ease .5s;
+
   p, input{
     float:left;
     margin:1%;
@@ -166,5 +168,7 @@ $animatedBorderColor: $mainColorAccent;
 
 .modal-body-error{
   height:80px;
+
+  transition: ease .2s;
 }
 		
