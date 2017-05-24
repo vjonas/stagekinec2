@@ -6,6 +6,9 @@ $listBackgroundColor: $cardAccentColorAlt;
 $button-touchpoint:#7219FC;
 $button-touchpoint2:#6604FF;
 $button-line:#3D009B;
+$maxWidthCanvas:960;
+$maxWidthControls:500;
+$minWidthControls:420;
 
 .wrapper{
   margin-left:5%;
@@ -23,13 +26,15 @@ canvas{
   background-color: $controlsBackgroundColor;
   height:540px;
   padding:0;
+  max-width:$maxWidthControls + px;
+  min-width: $minWidthControls + px
 }
 
-.btn{
+.controls-button{
   border-radius:0px;
   color:white;
   border: white 1px solid;
-
+  padding:6px 12px;
    &:hover{
     background-color: transparent;
     color: $mainFontColor;
@@ -175,6 +180,8 @@ input[type=checkbox]:checked + label{
   background-color:$controlsBackgroundColor;
   width: 95.05%;
   padding:0.5%;
+  max-width:$maxWidthCanvas+$maxWidthControls+px;
+  min-width:$maxWidthCanvas+$minWidthControls+px;
 }
 
 .jointCombo{
@@ -194,8 +201,25 @@ input[type=checkbox]:checked + label{
   line-height: 50px;
     height:100%;
     margin:0;
-
 }
+
+.modal-label-add-exercise{
+  width:100%;
+}
+
+.modal-input-add-exercise
+{
+  width:50%;
+  margin-right:50%;
+  margin-bottom:15px;
+}
+
+.modal-textarea
+{
+  width:100%;
+  max-width:100%;
+}
+
 
 ::-webkit-scrollbar {
   width: 6px;
