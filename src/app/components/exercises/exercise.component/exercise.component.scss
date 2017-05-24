@@ -42,15 +42,65 @@ canvas{
   }
 }
 
+.controls-buttons-wrapper{
+  border:$headerColor 1px solid;
+  padding:0px;
+  &:hover{
+    border:$headerColor 1px solid;
+  }  
+}
+
 .controls-button-touchpoint{
   background-color: $button-touchpoint;
+  background-image: url(../../../../assets/images/touchpoint.png);
+  background-repeat: no-repeat;
+  background-position-x: 50%;
+  background-position-y: 80%;
+  padding-bottom:60px;
+  border:none;
+  width:100%;
+  &:hover
+{
+  border:none;
+  background-image: none;
+  background-color: black;
+  -webkit-mask: url(../../../../assets/images/touchpoint.png) no-repeat 50% 80%;  
+}
 }
 .controls-button-touchpoint2{
   background-color: $button-touchpoint2;
+  background-image: url(../../../../assets/images/2touchpoints.png);
+  background-repeat: no-repeat;
+  background-position-x: 50%;
+  background-position-y: 80%;
+  padding-bottom:60px;
+  border:none;
+  width:100%;
+  &:hover
+{
+  border:none;
+  background-image: none;
+  background-color: black;
+  -webkit-mask: url(../../../../assets/images/2touchpoints.png) no-repeat 50% 80%;  
+}
 }
 .controls-button-line
 {
   background-color: $button-line;
+  background-image: url(../../../../assets/images/line.png);
+  background-repeat: no-repeat;
+  background-position-x: 50%;
+  background-position-y: 80%;
+  padding-bottom:60px;
+  border:none;
+  width:100%;
+  &:hover
+{
+  border:none;
+  background-image: none;
+  background-color: black;
+  -webkit-mask: url(../../../../assets/images/line.png) no-repeat 50% 80%; 
+}
 }
 
 .controls-button-{
@@ -88,7 +138,7 @@ input[type=checkbox]{
 
 .stepList{
   padding-top:10px;
-  height:280px;
+  height:270px;
   overflow-y: scroll;
   overflow-x: hidden;
   padding:0;
@@ -164,15 +214,14 @@ input[type=checkbox]:checked + label{
 
 .addExerciseButton{
   width:100%;
-  border:none;
-  height:40px;
-  line-height: 40px;
+  height:45px;
+  line-height: 45px;
   padding-top:0px;
 
   &:hover{
-    background-color:$mainColor;
-    font-weight: bold;
-    color:$altFontColor;
+    background-color:transparent;
+    color:"black";
+/*    font-weight: bold;*/
   }
 }
 
@@ -199,10 +248,12 @@ input[type=checkbox]:checked + label{
 
 .step-label{
   line-height: 50px;
-    height:100%;
-    margin:0;
+  height:100%;
+  margin:0;
 }
 
+
+/*Modal layout*/
 .modal-label-add-exercise{
   width:100%;
 }
