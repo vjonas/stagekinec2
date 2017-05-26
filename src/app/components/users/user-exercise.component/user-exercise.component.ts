@@ -69,7 +69,7 @@ export class UserExerciseComponent implements OnChanges {
         });
         this.scorePerCompleteExerciseList.forEach(score => { if (this.highscore < score) { this.highscore = score } });
         if(this.completedExerciseList.length != 0){
-        this.completedExerciseList[0].completedSteps.forEach(step => this.latestScore += step.score);
+        this.completedExerciseList[this.completedExerciseList.length-1].completedSteps.forEach(step => this.latestScore += step.score);
         }
         var totalScore = 0;
         this.scorePerCompleteExerciseList.forEach(score => totalScore += score);
