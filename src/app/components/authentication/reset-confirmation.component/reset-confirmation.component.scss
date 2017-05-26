@@ -1,28 +1,28 @@
 @import "../../../../assets/css/global-style";
 
-$titleFont: "Ostrich";
-$titleColor: $altFontColor;
-$errorMsgBackground: $errorBackgroundColor;
-$successButtonColor:$successColor;
-$confirmMsgBackground: rgba(20,20,20,0.5);
+$title-font: "Ostrich";
+$title-color: $alt-font-color;
+$error-msg-background: $error-background-color;
+$success-button-color:$success-color;
+$confirm-msg-background: rgba(20,20,20,0.5);
 
 h1{
   text-align:center;
   margin-top: 5%;
   margin-bottom: 5%;
-  font-family: $titleFont;
+  font-family: $title-font;
   font-size:5em;
-  color:$titleColor;
+  color:$title-color;
 }
 
 div{
   margin:auto;
   width:400px;
-  background-color: $confirmMsgBackground;
+  background-color: $confirm-msg-background;
   text-align: center;
   padding-bottom:2%;
   border-radius: 10px;
-   text-shadow: 0px 1px $textShadowColor;
+   text-shadow: 0px 1px $text-shadow-color;
 }
 
 button{
@@ -30,3 +30,14 @@ button{
   width:150px;
 }
 
+.ok-button{
+  border:solid 2px $card-color;
+  background-color:transparent;
+  font-size:1.3em; 
+  transition: ease .3s;
+
+  &:hover{
+    background-color: $card-color;
+    color:$card-text-color;
+  }
+}
