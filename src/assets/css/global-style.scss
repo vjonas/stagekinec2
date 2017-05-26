@@ -57,5 +57,10 @@ body {
 .modal-header{
   color:$alt-font-color;
   font-weight: bolder;
+
   background-color:$header-color;
+}
+
+.modal-content{
+  border-radius:0;
 }

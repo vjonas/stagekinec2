@@ -6,6 +6,9 @@ $list-background-color: $card-accent-color-alt;
 $button-touchpoint:#7219FC;
 $button-touchpoint2:#6604FF;
 $button-line:#3D009B;
+$maxWidthCanvas:960;
+$maxWidthControls:500;
+$minWidthControls:420;
 
 .wrapper{
   margin-left:5%;
@@ -23,9 +26,11 @@ canvas{
   background-color: $controls-background-color;
   height:540px;
   padding:0;
+  max-width:$maxWidthControls + px;
+  min-width: $minWidthControls + px
 }
 
-.btn{
+.controls-button{
   border-radius:0px;
   color:white;
   border: white 1px solid;
@@ -37,14 +42,66 @@ canvas{
   }
 }
 
+.controls-buttons-wrapper{
+  border:$header-color 1px solid;
+  padding:0px;
+  &:hover{
+    border:$header-color 1px solid;
+  }  
+}
+
 .controls-button-touchpoint{
   background-color: $button-touchpoint;
+  background-image: url(../../../../assets/images/touchpoint.png);
+  background-repeat: no-repeat;
+  background-position-x: 50%;
+  background-position-y: 80%;
+  padding-bottom:60px;
+  border:none;
+  width:100%;
+  
+  &:hover{ 
+    border:none;
+    background-image: none;
+    background-color: black;
+    -webkit-mask: url(../../../../assets/images/touchpoint.png) no-repeat 50% 80%;  
+  }
 }
+
 .controls-button-touchpoint2{
   background-color: $button-touchpoint2;
+  background-image: url(../../../../assets/images/2touchpoints.png);
+  background-repeat: no-repeat;
+  background-position-x: 50%;
+  background-position-y: 80%;
+  padding-bottom:60px;
+  border:none;
+  width:100%;
+  
+  &:hover{
+    border:none;
+    background-image: none;
+    background-color: black;
+    -webkit-mask: url(../../../../assets/images/2touchpoints.png) no-repeat 50% 80%;  
+  }
 }
+
 .controls-button-line{
   background-color: $button-line;
+  background-image: url(../../../../assets/images/line.png);
+  background-repeat: no-repeat;
+  background-position-x: 50%;
+  background-position-y: 80%;
+  padding-bottom:60px;
+  border:none;
+  width:100%;
+  
+  &:hover{
+    border:none;
+    background-image: none;
+    background-color: black;
+    -webkit-mask: url(../../../../assets/images/line.png) no-repeat 50% 80%; 
+  }
 }
 
 .controls-button-{
@@ -81,7 +138,7 @@ input[type=checkbox]{
 
 .step-list{
   padding-top:10px;
-  height:280px;
+  height:270px;
   overflow-y: scroll;
   overflow-x: hidden;
   padding:0;
@@ -160,15 +217,13 @@ input[type=checkbox]:checked + label{
 
 .add-exercise-button{
   width:100%;
-  border:none;
-  height:40px;
-  line-height: 40px;
+  height:45px;
+  line-height: 45px;
   padding-top:0px;
 
   &:hover{
-    background-color:$main-color;
-    font-weight: bold;
-    color:$alt-font-color;
+    background-color:transparent;
+    color:"black";
   }
 }
 
@@ -176,6 +231,8 @@ input[type=checkbox]:checked + label{
   background-color:$controls-background-color;
   width: 94.45%;
   padding:0.5%;
+  max-width:$maxWidthCanvas+$maxWidthControls+px;
+  min-width:$maxWidthCanvas+$minWidthControls+px;
 }
 
 .joint-combo{
@@ -195,6 +252,26 @@ input[type=checkbox]:checked + label{
   height:100%;
   margin:0;
 }
+
+
+/*Modal layout*/
+.modal-label-add-exercise{
+  width:100%;
+}
+
+.modal-input-add-exercise
+{
+  width:50%;
+  margin-right:50%;
+  margin-bottom:15px;
+}
+
+.modal-textarea
+{
+  width:100%;
+  max-width:100%;
+}
+
 
 ::-webkit-scrollbar {
   width: 6px;
