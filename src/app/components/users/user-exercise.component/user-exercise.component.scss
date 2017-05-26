@@ -1,60 +1,60 @@
 .shader{
-    position:fixed;
-    width:100vw;
-    height:100vh;
-    top:0;
-    left:0;
-    background-color:rgba(0,0,0,0.5);
+  position:fixed;
+  width:100vw;
+  height:100vh;
+  top:0;
+  left:0;
+  background-color:rgba(0,0,0,0.5);
 }
 
-.shaderExerciseNotSelected{
-    display:none;
+.shader-exercise-not-selected{
+  display:none;
 }
 
 .wrapper{
-    position:fixed;
-    background-color:white;
-    top:15vh;
-    left:25vw;
-    width:50vw;
-    height:50vh;
+  position:fixed;
+  background-color:white;
+  top:15vh;
+  left:25vw;
+  width:50vw;
+  height:50vh;
 }
 
-.wrapperExerciseNotSelected{
-    display:none;
+.wrapper-exercise-not-selected{
+  display:none;
 }
 
 .header{
-    background-color: rgba(77, 0, 192, 0.5);
-    color:white;
+  background-color: rgba(77, 0, 192, 0.5);
+  color:white;
 
-    h3{
-        margin-bottom:3%;
-    }
+  h3{
+    margin-bottom:3%;
+  }
 }
 
-.backButton{
-    background-color: rgba(0,0,0,0);
-    border: none;
-    float:right;   
-    font-size: 1.5em;
-    margin-top: 7%;
-    padding-right: 0;
+.back-button{
+  background-color: rgba(0,0,0,0);
+  border: none;
+  float:right;   
+  font-size: 1.5em;
+  margin-top: 7%;
+  padding-right: 0;
 }
 
-.graphArea{
-    padding:0;
+.graph-area{
+  padding:0;
 }
 
 .progress{
-    margin-top: 25px;
-    padding: 0;
+  margin-top: 25px;
+  padding: 0;
 }
 
 .score{
-    text-align: center;
+  text-align: center;
 
-    h1{
-        margin-top:15px;
-    }
+  h1{
+    margin-top:15px;
+  }
 }

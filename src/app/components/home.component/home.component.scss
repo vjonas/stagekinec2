@@ -1,22 +1,22 @@
 @import "../../../assets/css/global-style";
 
-$cardBackgroundColor: $cardColor;
-$animatedBorderColor: $mainColorAccent;
+$card-background-color: $card-color;
+$animated-border-color: $main-color-accent;
 
-.outerWrapper{
+.outer-wrapper{
   position: relative;
   height:80vh;
 }
 
-.innerWrapper{
-    width:100%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.inner-wrapper{
+  width:100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.logoDiv{
+.logo-div{
   text-align:center; 
   margin-top:-1%;  
 
@@ -26,9 +26,9 @@ $animatedBorderColor: $mainColorAccent;
   }
 }
 
-.homeDiv{
+.home-div{
   text-align: center;
-  background-color:$cardBackgroundColor;
+  background-color:$card-background-color;
   overflow-x:hidden;
 
   &::before {
@@ -61,20 +61,20 @@ $animatedBorderColor: $mainColorAccent;
     border: none;
     box-shadow: none;
 
-    &::before {
-      transition: .1s transform linear, .1s height linear .1s;
-      transform: translateX(0);
-      height: 100%;
-      border-color:$animatedBorderColor;
-    }
+  &::before {
+    transition: .1s transform linear, .1s height linear .1s;
+    transform: translateX(0);
+    height: 100%;
+    border-color:$animated-border-color;
+  }
 
-    &::after {
-      transition: .1s transform linear .2s, .1s height linear .3s;
-      transform: translateX(0);
-      height: 100%;
-      border-color: $animatedBorderColor    
-    }
-  }  
+  &::after {
+    transition: .1s transform linear .2s, .1s height linear .3s;
+    transform: translateX(0);
+    height: 100%;
+    border-color: $animated-border-color    
+  }
+}  
 
   @media (max-width:992px){
     &:nth-child(even){
@@ -88,14 +88,7 @@ h4{
   margin-top:30px;
 }
 
-.homeImage{
+.home-image{
   width: 100px;
   height:100px;
 }
-
-
-
-
-
-      
-

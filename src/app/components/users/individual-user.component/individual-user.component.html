@@ -5,8 +5,8 @@
                 <h4 class="modal-title">Add exercise</h4>
             </div>
             <div class="modal-body">
-                <button class="btn btn-warning modalButton" data-toggle="modal" data-target="#addFromListModal" data-dismiss="modal">Add exercise from list<br><img src="../../../assets/images/list.svg"></button>
-                <button routerLink="/exercise" class="btn btn-primary modalButton" data-dismiss="modal">Add new exercise<br><img src="../../../assets/images/exercise1white.svg"></button>
+                <button class="btn btn-warning modal-button" data-toggle="modal" data-target="#addFromListModal" data-dismiss="modal">Add exercise from list<br><img src="../../../assets/images/list.svg"></button>
+                <button routerLink="/exercise" class="btn btn-primary modal-button" data-dismiss="modal">Add new exercise<br><img src="../../../assets/images/exercise1white.svg"></button>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Go back</button>
@@ -23,7 +23,7 @@
             </div>
             <div class="modal-body">
                 <ul style="padding:0;">
-                    <li *ngFor="let exercise of mentorExerciseList" class="exerciseLi" id="mentorExerciseList" (click)="changeRadio($event)"
+                    <li *ngFor="let exercise of mentorExerciseList" class="exercise-li" id="mentorExerciseList" (click)="changeRadio($event)"
                         [ngClass]="{'radioChecked': counter.checked }">
                         <input type="radio" name="exercises" [id]="exercise.name" [value]="exercise.$key" #counter/>
                         <label [for]="exercise.name">{{exercise.name}}</label>
@@ -73,71 +73,71 @@
 </div>
 
 <div class="container">
-    <div class="wrapperOuter">
-        <div class="wrapperInner">
+    <div class="wrapper-outer">
+        <div class="wrapper-inner">
             <div class="card col-xs-12">
-                <div class="col-xs-6 col-md-3 backButtonDiv">
-                    <button (click)="goBack()" class="backButton glyphicon glyphicon-backward"></button>
+                <div class="col-xs-6 col-md-3 back-button-div">
+                    <button (click)="goBack()" class="back-button glyphicon glyphicon-backward"></button>
                 </div>
-                <div class="col-xs-6 col-md-3 deleteUserDiv">
-                    <button class="glyphicon glyphicon-trash deleteUserButton" data-toggle="modal" data-target="#removeUserModal"></button>
+                <div class="col-xs-6 col-md-3 delete-user-div">
+                    <button class="glyphicon glyphicon-trash delete-user-button" data-toggle="modal" data-target="#removeUserModal"></button>
                 </div>
                 <div class="col-xs-6 col-md-0 clearer"></div>
-                <div class="wrapperLeft col-xs-12 col-md-6">
-                    <div class="userImageDiv col-xs-12">
-                        <img class="userImage" src="../../../../assets/images/no_picture.jpg">
+                <div class="wrapper-left col-xs-12 col-md-6">
+                    <div class="user-image-div col-xs-12">
+                        <img class="user-image" src="../../../../assets/images/no_picture.jpg">
                         <h3 style="font-weight:bold;">{{user?.name}} {{user?.lastName}}</h3>
                     </div>
-                    <div class="userDetailsDiv col-xs-12">
+                    <div class="user-details-div col-xs-12">
                         <div class="row">
                             <div class="col-xs-4">
-                                <img class="userDetailsIcon" src="../../../../assets/images/age.png">
+                                <img class="user-details-icon" src="../../../../assets/images/age.png">
                             </div>
                             <div class="col-xs-4">
-                                <img class="userDetailsIcon" src="../../../../assets/images/height.png">
+                                <img class="user-details-icon" src="../../../../assets/images/height.png">
                             </div>
                             <div class="col-xs-4">
-                                <img class="userDetailsIcon" src="../../../../assets/images/weight.png">
+                                <img class="user-details-icon" src="../../../../assets/images/weight.png">
                             </div>
                         </div>
                         <div class="row">
-                            <div class="valueDiv col-xs-4">
+                            <div class="value-div col-xs-4">
                                 <h4>{{user?.age}}yo</h4>
                             </div>
-                            <div class="valueDiv col-xs-4">
+                            <div class="value-div col-xs-4">
                                 <h4>{{user?.length}}cm</h4>
                             </div>
-                            <div class="valueDiv col-xs-4">
+                            <div class="value-div col-xs-4">
                                 <h4>{{user?.weight}}kg</h4>
                             </div>
                         </div>
                     </div>
-                    <div class="programDiv col-xs-12">
-                        <h5 *ngIf="programIdToShow!=currentProgramId" (click)="setCurrentProgram()" class="setCurrentProgram">Set as current program</h5>
-                        <select *ngIf="programList == undefined" [disabled] class="programCombo" data-dismiss="modal" data-toggle="modal" data-target="#addNewProgram">
+                    <div class="program-div col-xs-12">
+                        <h5 *ngIf="programIdToShow!=currentProgramId" (click)="setCurrentProgram()" class="set-current-program">Set as current program</h5>
+                        <select *ngIf="programList == undefined" [disabled] class="program-combo" data-dismiss="modal" data-toggle="modal" data-target="#addNewProgram">
                              <option *ngIf="programList == undefined" [disabled]  value="no-program">This user doesnt have a program yet +</option>
                         </select>
-                        <select *ngIf="programList != undefined" class="programCombo" (change)="onChangeProgram($event.target.value)">
+                        <select *ngIf="programList != undefined" class="program-combo" (change)="onChangeProgram($event.target.value)">
                             <option *ngFor="let program of programList" [selected]="program.programId==programIdToShow" [value]="program.programId">{{program.name}}</option>
                         </select>
-                        <button class="addProgramButton glyphicon glyphicon-plus" data-toggle="modal" data-target="#addNewProgram"></button>
+                        <button class="add-program-button glyphicon glyphicon-plus" data-toggle="modal" data-target="#addNewProgram"></button>
                     </div>
                 </div>
-                <div class="wrapperRight col-xs-12 col-md-6">
+                <div class="wrapper-right col-xs-12 col-md-6">
                     <h2 class="col-xs-12">Exercises</h2>
-                    <div class="col-xs-12 exerciseWrapper">
-                        <div class="col-xs-12 addExerciseDiv">
+                    <div class="col-xs-12 exercise-wrapper">
+                        <div class="col-xs-12 add-exercise-div">
                             <h4 class="col-xs-9">Add new exercise</h4>
                             <div class="col-xs-3">
-                                <h4 *ngIf="programList != undefined" class="glyphicon glyphicon-plus exerciseInteraction" data-toggle="modal" data-target="#addModal"></h4>
-                                <h4 *ngIf="programList == undefined" class="glyphicon glyphicon-plus exerciseInteraction" data-toggle="modal" data-target="#addNewProgram"></h4>
+                                <h4 *ngIf="programList != undefined" class="glyphicon glyphicon-plus exercise-interaction" data-toggle="modal" data-target="#addModal"></h4>
+                                <h4 *ngIf="programList == undefined" class="glyphicon glyphicon-plus exercise-interaction" data-toggle="modal" data-target="#addNewProgram"></h4>
                             </div>
                         </div>
-                        <div class="col-xs-12 exerciseList">
-                            <div *ngFor="let exercise of userExerciseList" class="exerciseListDiv">
+                        <div class="col-xs-12 exercise-list">
+                            <div *ngFor="let exercise of userExerciseList" class="exercise-list-div">
                                 <h4 data-target="modal" data-toggle="#showExerciseModal" (click)="setSelectedExercise(exercise)" class="col-xs-11">{{exercise?.name}}</h4>
                                 <div class="col-xs-1">
-                                    <h4 (click)="removeExerciseFromProgram(exercise['$key'])" class="glyphicon glyphicon-remove-circle exerciseInteraction"></h4>
+                                    <h4 (click)="removeExerciseFromProgram(exercise['$key'])" class="glyphicon glyphicon-remove-circle exercise-interaction"></h4>
                                 </div>
                             </div>
                         </div>

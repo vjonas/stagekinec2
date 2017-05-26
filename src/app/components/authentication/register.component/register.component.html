@@ -1,8 +1,8 @@
-<div class="wrapperOuter">
-  <div class="wrapperInner">
+<div class="wrapper-outer">
+  <div class="wrapper-inner">
     <h1>Register</h1>
     <form name="form" #formData='ngForm' (ngSubmit)="onSubmit(formData)" novalidate>
-      <p *ngIf="error.message != ''" id="errMsg">{{error.message}}</p>
+      <p *ngIf="error.message != ''" id="errMsg" class="errMsg">{{error.message}}</p>
       <div class="form-group">
         <input type="text" placeholder="Name" class="form-control" name="name" [(ngModel)]="mentorToAdd.name" required />
       </div>
@@ -20,9 +20,9 @@
         <input type="password" placeholder="Repeat your password" class="form-control" name="repeatPassword" required validateEqual="password"
         />
       </div>
-      <div class="form-group" id="buttons">
-        <button type="submit" id=registerbutton [disabled]="!formData.valid" class="btn btn-success">Register</button>
-        <a [routerLink]="['/login']" id="loginButton" class="btn btn-link">Go Back</a>
+      <div class="form-group" class="buttons">
+        <button type="submit" id=registerbutton [disabled]="!formData.valid" class="btn btn-success register-button">Register</button>
+        <a [routerLink]="['/login']" id="loginButton" class="btn btn-link login-button">Go Back</a>
       </div>
     </form>
   </div>

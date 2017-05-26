@@ -1,11 +1,11 @@
-<div id="addUserModal" class="modal fade" role="dialog">
+<div id="addUserModal" class="modal fade add-user-modal" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Add user</h4>
             </div>
             <div class="modal-body" [ngClass]="{'modal-body-error': wrongUser}">
-                <div class="errormsg" [ngClass]="{'errormsgShow': wrongUser}">This user does not exist, check the uid again</div>
+                <div class="error-msg" [ngClass]="{'error-msg-show': wrongUser}">This user does not exist, check the uid again</div>
                 <p>User uid</p>
                 <input style="width:400px" type="text" id="uid" placeholder="user uid" #uidInput>
             </div>
@@ -18,32 +18,32 @@
     </div>
 </div>
 <div class="wrapper">
-    <div data-toggle="modal" data-target="#addUserModal" class="col-xs-12 col-sm-6 col-md-6 col-lg-3 cardWrapper">
-        <div class="card" id="addCard">
+    <div data-toggle="modal" data-target="#addUserModal" class="col-xs-12 col-sm-6 col-md-6 col-lg-3 card-wrapper">
+        <div class="card" id="add-card">
             <p>Add user</p>
-            <img class="addImage" src="../../../assets/images/user.svg"></div>
+            <img class="add-image" src="../../../assets/images/user.svg"></div>
     </div>
-    <div *ngFor="let user of userList" (click)="goToUser(user.uid)" class="col-xs-12 col-sm-6 col-md-6 col-lg-3 cardWrapper">
+    <div *ngFor="let user of userList" (click)="goToUser(user.uid)" class="col-xs-12 col-sm-6 col-md-6 col-lg-3 card-wrapper">
         <div class="card">
-            <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 cardDiv"><img src="../../../assets/images/no_picture.jpg" class="cardImage"></div>
+            <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 card-div"><img src="../../../assets/images/no_picture.jpg" class="card-image"></div>
 
             <table class="table col-xs-7 col-sm-7 ">
                 <tbody>
                     <tr>
                         <td class="specifier">Name</td>
-                        <td class="userInfo">{{user?.name}} {{user?.lastName}}</td>
+                        <td class="user-info">{{user?.name}} {{user?.lastName}}</td>
                     </tr>
                     <tr>
                         <td class="specifier">Age</td>
-                        <td class="userInfo">{{user?.age}}yo</td>
+                        <td class="user-info">{{user?.age}}yo</td>
                     </tr>
                     <tr>
                         <td class="specifier">Height</td>
-                        <td class="userInfo">{{user?.length}}cm</td>
+                        <td class="user-info">{{user?.length}}cm</td>
                     </tr>
                     <tr>
                         <td class="specifier">Weight</td>
-                        <td class="userInfo">{{user.weight}}kg</td>
+                        <td class="user-info">{{user.weight}}kg</td>
                     </tr>
                 </tbody>
             </table>

@@ -1,21 +1,21 @@
 @import '../../../../assets/css/global-style';
 
-$titleFont: "Ostrich";
-$titleColor: $altFontColor;
-$errorMsgBackground: $errorBackgroundColor;
-$successButtonColor:$successColor;
+$title-font: "Ostrich";
+$title-color: $alt-font-color;
+$error-msg-background: $error-background-color;
+$success-button-color:$success-color;
 
-.wrapperOuter{
+.wrapper-outer{
   position: relative;
   height:80vh;
 }
 
-.wrapperInner{
-    width:100%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.wrapper-inner{
+  width:100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 h1{
@@ -24,7 +24,7 @@ h1{
   margin-bottom: 2%;
   font-family: "Ostrich";
   font-size: 5em;
-  color:$titleColor;
+  color:$title-color;
 }
 
 form {
@@ -60,10 +60,10 @@ input {
   font-size: 15px;
   background: white;
   border-radius: 5px;
-  font-family: $inputFont;
+  font-family: $input-font;
 }  
 
-#buttons {
+.buttons {
   margin: auto;
   margin-top: 5%;
   width: 80%;
@@ -74,10 +74,23 @@ button {
   width: 100%;
 }
 
-#registerbutton{
-  background:$successButtonColor;
+.register-button{
+  border:solid 2px $card-color;
+  background-color:transparent;
   font-size:1.3em; 
+  transition: ease .3s;
+
+  &:hover{
+    background-color: $card-color;
+    color:$card-text-color;
+  }
 }  
+
+.login-button{
+  &:hover{
+    color: $alt-font-color;
+  }
+}
 
 a {
   width: 100%;
@@ -86,15 +99,14 @@ a {
   margin-top: 3%;
 }
       
-#errMsg{
+.errMsg{
   padding: 5px;
   width:80%;
   margin:auto;
   margin-top: 5%;
   margin-bottom: 5%;
   text-align:center;
-  color:$inputColorError;
+  color:$input-color-error;
   background-color:rgba(50,50,50,0.5);
   border-radius: 5px;
 }
-

@@ -1,19 +1,19 @@
-<div class="wrapperOuter">
-  <div class="wrapperInner">
+<div class="wrapper-outer">
+  <div class="wrapper-inner">
     <h1>Login</h1>
     <form name="form" (ngSubmit)="onSubmit(formData)" #formData='ngForm'>
-      <p *ngIf="error.message != ''" id="errMsg">{{error.message}}</p>
+      <p *ngIf="error.message != ''" id="errMsg" class="errMsg">{{error.message}}</p>
       <div class="form-group">
         <input type="email" placeholder="Email" class="form-control" name="email" (ngModel)="email" required/>
       </div>
       <div class="form-group">
         <input type="password" placeholder="Password" class="form-control" name="password" (ngModel)="password" required />
-        <a [routerLink]="['/resetpassword']" id="resetpasswordbutton" class="btn btn-link">Forgot password?</a>
+        <a [routerLink]="['/resetpassword']" id="resetpasswordbutton" class="btn btn-link reset-password-button">Forgot password?</a>
       </div>
-      <div class="form-group" id="buttons">
-        <button id=loginbutton type="submit" [disabled]="!formData.valid" class="btn btn-primary">Login</button>
+      <div class="form-group" class="buttons">
+        <button id=loginbutton type="submit" [disabled]="!formData.valid" class="btn btn-primary login-button">Login</button>
       </div>
-      <a [routerLink]="['/register']" id="registerButton" class="btn btn-link">No account yet? <strong>You can make one here!</strong></a>
+      <a [routerLink]="['/register']" id="registerButton" class="btn btn-link register-button">No account yet? <strong>You can make one here!</strong></a>
       </form>
   </div>
 </div>

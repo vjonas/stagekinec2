@@ -9,56 +9,56 @@ font-weight: bold;
   src: url('/src/assets/fonts/DroidSans.ttf');
 }
 
-$mainFont: "Droid";
-$inputFont: Helvetica, sans-serif;
-$mainFontColor: black;
-$textShadowColor: #777777;
-$altFontColor: #F2F2F2;
-$mainColor: #4D00C7;
-$mainColorAccent: #C19AFF;
-$mainColorAccent2: rgba(77,0,192,0.5);
-$addCardBackgroundColor:#FFA207;
-$errorColor: orange;
-$errorBackgroundColor: rgba(50,50,50,0.5);
-$deleteColor: red;
-$successColor: #3ED600;
-$cardColor: white;
-$cardAccentColor: #F0F0F0;
-$cardAccentColorAlt: #D2D2D2;
-$headerColor: $mainColorAccent2;
-
-
-
-$inputColorError:$errorColor;
+$main-font: "Droid";
+$input-font: Helvetica, sans-serif;
+$main-font-color: black;
+$text-shadow-color: #777777;
+$alt-font-color: #F2F2F2;
+$main-color: #4D00C7;
+$main-color-accent: #C19AFF;
+$main-color-accent2: rgba(77,0,192,0.5);
+$add-card-background-color:#FFA207;
+$error-color: orange;
+$error-background-color: rgba(50,50,50,0.5);
+$delete-color: red;
+$success-color: #3ED600;
+$card-color: white;
+$card-accent-color: #F0F0F0;
+$card-accent-color-alt: #D2D2D2;
+$card-text-color: #672CC6;
+$header-color: $main-color-accent2;
+$input-color-error:$error-color;
 
 body {
-  font: 100% $mainFont;
-  color: $mainFontColor;
+  font: 100% $main-font;
+  color: $main-font-color;
 }
 
 .btn-danger{
-  background-color: $headerColor;
-  color:$altFontColor;
+  background-color: $header-color;
+  color:$alt-font-color;
   border: white 1px solid;
   border-radius:0px;
   &:hover{
     background-color: transparent;
-    color: $mainFontColor;
-    border: $headerColor 1px solid;
+    color: $main-font-color;
+    border: $header-color 1px solid;
   }
 }
 
 .btn-default{
   border-radius: 0px;
+  
   &:hover{
    border-radius: 0px;
   }
 }
 
 .modal-header{
-  color:$altFontColor;
+  color:$alt-font-color;
   font-weight: bolder;
-  background-color:$headerColor;
+
+  background-color:$header-color;
 }
 
 .modal-content{

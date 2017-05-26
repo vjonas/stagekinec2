@@ -1,8 +1,8 @@
 @import "../../../../assets/css/global-style";
 
-$checkedColor:$textShadowColor;
-$controlsBackgroundColor: $cardAccentColor;
-$listBackgroundColor: $cardAccentColorAlt;
+$checked-color:$text-shadow-color;
+$controls-background-color: $card-accent-color;
+$list-background-color: $card-accent-color-alt;
 $button-touchpoint:#7219FC;
 $button-touchpoint2:#6604FF;
 $button-line:#3D009B;
@@ -23,7 +23,7 @@ canvas{
 }
 
 .controls{
-  background-color: $controlsBackgroundColor;
+  background-color: $controls-background-color;
   height:540px;
   padding:0;
   max-width:$maxWidthControls + px;
@@ -34,19 +34,19 @@ canvas{
   border-radius:0px;
   color:white;
   border: white 1px solid;
-  padding:6px 12px;
-   &:hover{
-    background-color: transparent;
-    color: $mainFontColor;
-    border: $headerColor 1px solid;
+
+  &:hover{
+   background-color: transparent;
+   color: $main-font-color;
+   border: $header-color 1px solid;
   }
 }
 
 .controls-buttons-wrapper{
-  border:$headerColor 1px solid;
+  border:$header-color 1px solid;
   padding:0px;
   &:hover{
-    border:$headerColor 1px solid;
+    border:$header-color 1px solid;
   }  
 }
 
@@ -59,14 +59,15 @@ canvas{
   padding-bottom:60px;
   border:none;
   width:100%;
-  &:hover
-{
-  border:none;
-  background-image: none;
-  background-color: black;
-  -webkit-mask: url(../../../../assets/images/touchpoint.png) no-repeat 50% 80%;  
+  
+  &:hover{ 
+    border:none;
+    background-image: none;
+    background-color: black;
+    -webkit-mask: url(../../../../assets/images/touchpoint.png) no-repeat 50% 80%;  
+  }
 }
-}
+
 .controls-button-touchpoint2{
   background-color: $button-touchpoint2;
   background-image: url(../../../../assets/images/2touchpoints.png);
@@ -76,16 +77,16 @@ canvas{
   padding-bottom:60px;
   border:none;
   width:100%;
-  &:hover
-{
-  border:none;
-  background-image: none;
-  background-color: black;
-  -webkit-mask: url(../../../../assets/images/2touchpoints.png) no-repeat 50% 80%;  
+  
+  &:hover{
+    border:none;
+    background-image: none;
+    background-color: black;
+    -webkit-mask: url(../../../../assets/images/2touchpoints.png) no-repeat 50% 80%;  
+  }
 }
-}
-.controls-button-line
-{
+
+.controls-button-line{
   background-color: $button-line;
   background-image: url(../../../../assets/images/line.png);
   background-repeat: no-repeat;
@@ -94,22 +95,22 @@ canvas{
   padding-bottom:60px;
   border:none;
   width:100%;
-  &:hover
-{
-  border:none;
-  background-image: none;
-  background-color: black;
-  -webkit-mask: url(../../../../assets/images/line.png) no-repeat 50% 80%; 
-}
+  
+  &:hover{
+    border:none;
+    background-image: none;
+    background-color: black;
+    -webkit-mask: url(../../../../assets/images/line.png) no-repeat 50% 80%; 
+  }
 }
 
 .controls-button-{
   background-color: $button-touchpoint
 }
 
-.exerciseCombo{
+.exercise-combo{
   height:50px;
-  color:$mainFontColor;
+  color:$main-font-color;
 }
 
 .switchmode-button-addstep{
@@ -123,8 +124,7 @@ canvas{
   background-position-x: 50%;
 }
 
-.switchmode-button-goback
-{
+.switchmode-button-goback{
   height:50px;
   border:none;
   padding-top:0;
@@ -136,7 +136,7 @@ input[type=checkbox]{
   appearance:none;
 }
 
-.stepList{
+.step-list{
   padding-top:10px;
   height:270px;
   overflow-y: scroll;
@@ -144,11 +144,11 @@ input[type=checkbox]{
   padding:0;
 }
 
-.stepLi{
-  color:$mainFontColor;
+.step-li{
+  color:$main-font-color;
   border-bottom: black solid 1px;
   height:50px;
-  background-color: $listBackgroundColor;
+  background-color: $list-background-color;
   list-style: none;
 }
 
@@ -157,14 +157,15 @@ input[type=radio]{
 }
 
 input[type=checkbox]:checked + label{
-  background-color:$checkedColor;
+  background-color:$checked-color;
 }
       
-.checkboxChecked{
-  background-color:$checkedColor;
+.checkbox-checked{
+  color:$alt-font-color;
+  background-color:$main-color;
 }
 
-.newStepButton{
+.new-step-button{
   width:100%;
   height:35px;
   border-radius:0;
@@ -172,22 +173,24 @@ input[type=checkbox]:checked + label{
   background-repeat: no-repeat;
   background-position-x: 50%;
   border:none;
+  
   &:hover{
-    border: $headerColor 1px solid;
+    border: $header-color 1px solid;
     background-color:black;
     background-image: none;
     border:none;
     -webkit-mask: url(../../../../assets/images/add.svg) no-repeat 50%;
-    }
+  }
 }
 .add-step-wrapper{
-  border:$headerColor 1px solid;
+  border:$header-color 1px solid;
+  
   &:hover{
-    border:$headerColor 1px solid;
+    border:$header-color 1px solid;
   }  
 }
 
-.removeStepButton{
+.remove-step-button{
   float:right;
   height:100%;
   border-radius:0px;
@@ -197,22 +200,22 @@ input[type=checkbox]:checked + label{
   }
 }
 
-.buttonImg{
+.button-img{
   margin:auto;
   width:max-content;
   height:max-content;
 }
 
-.newPointButton{
+.new-point-button{
   border-radius:0;    
 }
 
-.newPointButtonImg{
+.new-point-button-img{
   width:30%;
   height:30%;
 }
 
-.addExerciseButton{
+.add-exercise-button{
   width:100%;
   height:40px;
   line-height: 40px;
@@ -222,25 +225,23 @@ input[type=checkbox]:checked + label{
   &:hover{
     background-color:transparent;
     color:"black";
-/*    font-weight: bold;*/
   }
 }
 
-.bottomControls{
-  background-color:$controlsBackgroundColor;
-  width: 95.05%;
+.bottom-controls{
+  background-color:$controls-background-color;
+  width: 94.45%;
   padding:0.5%;
   max-width:$maxWidthCanvas+$maxWidthControls+px;
   min-width:$maxWidthCanvas+$minWidthControls+px;
 }
 
-.jointCombo{
+.joint-combo{
   height:26px;
 }
 
-.delete-step-btn
-{
-  color:$deleteColor;
+.delete-step-btn{
+  color:$delete-color;
   background-color: transparent;
   border:none;
   line-height: 50px;
