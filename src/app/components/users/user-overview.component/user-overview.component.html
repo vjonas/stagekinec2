@@ -10,8 +10,8 @@
                 <input style="width:400px" type="text" id="uid" placeholder="user uid" #uidInput>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Go back</button>
-                <button type="button" class="btn btn-success" (click)="addTutee(uidInput.value)">Add</button>
+                <button type="button" class="btn btn-danger" (click)="addTutee(uidInput.value)">Add</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Go back</button>
             </div>
         </div>
 
