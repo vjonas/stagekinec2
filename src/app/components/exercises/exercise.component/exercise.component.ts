@@ -27,8 +27,13 @@ export class ExerciseComponent implements OnInit, AfterViewInit {
     constructor(private router: Router, private _exerciseService: ExerciseService, private _drawService: DrawService) {
         this.newExercise = FullExercise.createNewFullExercise();
         this._exerciseService.getAllExercisesFromMentor().subscribe(exercices => {
+            console.log("exercises subscribe");
+            console.log(exercices);
             this.exercisesOfMentor = exercices;
-            this.newExercise = exercices[0];
+            if(exercices.length>0)
+            {
+                this.newExercise = exercices[0];
+            }
         });     
     }
 
@@ -86,9 +91,12 @@ export class ExerciseComponent implements OnInit, AfterViewInit {
         }
         else {
             this.viewState = true;
-            this._exerciseService.getAllExercisesFromMentor().subscribe(exercices => {
-                this.exercisesOfMentor = exercices;
-                this.newExercise = exercices[0];
+            this._exerciseService.getAllExercisesFromMentor().subscribe(exercises => {
+                this.exercisesOfMentor = exercises;
+                if(exercises.length>0)
+                {
+                    this.newExercise = exercises[0];
+                }
             })
             this._drawService.recreateCanvas(this.canvas);
             this.canvas = <HTMLCanvasElement>document.getElementById("canvas");
