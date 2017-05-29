@@ -24,7 +24,7 @@
             <div class="modal-body">
                 <ul style="padding:0;">
                     <li *ngFor="let exercise of mentorExerciseList" class="exercise-li" id="mentorExerciseList" (click)="changeRadio($event)"
-                        [ngClass]="{'radioChecked': counter.checked }">
+                        [ngClass]="{'radio-checked': counter.checked }">
                         <input type="radio" name="exercises" [id]="exercise.name" [value]="exercise.$key" #counter/>
                         <label [for]="exercise.name">{{exercise.name}}</label>
                     </li>
