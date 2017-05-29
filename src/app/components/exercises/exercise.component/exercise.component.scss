@@ -27,7 +27,6 @@ canvas{
   height:540px;
   padding:0;
   max-width:$maxWidthControls + px;
-  min-width: $minWidthControls + px
 }
 
 .controls-button{
@@ -231,10 +230,9 @@ input[type=checkbox]:checked + label{
 
 .bottom-controls{
   background-color:$controls-background-color;
-  width: 94.45%;
+  width: 95.07%;
   padding:0.5%;
   max-width:$maxWidthCanvas+$maxWidthControls+px;
-  min-width:$maxWidthCanvas+$minWidthControls+px;
 }
 
 .joint-combo{
