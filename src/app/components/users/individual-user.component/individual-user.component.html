@@ -26,6 +26,7 @@
                     <li *ngFor="let exercise of mentorExerciseList" class="exercise-li" id="mentorExerciseList" (click)="changeRadio($event)"
                         [ngClass]="{'radio-checked': counter.checked }">
                         <input type="radio" name="exercises" [id]="exercise.name" [value]="exercise.$key" #counter/>
+
                         <label [for]="exercise.name">{{exercise.name}}</label>
                     </li>
                 </ul>
@@ -62,7 +63,7 @@
                 <h4 class="modal-title">Remove user</h4>
             </div>
             <div class="modal-body">
-                <p>Are you sure you want to remove <span style="font-weight: bold">{{user?.name}} {{user?.lastName}}</span>                    from your list?</p>
+                <p>Are you sure you want to remove <span style="font-weight: bold">{{user?.name}} {{user?.lastName}}</span> from your list?</p>
             </div>
             <div class="modal-footer">
                 <button type="button" (click)="deleteUser()" class="btn btn-danger" data-dismiss="modal">Delete</button>
@@ -137,7 +138,7 @@
                             <div *ngFor="let exercise of userExerciseList" class="exercise-list-div">
                                 <h4 data-target="modal" data-toggle="#showExerciseModal" (click)="setSelectedExercise(exercise)" class="col-xs-11">{{exercise?.name}}</h4>
                                 <div class="col-xs-1">
-                                    <h4 (click)="removeExerciseFromProgram(exercise['$key'])" class="glyphicon glyphicon-remove-circle exercise-interaction"></h4>
+                                    <h4 (click)="removeExerciseFromProgram(exercise.exerciseId)" class="glyphicon glyphicon-remove-circle exercise-interaction"></h4>
                                 </div>
                             </div>
                         </div>
