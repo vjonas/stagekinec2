@@ -2,8 +2,8 @@
     <div class="wrapper" [ngClass]="{'wrapper-exercise-not-selected': !showComponent}">
 
         <div class="col-xs-12 header">
-            <h3 class="col-xs-6">{{exercise?.name}}</h3>
-            <div class="col-xs-6"><button class="glyphicon glyphicon-remove-circle back-button" (click)="goBack()"></button></div>
+            <h3 class="col-xs-10">{{exercise?.name}}</h3>
+            <div class="col-xs-2"><button class="glyphicon glyphicon-remove-circle back-button" (click)="goBack()"></button></div>
         </div>
         <div *ngIf="!dataLoaded" class="col-xs-12">
             <div style="text-align:center" class="col-xs-12">
