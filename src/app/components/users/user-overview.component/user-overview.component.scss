@@ -58,6 +58,7 @@ $animated-border-color: $main-color-accent;
   height: 27vh;
   width: 100%;
   padding: 5%;
+  text-align: left;
 
   &::before {
   transform: translateX(100%);
@@ -111,19 +112,16 @@ $animated-border-color: $main-color-accent;
 .card-image{
   width:100%;
   font-size: 1.5em;
-}
-
-.card-div{
-  float:right;
-}
-
-.card-image{
-  width:100%;  
   border-radius: 50%;
 }
 
+.username{
+  color: $main-color;
+  font-weight: bold;
+  font-size:1.5em;
+}
+
 .table{
-  width:50%;
 
   tr{
     width:50%;
@@ -135,20 +133,26 @@ $animated-border-color: $main-color-accent;
   }
 }
 
+.specifier{
+  width:50px;
+} 
+
 .user-info{
   font-weight:bold;
 }
 
-#add-card{
+.add-card{
+  text-align: center;
   font-weight: bold;
-  text-align:center;
-  color:$add-card-text-color;
-  background-color: $add-card-background-color;     
+  overflow:hidden;
+}
+
+.add-user-card-text{
+  margin:0;
 }
 
 .add-image{
-  width:40%;
-  height:90%;
+  height:100%;
 }
 
 .add-user-modal{
