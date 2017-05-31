@@ -9,8 +9,8 @@ export class CompletedExerciseService {
 
      constructor(private af: AngularFire){}
 
-    getCompletedExercisesByUser(uid: string, programId: number, exerciseId: string): Observable<CompletedExercise[]>{
-      return  this.af.database.list(this.path+"/"+uid+"/"+programId,{
+    getCompletedExercisesByUser(userId: string, programId: number, exerciseId: string): Observable<CompletedExercise[]>{
+      return  this.af.database.list(this.path+"/"+userId+"/"+programId,{
             query: {
                 orderByChild: 'exerciseId',
                 equalTo: exerciseId

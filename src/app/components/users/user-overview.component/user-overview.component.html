@@ -4,13 +4,13 @@
             <div class="modal-header">
                 <h4 class="modal-title">Add user</h4>
             </div>
-            <div class="modal-body" [ngClass]="{'modal-body-error': wrongUser}">
-                <div class="error-msg" [ngClass]="{'error-msg-show': wrongUser}">This user does not exist, check the uid again</div>
+            <div class="modal-body" [ngClass]="{'modal-body-error': userNotFound}">
+                <div class="error-msg" [ngClass]="{'error-msg-show': userNotFound}">This user does not exist, check the uid again</div>
                 <p>User uid</p>
                 <input style="width:400px" type="text" id="uid" placeholder="user uid" #uidInput>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" (click)="addTutee(uidInput.value)">Add</button>
+                <button type="button" class="btn btn-danger" (click)="addUser(uidInput.value)">Add</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Go back</button>
             </div>
         </div>

@@ -19,7 +19,7 @@ export class UserOverviewComponent implements OnInit {
     userList: User[];
     tutor: User;
     mentorUid: string;
-    wrongUser: boolean = false;
+    userNotFound: boolean = false;
 
 
     constructor(private router: Router, private userService: UserService,private mentorService:MentorService) { }
@@ -33,8 +33,8 @@ export class UserOverviewComponent implements OnInit {
     }
     
 
-    private addTutee(uid: string) {
-        this.userService.addMentorToUser(this.mentorUid, uid).subscribe(bool => this.wrongUser = bool);
+    private addUser(uid: string) {
+        this.userService.addMentorToUser(this.mentorUid, uid).subscribe(bool => this.userNotFound = bool);
     }
 
     private loadMentorData(){
