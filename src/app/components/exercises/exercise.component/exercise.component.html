@@ -75,10 +75,10 @@
     </div>
     <div class="col-xs-12 bottom-controls">
         <!--1 Touchpoint bottomcontrols-->
-        <div *ngIf="checkBottomControls(0)" class="col-xs-12">
+        <div *ngIf="checkBottomControls(0)" class="col-xs-12 control-specifiers">
             <p *ngIf="newExercise.steps[activeStepToDraw]!=undefined" class="col-xs-1">Radius</p>
             <p *ngIf="showTrackingLineDetails && newExercise.steps[activeStepToDraw]!=undefined" class="col-xs-2">Trackingline Offset</p>
-            <p *ngIf="newExercise.steps[activeStepToDraw] != undefined" class="col-xs-2">Jointtype</p>
+            <p *ngIf="newExercise.steps[activeStepToDraw] != undefined" class="col-xs-2 joint-specifier">Jointtype</p>
             <p *ngIf="newExercise.steps[activeStepToDraw]!=undefined" class="col-xs-1">Score</p>
             <p *ngIf="newExercise.steps[activeStepToDraw]!= undefined" class="col-xs-1">Duration</p>
         </div>
@@ -92,10 +92,10 @@
         </div>
 
         <!--2 Touchpoints bottomcontrols-->
-        <div *ngIf="checkBottomControls(2)" class="col-xs-12">
+        <div *ngIf="checkBottomControls(2)" class="col-xs-12 control-specifiers">
             <p *ngIf="newExercise.steps[activeStepToDraw]!=undefined" class="col-xs-1">Radius</p>
-            <p *ngIf="newExercise.steps[activeStepToDraw] != undefined" class="col-xs-2">Green Jointtype</p>
-            <p *ngIf="newExercise.steps[activeStepToDraw] != undefined" class="col-xs-2">Red Jointtype</p>
+            <p *ngIf="newExercise.steps[activeStepToDraw] != undefined" class="col-xs-2 joint-specifier">Green Jointtype</p>
+            <p *ngIf="newExercise.steps[activeStepToDraw] != undefined" class="col-xs-2 joint-specifier">Red Jointtype</p>
             <p *ngIf="newExercise.steps[activeStepToDraw]!=undefined" class="col-xs-1">Score</p>
             <p *ngIf="newExercise.steps[activeStepToDraw]!= undefined" class="col-xs-1">Duration</p>
         </div>
@@ -112,10 +112,10 @@
         </div>
 
         <!--Trackingline-->
-        <div *ngIf="checkBottomControls(1)" class="col-xs-12">
+        <div *ngIf="checkBottomControls(1)" class="col-xs-12 control-specifiers">
             <p *ngIf="newExercise.steps[activeStepToDraw]!=undefined" class="col-xs-1">Radius</p>
             <p *ngIf="showTrackingLineDetails && newExercise.steps[activeStepToDraw]!=undefined" class="col-xs-2">Trackingline Offset</p>
-            <p *ngIf="newExercise.steps[activeStepToDraw] != undefined" class="col-xs-2">Jointtype</p>
+            <p *ngIf="newExercise.steps[activeStepToDraw] != undefined" class="col-xs-2 joint-specifier">Jointtype</p>
             <p *ngIf="newExercise.steps[activeStepToDraw]!=undefined" class="col-xs-1">Score</p>
             <p *ngIf="newExercise.steps[activeStepToDraw]!= undefined" class="col-xs-1">Duration</p>
         </div>
