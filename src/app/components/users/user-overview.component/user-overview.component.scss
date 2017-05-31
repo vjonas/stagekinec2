@@ -58,7 +58,7 @@ $animated-border-color: $main-color-accent;
   height: 27vh;
   width: 100%;
   padding: 5%;
-  text-align: left;
+  text-align: center;
 
   &::before {
   transform: translateX(100%);
@@ -119,26 +119,13 @@ $animated-border-color: $main-color-accent;
   color: $main-color;
   font-weight: bold;
   font-size:1.5em;
+  margin-top:0;
+  margin-bottom:30px;
 }
 
-.table{
-
-  tr{
-    width:50%;
-
-    td{
-      border:none;
-      padding:3px;
-    }        
-  }
-}
-
-.specifier{
-  width:50px;
-} 
-
-.user-info{
-  font-weight:bold;
+.specifier-image{
+  width:75%; 
+  margin-bottom:10px;
 }
 
 .add-card{

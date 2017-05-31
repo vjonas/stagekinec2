@@ -28,22 +28,12 @@
             <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 card-div"><img src="../../../assets/images/no_picture.jpg" class="card-image"></div>
             <h3 class="col-xs-7 username">{{user?.name}} {{user?.lastName}}</h3>
             <div class="col-xs-7 col-sm-7">
-            <table class="table">
-                <tbody>
-                    <tr>
-                        <td class="specifier">Age</td>
-                        <td class="user-info">{{user?.age}}yo</td>
-                    </tr>
-                    <tr>
-                        <td class="specifier">Height</td>
-                        <td class="user-info">{{user?.length}}cm</td>
-                    </tr>
-                    <tr>
-                        <td class="specifier">Weight</td>
-                        <td class="user-info">{{user.weight}}kg</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="col-xs-4"><img class="specifier-image" src="../../../../assets/images/age.png"></div>
+            <div class="col-xs-4"><img class="specifier-image" src="../../../../assets/images/height.png"></div>
+            <div class="col-xs-4"><img class="specifier-image" src="../../../../assets/images/weight.png"></div>
+            <p class="col-xs-4">{{user?.age}}yo</p>
+            <p class="col-xs-4">{{user?.length}}cm</p>
+            <p class="col-xs-4">{{user.weight}}kg</p>
             </div>
         </div>
     </div>
