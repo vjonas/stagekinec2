@@ -97,8 +97,8 @@ canvas {
     }
 }
 
-.controls-button- {
-    background-color: $button-touchpoint
+.controls-button {
+    line-height: 32px;
 }
 
 .exercise-combo {
@@ -131,7 +131,7 @@ input[type=checkbox] {
 
 .step-list {
     padding-top: 10px;
-    height: 318.5px;
+    height: 306px;
     overflow-y: scroll;
     overflow-x: hidden;
     padding: 0;
@@ -264,6 +264,7 @@ input[type=checkbox]:checked+label {
     line-height: 50px;
     height: 100%;
     margin: 0;
+    padding-left: 15px;
 }
 
 
