@@ -31,11 +31,11 @@
 
         <div *ngIf="viewState">
             <h4 class="col-xs-4 col-sm-6">View steps</h4>
-            <ul class="col-xs-12 col-sm-12 step-list">
+            <ul class="col-xs-12 col-sm-12 step-list step-list-viewstate">
                 <div *ngFor="let step of newExercise?.steps">
                     <li *ngIf="!step.stepNr==0" (click)="changeStepToView($event,step.stepNr)" class="step-li" [ngClass]="{'checkbox-checked': counter.checked }">
                         <input type="radio" name="step" [value]="step" [id]="step.stepNr" #counter/>
-                        <label [for]="step.stepNr">Step {{step.stepNr}}</label>
+                        <label [for]="step.stepNr" class="step-label">Step {{step.stepNr}}</label>
                     </li>
                 </div>
             </ul>
@@ -69,8 +69,8 @@
                     <button (click)="drawNewTrackingLine(true)" class="controls-button col-xs-4 controls-button-line">Line<!--<p>Line</p> <img class="newPointButtonImg" src="../../assets/images/line.png">--></button>
                 </div>
             </div>
-            <div data-toggle="modal" data-target="#addExerciseModal" class="col-xs-12 btn btn-danger add-exercise-button">Add exercise</div>
-        </div>
+            <!--            <div data-toggle="modal" data-target="#addExerciseModal" class="col-xs-12 btn btn-danger add-exercise-button">Add exercise</div>
+--></div>
 
     </div>
     <div class="col-xs-12 bottom-controls">
@@ -121,8 +121,7 @@
         </div>
         <div *ngIf="checkBottomControls(1)" class="col-xs-12">
             <input class="col-xs-1" type="text" placeholder="radius" [(ngModel)]="newExercise.steps[activeStepToDraw].radius" />
-            <select *ngIf="showTrackingLineDetails && newExercise.steps[activeStepToDraw] != undefined" class="col-xs-2 joint-combo" type="text"
-                name="offset-tracking-line" [(ngModel)]="newExercise.steps[activeStepToDraw].trackingLineOffset">
+            <select *ngIf="showTrackingLineDetails && newExercise.steps[activeStepToDraw] != undefined" class="col-xs-2 joint-combo" type="text" name="offset-tracking-line" [(ngModel)]="newExercise.steps[activeStepToDraw].trackingLineOffset">
                 <option value="80">Easy</option>
                 <option value="50">Medium</option>
                 <option value="25">Hard</option>
@@ -133,5 +132,8 @@
             <input class="col-xs-1" type="number" placeholder="Score" [(ngModel)]="newExercise.steps[activeStepToDraw].maxScore" />
             <input class="col-xs-1" type="number" placeholder="Duration" [(ngModel)]="newExercise.steps[activeStepToDraw].duration" />
         </div>
+    </div>
+    <div class="col-xs-3 add-exercise-button-wrapper">
+        <div *ngIf="!viewState" data-toggle="modal" data-target="#addExerciseModal" class="btn btn-danger add-exercise-button">Add exercise</div>
     </div>
 </div>
