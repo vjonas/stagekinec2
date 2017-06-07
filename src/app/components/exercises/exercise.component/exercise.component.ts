@@ -1,5 +1,4 @@
 import { Component, AfterViewInit, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { KinectJoint } from '../../../models/kinectJoint.model'
 import { FullExercise } from "app/models/full.exercise.model";
 import { ExerciseService } from "app/services/exercise.service";
@@ -25,7 +24,7 @@ export class ExerciseComponent implements OnInit, AfterViewInit {
     private activeStepToDraw: number = 0;
     private exercisesOfMentor: FullExercise[];
 
-    constructor(private router: Router, private _exerciseService: ExerciseService, private _drawService: DrawService, private _jointService: JointService) {
+    constructor(private _exerciseService: ExerciseService, private _drawService: DrawService, private _jointService: JointService) {
         this.newExercise = FullExercise.createNewFullExercise();
         this._exerciseService.getAllExercisesFromMentor().subscribe(exercices => {
             console.log("exercises subscribe");
@@ -115,11 +114,11 @@ export class ExerciseComponent implements OnInit, AfterViewInit {
         })
     }
 
-    addStep() {
+    private addStep() {
         this.newExercise.steps.push(Step.createNewStep(this.newExercise.steps.length, this.canvas.width, this.canvas.height));
     }
 
-    removeStep(stepNr: number) {
+    private removeStep(stepNr: number) {
         this.newExercise.steps.splice(stepNr, 1);
         this.newExercise.steps.forEach((step, counter) => {
             this.newExercise.steps[counter].stepNr = counter;

@@ -14,11 +14,4 @@ export class HomeComponent {
 
     constructor(private router: Router) {
     }
-
-    goToOverview() {
-        this.router.navigate(["useroverview"]);
-    }
-
-
-
 }

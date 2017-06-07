@@ -15,10 +15,6 @@ export class UserService {
     constructor(private af: AngularFire) {
     }
 
-    public getAllUsers(): Observable<User[]> {
-        return this.af.database.list(this.path);
-    }
-
     public getUserById(userId: string): Observable<User> {
         return this.af.database.object(this.path+"/"+userId);
     }
